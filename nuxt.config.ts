@@ -29,4 +29,13 @@ export default defineNuxtConfig({
       ],
     },
   },
+  runtimeConfig: {
+    public: {
+      fbLink: process.env.NUXT_PUBLIC_FB_LINK,
+      telegramLink: process.env.NUXT_PUBLIC_TELEGRAM_LINK,
+      youtubeLink: process.env.NUXT_PUBLIC_YOUTUBE_LINK,
+      igLink: process.env.NUXT_PUBLIC_IG_LINK,
+      bentoLink: process.env.NUXT_PUBLIC_BENTO_LINK,
+    },
+  },
 });

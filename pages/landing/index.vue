@@ -5,6 +5,12 @@ const isMenuOpen = ref(false)
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value
 }
+
+const fbLink = useRuntimeConfig().public.fbLink
+const telegramLink = useRuntimeConfig().public.telegramLink
+const youtubeLink = useRuntimeConfig().public.youtubeLink
+const igLink = useRuntimeConfig().public.igLink
+const bentoLink = useRuntimeConfig().public.bentoLink
 </script>
 
 <template>
@@ -19,12 +25,15 @@ const toggleMenu = () => {
         <header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm">
             <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="/images/na-logo-gray.png" alt="Logo" class="w-8 h-8 sm:w-12 sm:h-12 rounded-full" />
+                    <a :href="bentoLink" target="_blank">
+                        <img src="/images/na-logo-gray.png" alt="Logo"
+                            class="w-8 h-8 sm:w-12 sm:h-12 rounded-full cursor-pointer" />
+                    </a>
                 </div>
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex gap-8">
                     <a href="#about" class="hover:text-[#99e18e]">About</a>
-                    <a href="#systems" class="hover:text-[#99e18e]">Systems</a>
+                    <a href="#systems" class="hover:text-[#bae1b4]">Systems</a>
                     <a href="#contact" class="hover:text-[#99e18e]">Contact</a>
                 </div>
                 <!-- Mobile Menu Button -->
@@ -43,9 +52,6 @@ const toggleMenu = () => {
                 <div class="container mx-auto px-4 py-4 flex flex-col gap-4">
                     <a href="#about" @click="toggleMenu" class="hover:text-[#99e18e] py-2">About</a>
                     <a href="#systems" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Systems</a>
-                    <a href="#systems" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Blog</a>
-                    <a href="#systems" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Blog</a>
-                    <a href="#systems" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Blog</a>
                     <a href="#contact" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Contact</a>
                 </div>
             </div>
@@ -149,17 +155,17 @@ const toggleMenu = () => {
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12">Contact</h2>
                 <div class="flex justify-center gap-6 sm:gap-8">
-                    <a href="#" class="text-[#99e18e] hover:text-[#c2f0bb]">
-                        <i class="fab fa-facebook text-xl sm:text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-[#99e18e] hover:text-[#c2f0bb]">
+                    <a :href="youtubeLink" target="_blank" class="text-[#99e18e] hover:text-[#c2f0bb]">
                         <i class="fab fa-youtube text-xl sm:text-2xl"></i>
                     </a>
-                    <a href="#" class="text-[#99e18e] hover:text-[#c2f0bb]">
-                        <i class="fab fa-discord text-xl sm:text-2xl"></i>
+                    <a :href="telegramLink" target="_blank" class="text-[#99e18e] hover:text-[#c2f0bb]">
+                        <i class="fab fa-telegram text-xl sm:text-2xl"></i>
                     </a>
-                    <a href="#" class="text-[#99e18e] hover:text-[#c2f0bb]">
-                        <i class="fas fa-envelope text-xl sm:text-2xl"></i>
+                    <a :href="fbLink" target="_blank" class="text-[#99e18e] hover:text-[#c2f0bb]">
+                        <i class="fab fa-facebook text-xl sm:text-2xl"></i>
+                    </a>
+                    <a :href="igLink" target="_blank" class="text-[#99e18e] hover:text-[#c2f0bb]">
+                        <i class="fab fa-instagram text-xl sm:text-2xl"></i>
                     </a>
                 </div>
                 <p class="mt-8 sm:mt-12 text-xs sm:text-sm opacity-60">© 2025 NA TRADES. All rights reserved.</p>
