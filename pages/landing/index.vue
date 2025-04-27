@@ -198,25 +198,30 @@ const blobBaseUrl = useRuntimeConfig().public.blobBaseUrl
         <!-- Contact Section -->
         <section id="contact" class="py-8 sm:py-12 px-4">
             <div class="container mx-auto text-center">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12">Contact</h2>
-                <div class="flex justify-center gap-6 sm:gap-8">
-                    <a :href="youtubeLink" target="_blank" class="text-[#99e18e] hover:text-[#c2f0bb]">
-                        <i class="fab fa-youtube text-xl sm:text-2xl"></i>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-10">Contact</h2>
+                <div class="flex justify-center gap-8 mb-8">
+                    <a :href="youtubeLink" target="_blank"
+                        class="bg-[#39493a] rounded-full w-14 h-14 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl">
+                        <i class="fab fa-youtube text-[#a1de9a] text-3xl"></i>
                     </a>
-                    <a :href="telegramLink" target="_blank" class="text-[#99e18e] hover:text-[#c2f0bb]">
-                        <i class="fab fa-telegram text-xl sm:text-2xl"></i>
+                    <a :href="telegramLink" target="_blank"
+                        class="bg-[#39493a] rounded-full w-14 h-14 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl">
+                        <i class="fab fa-telegram text-[#a1de9a] text-3xl"></i>
                     </a>
-                    <a :href="fbLink" target="_blank" class="text-[#99e18e] hover:text-[#c2f0bb]">
-                        <i class="fab fa-facebook text-xl sm:text-2xl"></i>
+                    <a :href="fbLink" target="_blank"
+                        class="bg-[#39493a] rounded-full w-14 h-14 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl">
+                        <i class="fab fa-facebook text-[#a1de9a] text-3xl"></i>
                     </a>
-                    <a :href="igLink" target="_blank" class="text-[#99e18e] hover:text-[#c2f0bb]">
-                        <i class="fab fa-instagram text-xl sm:text-2xl"></i>
+                    <a :href="igLink" target="_blank"
+                        class="bg-[#39493a] rounded-full w-14 h-14 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl">
+                        <i class="fab fa-instagram text-[#a1de9a] text-3xl"></i>
                     </a>
                 </div>
-                <p class="mt-8 sm:mt-12 text-xs sm:text-sm opacity-60">© 2025 NA TRADES. All rights reserved.</p>
+                <p class="max-w-3xl mx-auto text-base sm:text-lg opacity-90 mb-8">Email : natrades.contact@gmail.com</p>
+                <div class="w-full h-0.5 mx-auto my-10 bg-gradient-to-r from-transparent via-[#b6eeb0] to-transparent rounded-full"></div>
+                <p class="mt-0 sm:mt-4 text-xs sm:text-sm opacity-60">© 2025 NA TRADES. All rights reserved.</p>
             </div>
         </section>
-        
     </main>
 </template>
 
