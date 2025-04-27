@@ -61,7 +61,7 @@ const blobBaseUrl = useRuntimeConfig().public.blobBaseUrl
         </header>
 
         <!-- Hero Section -->
-        <section class="pt-24 sm:pt-32 pb-12 sm:pb-20 px-4">
+        <section class="pt-24 sm:pt-32 pb-10 sm:pb-12 px-4">
             <div class="container mx-auto text-center">
                 <div class="flex justify-center">
                     <img src="/images/na-trades.png" alt="NA TRADES"
@@ -73,7 +73,7 @@ const blobBaseUrl = useRuntimeConfig().public.blobBaseUrl
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-12 sm:py-20 px-4">
+        <section id="about" class="py-8 sm:py-12 px-4">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">About</h2>
                 <p class="max-w-3xl mx-auto text-base sm:text-lg opacity-90 px-4">
@@ -86,7 +86,7 @@ const blobBaseUrl = useRuntimeConfig().public.blobBaseUrl
         </section>
 
         <!-- Trading Systems Section -->
-        <section id="systems" class="py-12 sm:py-20 px-4">
+        <section id="systems" class="py-8 sm:py-12 px-4">
             <div class="container mx-auto">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">Trading Systems</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
@@ -154,7 +154,7 @@ const blobBaseUrl = useRuntimeConfig().public.blobBaseUrl
         </section>
 
         <!-- Prop Firm Certified Section -->
-        <section id="certified" class="py-12 sm:py-20 px-4">
+        <section id="certified" class="py-8 sm:py-12 px-4">
             <div class="container mx-auto">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">Prop Firm Certified</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
@@ -196,7 +196,7 @@ const blobBaseUrl = useRuntimeConfig().public.blobBaseUrl
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-12 sm:py-20 px-4">
+        <section id="contact" class="py-8 sm:py-12 px-4">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12">Contact</h2>
                 <div class="flex justify-center gap-6 sm:gap-8">
