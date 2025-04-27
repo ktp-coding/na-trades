@@ -216,6 +216,7 @@ const blobBaseUrl = useRuntimeConfig().public.blobBaseUrl
                 <p class="mt-8 sm:mt-12 text-xs sm:text-sm opacity-60">© 2025 NA TRADES. All rights reserved.</p>
             </div>
         </section>
+        
     </main>
 </template>
 
