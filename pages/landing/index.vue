@@ -11,10 +11,11 @@ const telegramLink = useRuntimeConfig().public.telegramLink
 const youtubeLink = useRuntimeConfig().public.youtubeLink
 const igLink = useRuntimeConfig().public.igLink
 const bentoLink = useRuntimeConfig().public.bentoLink
+const blobBaseUrl = useRuntimeConfig().public.blobBaseUrl
 </script>
 
 <template>
-    <main class="min-h-screen text-white bg-gradient-to-b from-[#0E1314] to-black relative overflow-hidden">
+    <main class="min-h-screen text-white bg-gradient-to-b from-[#0E1314] to-black relative overflow-hidden ">
         <div
             class="absolute top-[20%] -left-[15%] w-[500px] h-[500px] bg-[#1C1E22] rounded-full opacity-[0.15] blur-[120px]">
         </div>
@@ -33,7 +34,8 @@ const bentoLink = useRuntimeConfig().public.bentoLink
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex gap-8">
                     <a href="#about" class="hover:text-[#99e18e]">About</a>
-                    <a href="#systems" class="hover:text-[#bae1b4]">Systems</a>
+                    <a href="#systems" class="hover:text-[#99e18e]">Systems</a>
+                    <a href="#certified" class="hover:text-[#99e18e]">Certified</a>
                     <a href="#contact" class="hover:text-[#99e18e]">Contact</a>
                 </div>
                 <!-- Mobile Menu Button -->
@@ -52,6 +54,7 @@ const bentoLink = useRuntimeConfig().public.bentoLink
                 <div class="container mx-auto px-4 py-4 flex flex-col gap-4">
                     <a href="#about" @click="toggleMenu" class="hover:text-[#99e18e] py-2">About</a>
                     <a href="#systems" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Systems</a>
+                    <a href="#certified" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Certified</a>
                     <a href="#contact" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Contact</a>
                 </div>
             </div>
@@ -83,13 +86,13 @@ const bentoLink = useRuntimeConfig().public.bentoLink
         </section>
 
         <!-- Trading Systems Section -->
-        <section id="systems" class="py-12 sm:py-20 px-4 bg-black/50">
+        <section id="systems" class="py-12 sm:py-20 px-4">
             <div class="container mx-auto">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">Trading Systems</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
                     <!-- AMD Model -->
                     <div
-                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm">
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
                         <div
                             class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm">
                             <div class="mb-4 sm:mb-6">
@@ -109,7 +112,7 @@ const bentoLink = useRuntimeConfig().public.bentoLink
 
                     <!-- ICT Concept -->
                     <div
-                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm">
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
                         <div
                             class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm">
                             <div class="mb-4 sm:mb-6">
@@ -129,7 +132,7 @@ const bentoLink = useRuntimeConfig().public.bentoLink
 
                     <!-- Quarterly Theory -->
                     <div
-                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm">
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
                         <div
                             class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm">
                             <div class="mb-4 sm:mb-6">
@@ -144,6 +147,48 @@ const bentoLink = useRuntimeConfig().public.bentoLink
                                 <li>• Accumulation → Manipulation → Expansion sequence</li>
                                 <li>• Bias-driven signal filtering for cleaner setups</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prop Firm Certified Section -->
+        <section id="certified" class="py-12 sm:py-20 px-4">
+            <div class="container mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">Prop Firm Certified</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+                    <div
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                        <div
+                            class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm flex flex-col items-center">
+                            <div class="w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden shadow-lg">
+                                <img :src="`${blobBaseUrl}/images/certificate-topstep-PCqPUEX9bEdFVn8Lr4OOtvwtxyQgIE.jpg`"
+                                    alt="Topstep" class="w-full h-full object-cover" />
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white/90">Topstep</h3>
+                        </div>
+                    </div>
+                    <div
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                        <div
+                            class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm flex flex-col items-center">
+                            <div class="w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden shadow-lg">
+                                <img :src="`${blobBaseUrl}/images/certificate-takeprofittrader-0ya8QnlK14j0ULSzfzgBkRvtcHvgW4.jpg`"
+                                    alt="Take Profit Trader" class="w-full h-full object-cover" />
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white/90">Take Profit Trader</h3>
+                        </div>
+                    </div>
+                    <div
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                        <div
+                            class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm flex flex-col items-center">
+                            <div class="w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden shadow-lg">
+                                <img :src="`${blobBaseUrl}/images/certificate-the5%25er-jrUEnz42TMlWBPovkAto984mnWCPCr.png`"
+                                    alt="The5%ers" class="w-full h-full object-cover" />
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white/90">The5%ers</h3>
                         </div>
                     </div>
                 </div>

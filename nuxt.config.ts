@@ -36,6 +36,7 @@ export default defineNuxtConfig({
       youtubeLink: process.env.NUXT_PUBLIC_YOUTUBE_LINK,
       igLink: process.env.NUXT_PUBLIC_IG_LINK,
       bentoLink: process.env.NUXT_PUBLIC_BENTO_LINK,
+      blobBaseUrl: process.env.NUXT_PUBLIC_BLOB_BASE_URL,
     },
   },
 });
