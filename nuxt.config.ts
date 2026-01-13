@@ -35,8 +35,11 @@ export default defineNuxtConfig({
       telegramLink: process.env.NUXT_PUBLIC_TELEGRAM_LINK,
       youtubeLink: process.env.NUXT_PUBLIC_YOUTUBE_LINK,
       igLink: process.env.NUXT_PUBLIC_IG_LINK,
+      tiktokLink: process.env.NUXT_PUBLIC_TIKTOK_LINK,
       bentoLink: process.env.NUXT_PUBLIC_BENTO_LINK,
       blobBaseUrl: process.env.NUXT_PUBLIC_BLOB_BASE_URL,
+      courseLink: process.env.NUXT_PUBLIC_COURSE_LINK,
+      showBuyCourse: process.env.NUXT_PUBLIC_SHOW_BUY_COURSE,
     },
   },
 });
