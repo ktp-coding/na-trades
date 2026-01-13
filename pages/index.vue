@@ -15,6 +15,8 @@ const blobBaseUrl = useRuntimeConfig().public.blobBaseUrl
 const courseLink = useRuntimeConfig().public.courseLink
 const showBuyCourse = useRuntimeConfig().public.showBuyCourse as unknown as boolean
 const tiktokLink = useRuntimeConfig().public.tiktokLink
+const privateCourseLink = useRuntimeConfig().public.privateCourseLink
+const showBuyPrivateCourse = useRuntimeConfig().public.showBuyPrivateCourse as unknown as boolean
 
 // Image modal state
 const selectedImage = ref<string | null>(null)
@@ -52,8 +54,13 @@ const courseImages = computed(() => [
     { src: `${blobBaseUrl}/images/2.%20Quarterly%20Theory%20Fundamentals.png`, alt: 'Quarterly Theory Fundamentals' },
     { src: `${blobBaseUrl}/images/3.%20Fractal%20Model.png`, alt: 'Fractal Model' },
     { src: `${blobBaseUrl}/images/Promote-1.png`, alt: 'Promote 1' },
-    { src: `${blobBaseUrl}/images/Promote-2.png`, alt: 'Promote 2' },
+    { src: `${blobBaseUrl}/images/Promote-3.png`, alt: 'Promote 3' },
 ])
+
+const privateCourseImages = [
+    { src: `${blobBaseUrl}/images/Mentorship.png`, alt: 'Mentorship' },
+    { src: `${blobBaseUrl}/images/4.%20Large%20Range%20Model.png`, alt: 'Large Range Model' },
+]
 </script>
 
 <template>
@@ -79,6 +86,7 @@ const courseImages = computed(() => [
                     <a href="#systems" class="hover:text-[#99e18e]">Systems</a>
                     <a href="#free-learning" class="hover:text-[#99e18e]">Free Learning</a>
                     <a href="#course" class="hover:text-[#99e18e]">Course</a>
+                    <a href="#private-course" class="hover:text-[#99e18e]">Private Course</a>
                     <!-- <a href="#certified" class="hover:text-[#99e18e]">Certified</a> -->
                     <a href="#contact" class="hover:text-[#99e18e]">Contact</a>
                 </div>
@@ -100,6 +108,7 @@ const courseImages = computed(() => [
                     <a href="#systems" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Systems</a>
                     <a href="#free-learning" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Free Learning</a>
                     <a href="#course" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Course</a>
+                    <a href="#private-course" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Private Course</a>
                     <!-- <a href="#certified" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Certified</a> -->
                     <a href="#contact" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Contact</a>
                 </div>
@@ -391,6 +400,35 @@ const courseImages = computed(() => [
                             rel="noopener noreferrer"
                             class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-[#99e18e] to-[#7bc86a] hover:from-[#7bc86a] hover:to-[#99e18e] rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
                             Join Course
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Private Course Section -->
+         <section id="private-course" class="py-6 sm:py-10 px-4 scroll-mt-20 sm:scroll-mt-24">
+            <div class="container mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">Private Course & Mentorship</h2>
+                <div class="max-w-6xl mx-auto space-y-6 sm:space-y-8 flex flex-col items-center">
+                    <div class="flex flex-wrap justify-center gap-6 sm:gap-8 w-full">
+                        <div v-for="(image, index) in privateCourseImages" :key="index"
+                            class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl cursor-pointer w-full sm:max-w-sm lg:max-w-sm">
+                            <div class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-4 sm:p-6 rounded-2xl backdrop-blur-sm"
+                                @click="openImageModal(image.src)">
+                                <div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
+                                    <img :src="image.src" :alt="image.alt"
+                                        class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Join Button -->
+                    <div v-if="showBuyPrivateCourse" class="flex justify-center mt-6 sm:mt-8 w-full">
+                        <a :href="privateCourseLink" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-[#99e18e] to-[#7bc86a] hover:from-[#7bc86a] hover:to-[#99e18e] rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                            Join Private Course
                         </a>
                     </div>
                 </div>

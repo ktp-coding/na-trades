@@ -40,6 +40,8 @@ export default defineNuxtConfig({
       blobBaseUrl: process.env.NUXT_PUBLIC_BLOB_BASE_URL,
       courseLink: process.env.NUXT_PUBLIC_COURSE_LINK,
       showBuyCourse: process.env.NUXT_PUBLIC_SHOW_BUY_COURSE,
+      privateCourseLink: process.env.NUXT_PUBLIC_PRIVATE_COURSE_LINK,
+      showBuyPrivateCourse: process.env.NUXT_PUBLIC_SHOW_BUY_PRIVATE_COURSE,
     },
   },
 });
