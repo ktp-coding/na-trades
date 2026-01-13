@@ -68,12 +68,10 @@ const courseImages = computed(() => [
         <header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm">
             <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="/images/na-logo-gray.png" alt="Logo"
-                        class="w-8 h-8 sm:w-12 sm:h-12 rounded-full" />
-                    <!-- <a :href="bentoLink" target="_blank">
+                    <a href="/">
                         <img src="/images/na-logo-gray.png" alt="Logo"
                             class="w-8 h-8 sm:w-12 sm:h-12 rounded-full cursor-pointer" />
-                    </a> -->
+                    </a>
                 </div>
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex gap-8">
