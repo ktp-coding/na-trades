@@ -54,7 +54,7 @@ const courseImages = computed(() => [
     { src: `${blobBaseUrl}/images/2.%20Quarterly%20Theory%20Fundamentals.png`, alt: 'Quarterly Theory Fundamentals' },
     { src: `${blobBaseUrl}/images/3.%20Fractal%20Model.png`, alt: 'Fractal Model' },
     { src: `${blobBaseUrl}/images/Promote-1.png`, alt: 'Promote 1' },
-    { src: `${blobBaseUrl}/images/Promote-3.png`, alt: 'Promote 3' },
+    { src: `${blobBaseUrl}/images/Promote-4.png`, alt: 'Promote 4' },
 ])
 
 const privateCourseImages = [
