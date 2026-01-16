@@ -64,12 +64,12 @@ const privateCourseImages = [
 </script>
 
 <template>
-    <main class="min-h-screen text-white bg-gradient-to-b from-[#0E1314] to-black relative">
+    <main class="min-h-screen text-white bg-gradient-to-b from-[#0E1314] to-black relative overflow-x-hidden">
         <div
-            class="absolute top-[20%] -left-[15%] w-[500px] h-[500px] bg-[#1C1E22] rounded-full opacity-[0.15] blur-[120px]">
+            class="absolute top-[20%] -left-[15%] w-[500px] h-[500px] bg-[#1C1E22] rounded-full opacity-[0.15] blur-[120px] pointer-events-none">
         </div>
         <div
-            class="absolute top-[20%] -right-[15%] w-[500px] h-[500px] bg-[#1C1E22] rounded-full opacity-[0.15] blur-[120px]">
+            class="absolute top-[20%] -right-[15%] w-[500px] h-[500px] bg-[#1C1E22] rounded-full opacity-[0.15] blur-[120px] pointer-events-none">
         </div>
         <!-- Header -->
         <header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm">
@@ -174,7 +174,7 @@ const privateCourseImages = [
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-12 sm:mb-16">
                     <!-- AMD Model -->
                     <div
-                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl">
                         <div
                             class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm">
                             <div class="mb-4 sm:mb-6">
@@ -208,7 +208,7 @@ const privateCourseImages = [
 
                     <!-- ICT Concept -->
                     <div
-                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl">
                         <div
                             class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm">
                             <div class="mb-4 sm:mb-6">
@@ -243,7 +243,7 @@ const privateCourseImages = [
 
                     <!-- Quarterly Theory -->
                     <div
-                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl">
                         <div
                             class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm">
                             <div class="mb-4 sm:mb-6">
@@ -367,7 +367,7 @@ const privateCourseImages = [
                         <div
                             v-for="(image, index) in courseImages.slice(0, 3)"
                             :key="index"
-                            class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl cursor-pointer">
+                            class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl cursor-pointer">
                             <div class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-4 sm:p-6 rounded-2xl backdrop-blur-sm" @click="openImageModal(image.src)">
                                 <div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
                                     <img :src="image.src" :alt="image.alt" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
@@ -382,7 +382,7 @@ const privateCourseImages = [
                             <div
                                 v-for="(image, index) in courseImages.slice(3, 5)"
                                 :key="index + 3"
-                                class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl cursor-pointer">
+                                class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl cursor-pointer">
                                 <div class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-4 sm:p-6 rounded-2xl backdrop-blur-sm" @click="openImageModal(image.src)">
                                     <div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
                                         <img :src="image.src" :alt="image.alt" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" />
@@ -458,7 +458,7 @@ const privateCourseImages = [
                 <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">Prop Firm Certified</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
                     <div
-                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl">
                         <div
                             class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm flex flex-col items-center">
                             <div class="w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden shadow-lg">
@@ -469,7 +469,7 @@ const privateCourseImages = [
                         </div>
                     </div>
                     <div
-                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl">
                         <div
                             class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm flex flex-col items-center">
                             <div class="w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden shadow-lg">
@@ -480,7 +480,7 @@ const privateCourseImages = [
                         </div>
                     </div>
                     <div
-                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl">
+                        class="relative p-[1px] rounded-2xl bg-gradient-to-b from-gray-700/50 via-gray-900/50 to-black/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl">
                         <div
                             class="bg-gradient-to-b from-[#1C1E22]/80 to-black/90 p-6 sm:p-8 rounded-2xl text-center h-full backdrop-blur-sm flex flex-col items-center">
                             <div class="w-full aspect-[4/3] mb-6 rounded-xl overflow-hidden shadow-lg">
@@ -522,7 +522,7 @@ const privateCourseImages = [
                 </div>
                 <p class="max-w-3xl mx-auto text-base sm:text-lg opacity-90 mb-8">Email : natrades.contact@gmail.com</p>
             </div>
-            <div class="w-screen h-0.5 my-10 rounded-full glow-line relative left-1/2 -translate-x-1/2"></div>
+            <div class="w-full h-0.5 my-10 rounded-full glow-line"></div>
             <div class="container mx-auto text-center">
                 <p class="mt-0 sm:mt-4 text-xs sm:text-sm opacity-60">© 2025 NA TRADES. All rights reserved.</p>
             </div>
@@ -569,6 +569,7 @@ const privateCourseImages = [
     background-color: #000;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 /* Glow line animation */
