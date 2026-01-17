@@ -86,7 +86,7 @@ const privateCourseImages = [
                     <a href="#systems" class="hover:text-[#99e18e]">Systems</a>
                     <a href="#free-learning" class="hover:text-[#99e18e]">Free Learning</a>
                     <a href="#course" class="hover:text-[#99e18e]">Course</a>
-                    <a href="#private-course" class="hover:text-[#99e18e]">Private Course</a>
+                    <a v-if="showBuyPrivateCourse" href="#private-course" class="hover:text-[#99e18e]">Private Course</a>
                     <!-- <a href="#certified" class="hover:text-[#99e18e]">Certified</a> -->
                     <a href="#contact" class="hover:text-[#99e18e]">Contact</a>
                 </div>
@@ -108,7 +108,7 @@ const privateCourseImages = [
                     <a href="#systems" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Systems</a>
                     <a href="#free-learning" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Free Learning</a>
                     <a href="#course" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Course</a>
-                    <a href="#private-course" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Private Course</a>
+                    <a v-if="showBuyPrivateCourse" href="#private-course" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Private Course</a>
                     <!-- <a href="#certified" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Certified</a> -->
                     <a href="#contact" @click="toggleMenu" class="hover:text-[#99e18e] py-2">Contact</a>
                 </div>
@@ -393,7 +393,7 @@ const privateCourseImages = [
                     </div>
                     
                     <!-- Join Button -->
-                    <div v-if="showBuyCourse" class="flex justify-center mt-6 sm:mt-8">
+                    <div v-if="courseLink !== ''" class="flex justify-center mt-6 sm:mt-8">
                         <a
                             :href="courseLink"
                             target="_blank"
@@ -407,7 +407,7 @@ const privateCourseImages = [
         </section>
 
         <!-- Private Course Section -->
-         <section id="private-course" class="py-6 sm:py-10 px-4 scroll-mt-20 sm:scroll-mt-24">
+         <section v-if="showBuyPrivateCourse" id="private-course" class="py-6 sm:py-10 px-4 scroll-mt-20 sm:scroll-mt-24">
             <div class="container mx-auto">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">Private Course & Mentorship</h2>
                 <div class="max-w-6xl mx-auto space-y-6 sm:space-y-8 flex flex-col items-center">
@@ -425,7 +425,7 @@ const privateCourseImages = [
                     </div>
 
                     <!-- Join Button -->
-                    <div v-if="showBuyPrivateCourse" class="flex justify-center mt-6 sm:mt-8 w-full">
+                    <div v-if="privateCourseLink !== ''" class="flex justify-center mt-6 sm:mt-8 w-full">
                         <a :href="privateCourseLink" target="_blank" rel="noopener noreferrer"
                             class="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-[#99e18e] to-[#7bc86a] hover:from-[#7bc86a] hover:to-[#99e18e] rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
                             Join Private Course
