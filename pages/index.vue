@@ -53,8 +53,8 @@ const courseImages = computed(() => [
     { src: `${blobBaseUrl}/images/1.%20ICT%20Core%20Concepts.png`, alt: 'ICT Core Concepts' },
     { src: `${blobBaseUrl}/images/2.%20Quarterly%20Theory%20Fundamentals.png`, alt: 'Quarterly Theory Fundamentals' },
     { src: `${blobBaseUrl}/images/3.%20Fractal%20Model.png`, alt: 'Fractal Model' },
-    { src: `${blobBaseUrl}/images/Promote-1.png`, alt: 'Promote 1' },
-    { src: `${blobBaseUrl}/images/Promote-4.png`, alt: 'Promote 4' },
+    { src: `${blobBaseUrl}/images/2026P1-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P1' },
+    { src: `${blobBaseUrl}/images/2026P2-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P2' },
 ])
 
 const privateCourseImages = [
