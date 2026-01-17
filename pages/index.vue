@@ -54,7 +54,7 @@ const courseImages = computed(() => [
     { src: `${blobBaseUrl}/images/2.%20Quarterly%20Theory%20Fundamentals.png`, alt: 'Quarterly Theory Fundamentals' },
     { src: `${blobBaseUrl}/images/3.%20Fractal%20Model.png`, alt: 'Fractal Model' },
     { src: `${blobBaseUrl}/images/2026P1-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P1' },
-    { src: `${blobBaseUrl}/images/2026P2-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P2' },
+    { src: `${blobBaseUrl}/images/2026P3-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P3' },
 ])
 
 const privateCourseImages = [
