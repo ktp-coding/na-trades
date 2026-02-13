@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { SpeedInsights } from '@vercel/speed-insights/vue'
+</script>
+
 <template>
     <!-- <div class="min-h-screen bg-background">
         <header class="border-b">
@@ -10,4 +14,5 @@
         </main>
     </div> -->
     <slot />
+    <SpeedInsights />
 </template>
