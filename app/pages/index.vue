@@ -13,6 +13,18 @@ const systemMeta: Record<string, { icon: string; slug: string }> = {
 }
 
 const latest = articles.slice(-3).reverse()
+
+// Old links pointed at sections that used to live on this page (e.g. /#course).
+// The hash never reaches the server, so send those visitors on from the browser.
+const movedSections: Record<string, string> = {
+  '#course': '/course',
+  '#private-course': '/course#plans',
+  '#faq': '/course#faq',
+}
+onMounted(() => {
+  const target = movedSections[window.location.hash]
+  if (target) navigateTo(target, { replace: true })
+})
 </script>
 
 <template>
