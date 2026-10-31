@@ -140,6 +140,16 @@ const submit = async () => {
 onBeforeUnmount(() => {
   if (slipPreview.value) URL.revokeObjectURL(slipPreview.value)
 })
+
+// Long file names (e.g. AI prompts saved as names) would stretch the layout.
+// Keep the start and the extension: "A minimalist profes…ompt.png".
+function shortName(name: string, max = 40) {
+  if (name.length <= max) return name
+  const dot = name.lastIndexOf('.')
+  const ext = dot > 0 && name.length - dot <= 6 ? name.slice(dot) : ''
+  const tail = name.slice(-(8 + ext.length), name.length - ext.length)
+  return `${name.slice(0, max - 10 - ext.length)}…${tail}${ext}`
+}
 </script>
 
 <template>
@@ -165,8 +175,8 @@ onBeforeUnmount(() => {
           </li>
         </ol>
 
-        <div class="grid gap-6 lg:grid-cols-[1fr_320px] lg:items-start" :class="step === 4 ? 'lg:grid-cols-1' : ''">
-          <div class="card p-5 sm:p-8">
+        <div class="grid gap-6 lg:items-start" :class="step === 4 ? 'mx-auto max-w-2xl' : 'lg:grid-cols-[1fr_320px]'">
+          <div class="card min-w-0 p-5 sm:p-8">
             <!-- STEP 1: details -->
             <form v-if="step === 1" novalidate @submit.prevent="goTransfer">
               <h2 class="text-lg text-white">{{ t.enroll.choosePlan }}</h2>
@@ -318,7 +328,7 @@ onBeforeUnmount(() => {
               <h2 class="text-lg text-white">{{ t.enroll.slipTitle }}</h2>
               <p class="mt-1 text-sm text-mist">{{ t.enroll.slipSub }}</p>
               <label
-                class="mt-6 flex min-h-48 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed p-6 text-center transition"
+                class="mt-6 flex min-h-48 w-full min-w-0 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed p-6 text-center transition"
                 :class="dragging ? 'border-gold bg-gold/5' : errors.slip ? 'border-red-400/60' : slip ? 'border-emerald-400/40 bg-emerald-400/[0.03]' : 'border-white/15 hover:border-gold/50'"
                 @dragover.prevent="dragging = true"
                 @dragleave.prevent="dragging = false"
@@ -332,7 +342,7 @@ onBeforeUnmount(() => {
                     <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5L20 7" stroke-linecap="round" stroke-linejoin="round" /></svg>
                     {{ t.enroll.attached }}
                   </span>
-                  <span class="max-w-full truncate text-sm text-white">{{ slip.name }} · {{ (slip.size / 1024 / 1024).toFixed(2) }} MB</span>
+                  <span class="max-w-full break-all text-sm text-white" :title="slip.name">{{ shortName(slip.name) }} · {{ (slip.size / 1024 / 1024).toFixed(2) }} MB</span>
                   <span class="text-xs text-gold-soft underline">{{ t.enroll.change }}</span>
                 </template>
                 <template v-else>
