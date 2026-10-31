@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{ nav: { href: string; label: string }[] }>()
 const { joinHref, joinTarget } = useSiteLinks()
+const { t } = useLang()
 const isMenuOpen = ref(false)
 const scrolled = ref(false)
 
@@ -26,22 +27,23 @@ onBeforeUnmount(() => {
     class="fixed inset-x-0 top-0 z-40 transition-all duration-300"
     :class="scrolled || isMenuOpen ? 'border-b border-white/5 bg-ink/80 backdrop-blur-xl' : 'bg-transparent'"
   >
-    <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-20 sm:px-6" aria-label="เมนูหลัก">
+    <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-20 sm:px-6" aria-label="Main">
       <NuxtLink to="/" class="flex items-center gap-3">
         <img src="/images/icon-na.png" alt="" width="40" height="40" class="icon-mask h-10 w-10" />
         <span class="text-sm tracking-[0.3em] text-gold-soft">N|A TRADES</span>
       </NuxtLink>
-      <div class="hidden items-center gap-8 md:flex">
+      <div class="hidden items-center gap-6 lg:flex">
         <NuxtLink v-for="item in nav" :key="item.href" :to="item.href" class="text-sm text-mist transition hover:text-gold-soft">{{ item.label }}</NuxtLink>
       </div>
       <div class="flex items-center gap-2">
-        <a :href="joinHref" :target="joinTarget" rel="noopener noreferrer" class="btn-gold !px-5 !py-2 !text-sm">สมัครเรียน</a>
+        <LangSwitch />
+        <a :href="joinHref" :target="joinTarget" rel="noopener noreferrer" class="btn-gold hidden !px-5 !py-2 !text-sm sm:inline-flex">{{ t.nav.join }}</a>
         <button
           type="button"
-          class="-mr-2 rounded-full p-2 text-slate-200 md:hidden"
+          class="-mr-2 rounded-full p-2 text-slate-200 lg:hidden"
           :aria-expanded="isMenuOpen"
           aria-controls="mobile-menu"
-          aria-label="เปิดเมนู"
+          :aria-label="t.nav.menu"
           @click="isMenuOpen = !isMenuOpen"
         >
           <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
@@ -51,7 +53,7 @@ onBeforeUnmount(() => {
         </button>
       </div>
     </nav>
-    <div v-if="isMenuOpen" id="mobile-menu" class="border-t border-white/5 md:hidden">
+    <div v-if="isMenuOpen" id="mobile-menu" class="border-t border-white/5 lg:hidden">
       <div class="mx-auto flex max-w-6xl flex-col px-4 py-3">
         <NuxtLink v-for="item in nav" :key="item.href" :to="item.href" class="py-3 text-mist hover:text-gold-soft" @click="isMenuOpen = false">{{ item.label }}</NuxtLink>
       </div>

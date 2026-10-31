@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Shows the thumbnail first and only loads the YouTube player after a click.
 // Faster page load, and no YouTube cookies until the visitor asks for the video.
-const props = defineProps<{ id: string; title: string }>()
+const props = defineProps<{ id: string; title: string; playLabel?: string }>()
 const playing = ref(false)
 const safeId = computed(() => (/^[\w-]{6,20}$/.test(props.id) ? props.id : ''))
 </script>
@@ -21,7 +21,7 @@ const safeId = computed(() => (/^[\w-]{6,20}$/.test(props.id) ? props.id : ''))
       v-else
       type="button"
       class="group absolute inset-0 h-full w-full"
-      :aria-label="`เล่นวิดีโอ: ${title}`"
+      :aria-label="`${playLabel || 'Play video'}: ${title}`"
       @click="playing = true"
     >
       <img

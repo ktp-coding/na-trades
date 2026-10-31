@@ -4,25 +4,28 @@ import { articles, findArticle } from '~/data/articles'
 const route = useRoute()
 const article = findArticle(String(route.params.slug))
 if (!article) {
-  throw createError({ statusCode: 404, statusMessage: 'ไม่พบบทความ', fatal: true })
+  throw createError({ statusCode: 404, statusMessage: 'Article not found', fatal: true })
 }
 
-useHead({ title: `${article.title} · N|A TRADES` })
-useSeoMeta({
-  description: article.excerpt,
-  ogTitle: article.title,
-  ogDescription: article.excerpt,
-  ogType: 'article',
-})
 
 const others = articles.filter((a) => a.slug !== article.slug).slice(0, 3)
 
-const nav = [
-  { href: '/', label: 'หน้าแรก' },
-  { href: '/#modules', label: 'คอร์ส' },
-  { href: '/blog', label: 'บทความ' },
-  { href: '/#faq', label: 'FAQ' },
-]
+const { lang, t } = useLang()
+const nav = computed(() => [
+  { href: '/', label: t.value.nav.home },
+  { href: '/#systems', label: t.value.nav.systems },
+  { href: '/#course', label: t.value.nav.course },
+  { href: '/blog', label: t.value.nav.blog },
+  { href: '/#contact', label: t.value.nav.contact },
+])
+
+useHead({ title: `${article.title} · N|A TRADES` })
+useSeoMeta({
+  description: () => article.excerpt[lang.value],
+  ogTitle: article.title,
+  ogDescription: () => article.excerpt[lang.value],
+  ogType: 'article',
+})
 </script>
 
 <template>
@@ -31,15 +34,15 @@ const nav = [
     <SiteHeader :nav="nav" />
     <main class="relative px-4 pt-28 pb-12 sm:px-6 sm:pt-36">
       <article class="mx-auto max-w-2xl">
-        <NuxtLink to="/blog" class="text-sm text-mist hover:text-gold-soft">← บทความทั้งหมด</NuxtLink>
+        <NuxtLink to="/blog" class="text-sm text-mist hover:text-gold-soft">{{ t.blog.back }}</NuxtLink>
         <header class="mt-8 flex flex-col items-start gap-5">
           <img :src="article.icon" alt="" width="384" height="384" class="icon-mask h-16 w-16" />
-          <p class="eyebrow">{{ article.tagline }}</p>
+          <p class="eyebrow">{{ article.tagline[lang] }}</p>
           <h1 class="text-gold-gradient font-display text-5xl leading-none tracking-wide sm:text-6xl">{{ article.title }}</h1>
         </header>
 
         <div class="mt-10 space-y-6 text-lg leading-relaxed text-slate-300">
-          <template v-for="(b, i) in article.body" :key="i">
+          <template v-for="(b, i) in article.body[lang]" :key="i">
             <p v-if="b.type === 'p'">{{ b.text }}</p>
             <h2 v-else-if="b.type === 'h2'" class="pt-4 text-xl font-normal text-white">{{ b.text }}</h2>
             <ul v-else-if="b.type === 'list'" class="space-y-3">
@@ -57,7 +60,7 @@ const nav = [
       </article>
 
       <section class="mx-auto mt-20 max-w-6xl">
-        <h2 class="mb-6 text-xl text-white">อ่านต่อ</h2>
+        <h2 class="mb-6 text-xl text-white">{{ t.blog.next }}</h2>
         <div class="grid gap-5 md:grid-cols-3">
           <ArticleCard v-for="a in others" :key="a.slug" :article="a" />
         </div>

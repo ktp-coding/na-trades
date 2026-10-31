@@ -1,11 +1,13 @@
 <script setup lang="ts">
 const { socials } = useSiteLinks()
 const year = new Date().getFullYear()
+const { t } = useLang()
 </script>
 
 <template>
-  <footer id="contact" class="border-t border-white/5 px-4 py-12 sm:px-6">
+  <footer id="contact" class="scroll-mt-24 border-t border-white/5 px-4 py-16 sm:px-6">
     <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
+      <h2 class="section-title">{{ t.footer.contact }}</h2>
       <NuxtLink to="/" class="flex items-center gap-3">
         <img src="/images/icon-na.png" alt="" width="32" height="32" loading="lazy" class="icon-mask h-8 w-8" />
         <span class="text-sm tracking-[0.3em] text-gold-soft">N|A TRADES</span>
@@ -28,9 +30,9 @@ const year = new Date().getFullYear()
         natrades.contact@gmail.com
       </a>
       <p class="max-w-2xl text-xs leading-relaxed text-mist/60">
-        การเทรดมีความเสี่ยงสูง เนื้อหาทั้งหมดเพื่อการศึกษา ไม่ใช่คำแนะนำการลงทุน ผลลัพธ์ในอดีตไม่ได้รับประกันผลในอนาคต
+        {{ t.footer.disclaimer }}
       </p>
-      <p class="text-xs text-mist/50">© {{ year }} N|A TRADES. All rights reserved.</p>
+      <p class="text-xs text-mist/50">© {{ year }} N|A TRADES. {{ t.footer.rights }}</p>
     </div>
   </footer>
 </template>
