@@ -30,7 +30,6 @@ onMounted(() => {
 <template>
   <div class="relative min-h-screen overflow-x-clip">
     <!-- Ambient background -->
-    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[1100px] bg-[radial-gradient(ellipse_at_top,rgba(30,58,138,0.35),transparent_60%)]" />
 
     <SiteHeader />
 
@@ -40,9 +39,9 @@ onMounted(() => {
         <div class="relative mx-auto flex max-w-5xl flex-col items-center text-center">
           <div class="relative mb-8 sm:mb-10">
             <div aria-hidden="true" class="aura absolute -inset-16 rounded-full blur-2xl sm:-inset-24" />
-            <div aria-hidden="true" class="absolute -inset-6 rounded-full border border-gold/15 sm:-inset-10" />
-            <div aria-hidden="true" class="absolute -inset-12 rounded-full border border-gold/[0.07] sm:-inset-20" />
-            <img src="/images/icon-na.png" alt="NA TRADES" width="384" height="384" class="icon-mask relative h-40 w-40 sm:h-56 sm:w-56" fetchpriority="high" />
+            <div aria-hidden="true" class="absolute -inset-6 rounded-full border border-white/10 sm:-inset-10" />
+            <div aria-hidden="true" class="absolute -inset-12 rounded-full border border-white/[0.05] sm:-inset-20" />
+            <img src="/images/icon-na.png" alt="NA TRADES" width="384" height="384" class="icon-mask logo-star relative h-40 w-40 sm:h-56 sm:w-56" fetchpriority="high" />
           </div>
 
           <h1 class="text-gold-gradient font-display text-6xl leading-none tracking-wide sm:text-8xl">{{ t.hero.title }}</h1>

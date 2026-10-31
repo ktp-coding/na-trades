@@ -22,7 +22,6 @@ useSeoMeta({
 
 <template>
   <div v-if="article" class="relative min-h-screen overflow-x-clip">
-    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[700px] bg-[radial-gradient(ellipse_at_top,rgba(30,58,138,0.3),transparent_60%)]" />
     <SiteHeader />
     <main class="relative px-4 pt-28 pb-12 sm:px-6 sm:pt-36">
       <article class="mx-auto max-w-2xl">

@@ -36,10 +36,10 @@ onMounted(() => {
   let seededWidth = 0
 
   const seed = () => {
-    const count = Math.round(((w * h) / 2600) * props.density)
+    const count = Math.round(((w * h) / 1500) * props.density)
     stars = Array.from({ length: count }, () => {
       const depth = Math.random() < 0.6 ? 0.3 : Math.random() < 0.75 ? 0.6 : 1
-      const bright = depth === 1 && Math.random() < 0.08
+      const bright = depth === 1 && Math.random() < 0.12
       return {
         x: Math.random() * w,
         y: Math.random() * h,
@@ -48,7 +48,8 @@ onMounted(() => {
         phase: Math.random() * Math.PI * 2,
         speed: 0.6 + Math.random() * 1.8,
         // Mostly white-blue, some warm gold, a few violet.
-        hue: Math.random() < 0.15 ? 42 : Math.random() < 0.2 ? 265 : 215,
+        // Black-and-white sky: stars are white with a slight cool or warm tint.
+        hue: Math.random() < 0.5 ? 220 : 40,
         bright,
       }
     })
@@ -98,18 +99,18 @@ onMounted(() => {
       const y = reduce ? s.y : (((s.y - scrollY * s.depth * 0.25) % h) + h) % h
       const tw = reduce ? 0.8 : 0.55 + 0.45 * Math.sin(time * s.speed + s.phase)
       const a = (0.25 + 0.75 * s.depth) * tw
-      ctx!.fillStyle = `hsla(${s.hue}, 90%, ${s.hue === 215 ? 92 : 80}%, ${a})`
+      ctx!.fillStyle = `hsla(${s.hue}, 10%, 96%, ${a})`
       ctx!.beginPath()
       ctx!.arc(s.x, y, s.r, 0, Math.PI * 2)
       ctx!.fill()
       if (s.bright) {
         const g = ctx!.createRadialGradient(s.x, y, 0, s.x, y, s.r * 7)
-        g.addColorStop(0, `hsla(${s.hue}, 100%, 85%, ${0.45 * tw})`)
+        g.addColorStop(0, `hsla(${s.hue}, 10%, 95%, ${0.5 * tw})`)
         g.addColorStop(1, 'transparent')
         ctx!.fillStyle = g
         ctx!.fillRect(s.x - s.r * 7, y - s.r * 7, s.r * 14, s.r * 14)
         // Thin cross flare.
-        ctx!.strokeStyle = `hsla(${s.hue}, 100%, 90%, ${0.35 * tw})`
+        ctx!.strokeStyle = `hsla(${s.hue}, 10%, 97%, ${0.4 * tw})`
         ctx!.lineWidth = 0.6
         const L = s.r * 6 * tw
         ctx!.beginPath()
@@ -135,8 +136,8 @@ onMounted(() => {
       const tail = 14
       const g = ctx!.createLinearGradient(m.x, m.y, m.x - m.vx * tail, m.y - m.vy * tail)
       g.addColorStop(0, `rgba(255, 255, 255, ${0.9 * fade})`)
-      g.addColorStop(0.3, `rgba(165, 180, 252, ${0.4 * fade})`)
-      g.addColorStop(1, 'rgba(165, 180, 252, 0)')
+      g.addColorStop(0.3, `rgba(220, 220, 230, ${0.4 * fade})`)
+      g.addColorStop(1, 'rgba(220, 220, 230, 0)')
       ctx!.strokeStyle = g
       ctx!.lineWidth = 1.4
       ctx!.lineCap = 'round'
@@ -205,7 +206,7 @@ onMounted(() => {
   top: 2%;
   width: 55%;
   height: 24%;
-  background: radial-gradient(closest-side, rgba(99, 102, 241, 0.35), transparent);
+  background: radial-gradient(closest-side, rgba(59, 91, 219, 0.32), transparent);
   animation: drift-a 26s ease-in-out infinite alternate;
 }
 .nebula-b {
@@ -213,7 +214,7 @@ onMounted(() => {
   top: 0;
   width: 50%;
   height: 28%;
-  background: radial-gradient(closest-side, rgba(168, 85, 247, 0.28), transparent);
+  background: radial-gradient(closest-side, rgba(124, 77, 219, 0.3), transparent);
   animation: drift-b 32s ease-in-out infinite alternate;
 }
 .nebula-c {
@@ -221,7 +222,7 @@ onMounted(() => {
   top: 22%;
   width: 40%;
   height: 18%;
-  background: radial-gradient(closest-side, rgba(45, 212, 191, 0.14), transparent);
+  background: radial-gradient(closest-side, rgba(31, 138, 138, 0.3), transparent);
   animation: drift-a 38s ease-in-out infinite alternate-reverse;
 }
 .nebula-d {
@@ -229,7 +230,7 @@ onMounted(() => {
   top: 46%;
   width: 55%;
   height: 26%;
-  background: radial-gradient(closest-side, rgba(59, 130, 246, 0.26), transparent);
+  background: radial-gradient(closest-side, rgba(31, 138, 138, 0.3), transparent);
   animation: drift-b 34s ease-in-out infinite alternate;
 }
 .nebula-e {
@@ -237,7 +238,7 @@ onMounted(() => {
   top: 70%;
   width: 60%;
   height: 28%;
-  background: radial-gradient(closest-side, rgba(192, 38, 211, 0.22), transparent);
+  background: radial-gradient(closest-side, rgba(124, 77, 219, 0.26), transparent);
   animation: drift-a 40s ease-in-out infinite alternate;
 }
 .planet {
@@ -247,8 +248,8 @@ onMounted(() => {
   width: clamp(70px, 9vw, 130px);
   aspect-ratio: 1;
   border-radius: 9999px;
-  background: radial-gradient(circle at 32% 30%, rgba(196, 181, 253, 0.55), rgba(79, 70, 229, 0.35) 45%, rgba(15, 23, 42, 0.9) 75%);
-  box-shadow: 0 0 60px 6px rgba(129, 140, 248, 0.18), inset -12px -10px 30px rgba(2, 6, 23, 0.8);
+  background: radial-gradient(circle at 32% 30%, rgba(240, 240, 245, 0.6), rgba(120, 120, 130, 0.35) 45%, rgba(10, 10, 12, 0.95) 75%);
+  box-shadow: 0 0 60px 6px rgba(255, 255, 255, 0.1), inset -12px -10px 30px rgba(0, 0, 0, 0.85);
   opacity: 0.55;
 }
 .ring {
@@ -258,8 +259,8 @@ onMounted(() => {
   width: 180%;
   height: 24%;
   border-radius: 50%;
-  border: 1.5px solid rgba(212, 175, 105, 0.35);
-  border-top-color: rgba(212, 175, 105, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: rgba(255, 255, 255, 0.06);
   transform: rotate(-16deg);
 }
 @keyframes drift-a {

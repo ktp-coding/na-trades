@@ -53,7 +53,6 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
 
 <template>
   <div class="relative min-h-screen overflow-x-clip">
-    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[1000px] bg-[radial-gradient(ellipse_at_top,rgba(76,29,149,0.3),transparent_60%)]" />
 
     <SiteHeader />
 
@@ -260,7 +259,7 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
         <div class="card mx-auto flex max-w-4xl flex-col items-center gap-8 p-6 sm:flex-row sm:p-10">
           <div class="relative shrink-0">
             <div aria-hidden="true" class="aura absolute -inset-8 rounded-full blur-2xl" />
-            <img src="/images/icon-na.png" alt="NA TRADES" width="384" height="384" loading="lazy" class="icon-mask relative h-28 w-28" />
+            <img src="/images/icon-na.png" alt="NA TRADES" width="384" height="384" loading="lazy" class="icon-mask logo-star relative h-28 w-28" />
           </div>
           <div class="text-center sm:text-left">
             <p class="eyebrow">Instructor</p>

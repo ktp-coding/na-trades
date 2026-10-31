@@ -9,7 +9,7 @@ const { t } = useLang()
     <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
       <h2 class="section-title">{{ t.footer.contact }}</h2>
       <NuxtLink to="/" class="flex items-center gap-3">
-        <img src="/images/icon-na.png" alt="" width="32" height="32" loading="lazy" class="icon-mask h-8 w-8" />
+        <img src="/images/icon-na.png" alt="" width="32" height="32" loading="lazy" class="icon-mask logo-mono h-8 w-8" />
         <span class="text-sm tracking-[0.3em] text-gold-soft">NA TRADES</span>
       </NuxtLink>
       <div v-if="socials.length" class="flex flex-wrap justify-center gap-4 sm:gap-6">

@@ -7,7 +7,6 @@ useSeoMeta({ description: () => t.value.about.paragraphs[0], ogTitle: () => `${t
 
 <template>
   <div class="relative min-h-screen overflow-x-clip">
-    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[800px] bg-[radial-gradient(ellipse_at_top,rgba(30,58,138,0.3),transparent_60%)]" />
     <SiteHeader />
 
     <main class="relative px-4 pt-32 pb-12 sm:px-6 sm:pt-40">
@@ -15,7 +14,7 @@ useSeoMeta({ description: () => t.value.about.paragraphs[0], ogTitle: () => `${t
         <div class="flex flex-col items-center text-center">
           <div class="relative mb-8">
             <div aria-hidden="true" class="aura absolute -inset-12 rounded-full blur-2xl" />
-            <img src="/images/icon-na.png" alt="NA TRADES" width="384" height="384" class="icon-mask relative h-28 w-28 sm:h-36 sm:w-36" />
+            <img src="/images/icon-na.png" alt="NA TRADES" width="384" height="384" class="icon-mask logo-star relative h-28 w-28 sm:h-36 sm:w-36" />
           </div>
           <p class="eyebrow">{{ t.aboutPage.eyebrow }}</p>
           <h1 class="section-title mt-3">{{ t.about.title }}</h1>

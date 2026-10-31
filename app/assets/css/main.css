@@ -16,15 +16,15 @@
   --text-xl: 1.3125rem;
   --text-xl--line-height: 1.6;
 
-  --color-ink: #070b16;
-  --color-ink-2: #0b1222;
-  --color-panel: #0e1528;
-  --color-line: #1d2740;
+  --color-ink: #050507;
+  --color-ink-2: #0b0b0f;
+  --color-panel: #101014;
+  --color-line: #222228;
 
   --color-gold: #c9a96a;
   --color-gold-soft: #e7d3a4;
   --color-gold-deep: #8d7140;
-  --color-mist: #a7b0c4;
+  --color-mist: #a8a8b3;
 
   --color-ict: #1e3a8a;
   --color-ict-glow: #3b5bdb;
@@ -148,11 +148,47 @@
   }
 
   .aura {
-    background: radial-gradient(circle, rgb(231 211 164 / 0.35) 0%, rgb(201 169 106 / 0.12) 35%, transparent 68%);
+    background: radial-gradient(circle, rgb(255 255 255 / 0.22) 0%, rgb(255 255 255 / 0.06) 35%, transparent 68%);
+    animation: aura-pulse 5s ease-in-out infinite;
+  }
+  /* Black-and-white logo. The big ones glow brighter and dimmer like a star. */
+  .logo-mono {
+    filter: grayscale(1) contrast(1.15);
+  }
+  .logo-star {
+    filter: grayscale(1) contrast(1.15) brightness(0.85) drop-shadow(0 0 6px rgb(255 255 255 / 0.15));
+    animation: star-glow 5s ease-in-out infinite;
   }
   .icon-mask {
     -webkit-mask-image: radial-gradient(circle closest-side, #000 80%, transparent 100%);
     mask-image: radial-gradient(circle closest-side, #000 80%, transparent 100%);
+  }
+}
+
+@keyframes star-glow {
+  0%,
+  100% {
+    filter: grayscale(1) contrast(1.15) brightness(0.8) drop-shadow(0 0 4px rgb(255 255 255 / 0.1));
+  }
+  50% {
+    filter: grayscale(1) contrast(1.15) brightness(1.25) drop-shadow(0 0 22px rgb(255 255 255 / 0.55));
+  }
+}
+@keyframes aura-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-star,
+  .aura {
+    animation: none;
   }
 }
 
