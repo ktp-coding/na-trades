@@ -1,22 +1,22 @@
 <script setup lang="ts">
 // Market prices from TradingView's free "Tickers" widget, two rows of six.
-// Futures (NQ, ES, YM, RTY, GC, SI, CL) use TradingView's CFD feeds, which are
-// real time in the free widget; CME futures themselves are delayed there.
+// Futures are the front-month CME contracts. The free widget shows CME data
+// delayed (~10 min); a real-time feed on a public site needs a CME display licence.
 const { lang } = useLang()
 
 const rows = [
   [
-    { proName: 'OANDA:NAS100USD', title: 'NQ · Nasdaq 100' },
-    { proName: 'OANDA:SPX500USD', title: 'ES · S&P 500' },
-    { proName: 'OANDA:US30USD', title: 'YM · Dow Jones' },
-    { proName: 'OANDA:US2000USD', title: 'RTY · Russell 2000' },
+    { proName: 'CME_MINI:NQ1!', title: 'NQ · Nasdaq 100' },
+    { proName: 'CME_MINI:ES1!', title: 'ES · S&P 500' },
+    { proName: 'CBOT_MINI:YM1!', title: 'YM · Dow Jones' },
+    { proName: 'CME_MINI:RTY1!', title: 'RTY · Russell 2000' },
     { proName: 'BINANCE:BTCUSDT', title: 'BTC' },
     { proName: 'BINANCE:ETHUSDT', title: 'ETH' },
   ],
   [
-    { proName: 'OANDA:XAUUSD', title: 'GC · Gold' },
-    { proName: 'OANDA:XAGUSD', title: 'SI · Silver' },
-    { proName: 'TVC:USOIL', title: 'CL · Crude Oil' },
+    { proName: 'COMEX:GC1!', title: 'GC · Gold' },
+    { proName: 'COMEX:SI1!', title: 'SI · Silver' },
+    { proName: 'NYMEX:CL1!', title: 'CL · Crude Oil' },
     { proName: 'TVC:DXY', title: 'DXY' },
     { proName: 'FX:EURUSD', title: 'EURUSD' },
     { proName: 'FX:GBPUSD', title: 'GBPUSD' },
