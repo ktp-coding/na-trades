@@ -79,6 +79,12 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
+    // Server-only (never sent to the browser). Set on Vercel as NUXT_GAS_URL, etc.
+    gasUrl: "",
+    gasSecret: "",
+    sheetId: "",
+    driveFolderPrivate: "",
+    driveFolderOnline: "",
     public: {
       fbLink: "",
       telegramLink: "",
@@ -92,6 +98,14 @@ export default defineNuxtConfig({
       showBuyCourse: "",
       privateCourseLink: "",
       showBuyPrivateCourse: "",
+      // Enrollment / bank transfer
+      enrollEnabled: "",
+      pricePrivate: "",
+      priceOnline: "",
+      bankName: "",
+      bankAccountNo: "",
+      bankAccountName: "",
+      lineLink: "",
     },
   },
 });

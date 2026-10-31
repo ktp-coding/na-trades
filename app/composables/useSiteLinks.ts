@@ -17,6 +17,7 @@ export const isOn = (value: unknown) => String(value ?? '').trim().toLowerCase()
 export function useSiteLinks() {
   const config = useRuntimeConfig().public
   const courseLink = safeUrl(config.courseLink)
+  const enrollEnabled = isOn(config.enrollEnabled)
   const socials = (
     [
       { name: 'youtube', label: 'YouTube', href: safeUrl(config.youtubeLink) },
@@ -30,8 +31,10 @@ export function useSiteLinks() {
 
   return {
     courseLink,
-    joinHref: courseLink || '/#contact',
-    joinTarget: courseLink ? '_blank' : undefined,
+    enrollEnabled,
+    joinHref: enrollEnabled ? '/enroll' : courseLink || '/#contact',
+    joinTarget: !enrollEnabled && courseLink ? '_blank' : undefined,
+    lineLink: safeUrl(config.lineLink),
     privateCourseLink: safeUrl(config.privateCourseLink),
     showBuyCourse: isOn(config.showBuyCourse),
     showBuyPrivateCourse: isOn(config.showBuyPrivateCourse),

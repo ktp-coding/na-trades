@@ -29,6 +29,11 @@ pnpm dev               # http://localhost:3000
 
 Only `http(s)` links are accepted; anything else is ignored.
 
+### Enrollment form (`/enroll`)
+
+3-step form (details → bank transfer → slip). Data goes to a Google Sheet and the slip to a Drive folder per plan, through a Google Apps Script web app.
+Setup guide (Thai): [`google-apps-script/README.md`](google-apps-script/README.md). Form questions live in `shared/enroll.ts`.
+
 ## Security
 
 - Security headers (CSP, HSTS, X-Frame-Options, etc.) are set in `nuxt.config.ts` → `routeRules`.

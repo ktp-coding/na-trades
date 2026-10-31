@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { joinHref, joinTarget, privateCourseLink, showBuyCourse, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
+const { joinHref, joinTarget, enrollEnabled, privateCourseLink, showBuyCourse, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
 const { t } = useLang()
 
 const nav = computed(() => [
@@ -266,8 +266,9 @@ onBeforeUnmount(() => {
               <img :src="img.src" :alt="img.alt" loading="lazy" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" />
             </button>
           </div>
-          <div v-if="privateCourseLink" class="mt-8 flex justify-center">
-            <a :href="privateCourseLink" target="_blank" rel="noopener noreferrer" class="btn-ghost">{{ t.private.cta }}</a>
+          <div v-if="enrollEnabled || privateCourseLink" class="mt-8 flex justify-center">
+            <a v-if="enrollEnabled" href="/enroll?plan=private" class="btn-gold">{{ t.private.cta }}</a>
+            <a v-else :href="privateCourseLink" target="_blank" rel="noopener noreferrer" class="btn-ghost">{{ t.private.cta }}</a>
           </div>
         </div>
       </section>
