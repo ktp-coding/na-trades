@@ -14,9 +14,15 @@ const markets = [
   { key: 'NQ', name: 'Nasdaq 100', digits: 2 },
   { key: 'ES', name: 'S&P 500', digits: 2 },
   { key: 'YM', name: 'Dow Jones', digits: 0 },
+  { key: 'RTY', name: 'Russell 2000', digits: 1 },
   { key: 'BTC', name: 'Bitcoin', digits: 0 },
+  { key: 'ETH', name: 'Ethereum', digits: 0 },
   { key: 'GC', name: 'Gold', digits: 1 },
+  { key: 'SI', name: 'Silver', digits: 2 },
   { key: 'CL', name: 'Crude Oil', digits: 2 },
+  { key: 'DXY', name: 'US Dollar Index', digits: 2 },
+  { key: 'EURUSD', name: 'Euro / Dollar', digits: 4 },
+  { key: 'GBPUSD', name: 'Pound / Dollar', digits: 4 },
 ]
 
 const { data, refresh } = useFetch<{ quotes: Quote[]; at: number }>('/api/quotes', { server: false, lazy: true })
@@ -55,18 +61,18 @@ const updated = computed(() => {
 <template>
   <section aria-label="Markets" class="relative px-4 sm:px-6">
     <div class="mx-auto max-w-6xl">
-      <div class="glass grid grid-cols-2 gap-px overflow-hidden rounded-2xl sm:grid-cols-3 lg:grid-cols-6">
-        <div v-for="m in rows" :key="m.key" class="relative bg-ink/60 px-4 py-4">
-          <div class="flex items-baseline justify-between gap-2">
-            <span class="font-display text-xl tracking-wider text-white">{{ m.key }}</span>
+      <div class="glass grid grid-cols-3 gap-px overflow-hidden rounded-2xl sm:grid-cols-4 lg:grid-cols-6">
+        <div v-for="m in rows" :key="m.key" class="relative min-w-0 bg-ink/60 px-3 py-3 sm:px-4 sm:py-4">
+          <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+            <span class="font-display text-lg tracking-wider text-white sm:text-xl">{{ m.key }}</span>
             <span
               v-if="m.change != null"
               class="text-xs font-medium tabular-nums"
               :class="m.change >= 0 ? 'text-teal-300' : 'text-rose-400'"
             >{{ m.change >= 0 ? '+' : '' }}{{ m.change.toFixed(2) }}%</span>
           </div>
-          <p class="text-xs text-mist">{{ m.name }}</p>
-          <p class="mt-2 text-lg tabular-nums text-slate-100">
+          <p class="truncate text-xs text-mist">{{ m.name }}</p>
+          <p class="mt-2 truncate text-base tabular-nums text-slate-100 sm:text-lg">
             <template v-if="m.price != null">{{ fmt(m.price, m.digits) }}</template>
             <span v-else class="inline-block h-4 w-20 animate-pulse rounded bg-white/10 align-middle" />
           </p>

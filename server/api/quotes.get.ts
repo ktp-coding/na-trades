@@ -13,9 +13,15 @@ const SYMBOLS: Record<string, string> = {
   NQ: 'NQ=F',
   ES: 'ES=F',
   YM: 'YM=F',
+  RTY: 'RTY=F',
   BTC: 'BTC-USD',
+  ETH: 'ETH-USD',
   GC: 'GC=F',
+  SI: 'SI=F',
   CL: 'CL=F',
+  DXY: 'DX-Y.NYB',
+  EURUSD: 'EURUSD=X',
+  GBPUSD: 'GBPUSD=X',
 }
 
 async function fetchOne(key: string, symbol: string): Promise<Quote> {
