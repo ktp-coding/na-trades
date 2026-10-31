@@ -38,7 +38,7 @@ onMounted(() => {
     <main id="top">
       <!-- 01 Hero -->
       <section class="relative px-4 pt-28 pb-12 sm:px-6 sm:pt-36 sm:pb-20">
-        <Sparkles :count="26" />
+        <MarketBackdrop />
         <div class="relative mx-auto flex max-w-5xl flex-col items-center text-center">
           <div class="relative mb-8 sm:mb-10">
             <div aria-hidden="true" class="aura absolute -inset-16 rounded-full blur-2xl sm:-inset-24" />
@@ -60,6 +60,8 @@ onMounted(() => {
           </div>
         </div>
       </section>
+
+      <TickerTape />
 
       <!-- 02 About (short) -->
       <section id="about" class="scroll-mt-24 px-4 py-14 sm:px-6 sm:py-20">
