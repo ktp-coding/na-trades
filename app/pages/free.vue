@@ -71,7 +71,7 @@ useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free
           <div v-if="freePdf.video" class="mx-auto mt-16 max-w-3xl">
             <h3 class="text-center text-2xl text-white">{{ t.freePage.pdf.videoTitle }}</h3>
             <p class="mt-2 mb-6 text-center text-mist">{{ t.freePage.pdf.videoSub }}</p>
-            <div class="card p-2">
+            <div class="rounded-2xl ring-1 ring-white/10">
               <YoutubeLite :id="freePdf.video" :title="t.freePage.pdf.videoTitle" :play-label="t.free.play" />
             </div>
           </div>
@@ -114,14 +114,14 @@ useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free
 
         <!-- Videos: the first one big, the rest in a 2-column row -->
         <div v-else class="mx-auto max-w-3xl space-y-5">
-          <figure v-if="featured" class="card p-2">
+          <figure v-if="featured">
             <YoutubeLite :id="featured" :title="freeVideoTitles[featured] || `${t.free.video} 1`" :play-label="t.free.play" />
-            <figcaption class="px-3 pt-3 pb-1 text-white">{{ freeVideoTitles[featured] }}</figcaption>
+            <figcaption class="px-1 pt-3 text-white">{{ freeVideoTitles[featured] }}</figcaption>
           </figure>
           <div class="grid gap-5 sm:grid-cols-2">
-            <figure v-for="(id, i) in moreVideos" :key="id" class="card p-2">
+            <figure v-for="(id, i) in moreVideos" :key="id">
               <YoutubeLite :id="id" :title="freeVideoTitles[id] || `${t.free.video} ${i + 2}`" :play-label="t.free.play" />
-              <figcaption class="px-3 pt-3 pb-1 text-sm text-white">{{ freeVideoTitles[id] }}</figcaption>
+              <figcaption class="px-1 pt-3 text-sm text-white">{{ freeVideoTitles[id] }}</figcaption>
             </figure>
           </div>
           <div v-if="youtube" class="pt-3 text-center">

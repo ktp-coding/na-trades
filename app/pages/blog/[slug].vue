@@ -24,7 +24,7 @@ useSeoMeta({
   <div v-if="article" class="relative min-h-screen overflow-x-clip">
     <SiteHeader />
     <main class="relative px-4 pt-28 pb-12 sm:px-6 sm:pt-36">
-      <article class="mx-auto max-w-2xl">
+      <article class="reading-veil mx-auto max-w-2xl">
         <NuxtLink to="/blog" class="inline-flex items-center gap-2 text-sm text-mist hover:text-gold-soft"><FaIcon name="arrow-left" /> {{ t.blog.back }}</NuxtLink>
         <header class="mt-8 flex flex-col items-start gap-5">
           <img :src="article.icon" alt="" width="384" height="384" class="icon-mask h-16 w-16" />

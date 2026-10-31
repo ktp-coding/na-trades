@@ -121,6 +121,19 @@
   .section-title {
     @apply text-3xl leading-tight font-medium text-white sm:text-4xl md:text-5xl;
   }
+  /* Borderless dark glow behind long text, so stars don't sit under the words. */
+  .reading-veil {
+    position: relative;
+    isolation: isolate;
+  }
+  .reading-veil::before {
+    content: '';
+    position: absolute;
+    inset: -4rem -6rem;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse closest-side, rgb(5 5 7 / 0.88) 60%, transparent);
+  }
   .card {
     @apply relative rounded-3xl border border-white/[0.08] bg-ink-2/90 backdrop-blur-md;
   }

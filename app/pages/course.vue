@@ -70,8 +70,8 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
             </a>
             <a href="#plans" class="btn-ghost w-full sm:w-auto">{{ t.coursePage.plansTitle }}</a>
           </div>
-          <ul class="mt-10 grid w-full max-w-3xl grid-cols-2 gap-3 text-sm text-mist sm:grid-cols-4">
-            <li v-for="s in t.hero.stats" :key="s.l" class="card px-4 py-3">
+          <ul class="mt-12 grid w-full max-w-3xl grid-cols-2 gap-y-6 text-sm text-mist sm:grid-cols-4 sm:divide-x sm:divide-white/10">
+            <li v-for="s in t.hero.stats" :key="s.l" class="px-4">
               <span class="block font-display text-2xl text-gold-soft">{{ s.v }}</span>{{ s.l }}
             </li>
           </ul>
@@ -282,11 +282,11 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
       <section id="faq" class="scroll-mt-24 px-4 py-14 sm:px-6 sm:py-20">
         <div class="mx-auto max-w-3xl">
           <h2 class="section-title mb-10 text-center">{{ t.faq.title }}</h2>
-          <div class="space-y-3">
-            <details v-for="f in t.faq.items" :key="f.q" class="group card px-6 py-5 open:border-gold/25">
+          <div class="card divide-y divide-white/[0.07] px-6 sm:px-8">
+            <details v-for="f in t.faq.items" :key="f.q" class="group py-5">
               <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-white [&::-webkit-details-marker]:hidden">
                 <span class="font-normal">{{ f.q }}</span>
-                <span class="text-xl text-gold transition group-open:rotate-45">+</span>
+                <span class="text-xl text-gold transition duration-300 group-open:rotate-45">+</span>
               </summary>
               <p class="mt-3 leading-relaxed text-mist">{{ f.a }}</p>
             </details>

@@ -103,9 +103,10 @@ onMounted(() => {
             <div class="rounded-[calc(2rem-1px)] bg-ink-2 px-6 py-10 text-center sm:px-12">
               <h3 class="text-2xl text-white sm:text-3xl">{{ t.systems.framework.title }}</h3>
               <p class="mt-2 font-display text-xl tracking-wide text-gold">Understand The Logic of Time &amp; Price</p>
-              <div class="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3">
-                <div v-for="r in t.systems.framework.rows" :key="r.k" class="card px-5 py-5">
-                  <p class="text-gold-soft">{{ r.k }}</p>
+              <div class="mx-auto mt-8 grid max-w-4xl divide-y divide-white/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+                <div v-for="(r, i) in t.systems.framework.rows" :key="r.k" class="px-5 py-5">
+                  <p class="font-display text-sm tracking-[0.3em] text-gold/70">{{ String(i + 1).padStart(2, '0') }}</p>
+                  <p class="mt-1 text-gold-soft">{{ r.k }}</p>
                   <p class="mt-1 text-sm text-mist">{{ r.v }}</p>
                 </div>
               </div>
@@ -137,7 +138,7 @@ onMounted(() => {
             <p class="mt-4 text-mist">{{ t.free.sub }}</p>
           </div>
           <div class="grid gap-5 md:grid-cols-3">
-            <div v-for="(id, i) in freeVideos" :key="id" class="card p-2">
+            <div v-for="(id, i) in freeVideos" :key="id" class="rounded-2xl ring-1 ring-white/10">
               <YoutubeLite :id="id" :title="freeVideoTitles[id] || `${t.free.video} ${i + 1}`" :play-label="t.free.play" />
             </div>
           </div>
