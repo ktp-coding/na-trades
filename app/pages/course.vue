@@ -139,14 +139,16 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
       <section class="px-4 py-14 sm:px-6 sm:py-20">
         <div class="mx-auto max-w-3xl">
           <h2 class="section-title mb-10 text-center">{{ t.coursePage.pathTitle }}</h2>
-          <ol class="relative space-y-6 border-l border-white/10 pl-8">
+          <div class="card px-6 py-8 sm:px-10 sm:py-10">
+          <ol class="relative space-y-7 border-l border-white/10 pl-8">
             <li v-for="(step, i) in t.coursePage.path" :key="step.k" class="relative">
-              <span aria-hidden="true" class="absolute top-1.5 -left-[2.32rem] h-3 w-3 rounded-full ring-4 ring-ink" :class="pathDots[i]" />
+              <span aria-hidden="true" class="absolute top-1.5 -left-[2.32rem] h-3 w-3 rounded-full ring-4 ring-ink-2" :class="pathDots[i]" />
               <p class="font-display text-sm tracking-[0.3em] text-gold">{{ String(i + 1).padStart(2, '0') }}</p>
               <h3 class="mt-1 text-lg text-white">{{ step.k }}</h3>
               <p class="mt-1 text-mist">{{ step.v }}</p>
             </li>
           </ol>
+          </div>
         </div>
       </section>
 
