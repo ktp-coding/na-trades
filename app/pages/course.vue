@@ -23,14 +23,14 @@ const planHref = (key: PlanKey) => {
 }
 const isExternal = (href: string) => href.startsWith('http')
 
+// Module slides live in /public/images/course. Extra course posters still come from Vercel Blob.
 const courseImages = computed(() => {
-  if (!blobBaseUrl) return []
   const list = [
-    { src: `${blobBaseUrl}/images/1.%20ICT%20Core%20Concepts.png`, alt: 'ICT Core Concepts' },
-    { src: `${blobBaseUrl}/images/2.%20Quarterly%20Theory%20Fundamentals.png`, alt: 'Quarterly Theory Fundamentals' },
-    { src: `${blobBaseUrl}/images/3.%20Fractal%20Model.png`, alt: 'Fractal Model' },
+    { src: '/images/course/module-1-ict.webp', alt: 'Module 01 · ICT Core Concepts' },
+    { src: '/images/course/module-2-qt.webp', alt: 'Module 02 · Quarterly Theory Fundamentals' },
+    { src: '/images/course/module-3-fractal.webp', alt: 'Module 03 · Fractal Model' },
   ]
-  if (showBuyCourse) {
+  if (blobBaseUrl && showBuyCourse) {
     list.push(
       { src: `${blobBaseUrl}/images/2026P1-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P1' },
       { src: `${blobBaseUrl}/images/2026P3-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P3' },
@@ -169,15 +169,15 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
 
           <div v-if="courseImages.length" class="mt-12">
             <p class="mb-5 text-center text-sm text-mist">{{ t.course.previews }}</p>
-            <div class="flex snap-x gap-4 overflow-x-auto pb-4 [scrollbar-width:thin]">
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <button
                 v-for="img in courseImages"
                 :key="img.src"
                 type="button"
-                class="group w-72 shrink-0 snap-start overflow-hidden rounded-2xl border border-white/[0.07] bg-panel sm:w-80"
+                class="group overflow-hidden rounded-2xl border border-white/[0.07] bg-panel"
                 @click="selectedImage = img"
               >
-                <img :src="img.src" :alt="img.alt" loading="lazy" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105" />
+                <img :src="img.src" :alt="img.alt" loading="lazy" class="aspect-video w-full object-cover transition duration-500 group-hover:scale-105" />
               </button>
             </div>
           </div>
