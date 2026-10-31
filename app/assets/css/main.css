@@ -172,7 +172,7 @@
 @keyframes star-glow {
   0%,
   100% {
-    filter: grayscale(1) contrast(1.15) brightness(0.8) drop-shadow(0 0 5px rgb(255 255 255 / 0.12));
+    filter: grayscale(1) contrast(1.15) brightness(0.7) drop-shadow(0 0 3px rgb(255 255 255 / 0.07));
   }
   50% {
     filter: grayscale(1) contrast(1.15) brightness(1.4) drop-shadow(0 0 34px rgb(255 255 255 / 0.75));
