@@ -13,11 +13,11 @@ const blobOrigin = (() => {
 const csp = [
   "default-src 'self'",
   // Nuxt injects a small inline bootstrap script for the runtime config/payload.
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://s3.tradingview.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   `img-src 'self' data: blob: https://i.ytimg.com ${blobOrigin}`.trim(),
-  "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
+  "frame-src https://www.youtube-nocookie.com https://www.youtube.com https://www.tradingview-widget.com https://s.tradingview.com",
   "connect-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
