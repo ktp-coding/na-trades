@@ -1,7 +1,17 @@
 <script setup lang="ts">
-defineProps<{ nav: { href: string; label: string }[] }>()
 const { joinHref, joinTarget } = useSiteLinks()
 const { t } = useLang()
+const route = useRoute()
+
+// One menu for every page. Zone A (about, blog, free) first, the course last.
+const nav = computed(() => [
+  { href: '/about', label: t.value.nav.about },
+  { href: '/blog', label: t.value.nav.blog },
+  { href: '/free', label: t.value.nav.free },
+  { href: '/course', label: t.value.nav.course },
+  { href: '#contact', label: t.value.nav.contact },
+])
+const isActive = (href: string) => href.startsWith('/') && (route.path === href || route.path.startsWith(`${href}/`))
 const isMenuOpen = ref(false)
 const scrolled = ref(false)
 
@@ -33,7 +43,14 @@ onBeforeUnmount(() => {
         <span class="text-sm tracking-[0.3em] text-gold-soft">N|A TRADES</span>
       </NuxtLink>
       <div class="hidden items-center gap-6 lg:flex">
-        <NuxtLink v-for="item in nav" :key="item.href" :to="item.href" class="text-sm text-mist transition hover:text-gold-soft">{{ item.label }}</NuxtLink>
+        <NuxtLink
+          v-for="item in nav"
+          :key="item.href"
+          :to="item.href"
+          class="text-sm transition hover:text-gold-soft"
+          :class="isActive(item.href) ? 'text-gold-soft' : 'text-mist'"
+          :aria-current="isActive(item.href) ? 'page' : undefined"
+        >{{ item.label }}</NuxtLink>
       </div>
       <div class="flex items-center gap-2">
         <LangSwitch />

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+defineProps<{ hideExplore?: boolean }>()
 const { joinHref, joinTarget } = useSiteLinks()
 const { t } = useLang()
 </script>
@@ -13,7 +14,7 @@ const { t } = useLang()
         <p class="relative mt-3 text-mist">{{ t.cta.sub }}</p>
         <div class="relative mt-7 flex flex-col justify-center gap-3 sm:flex-row">
           <a :href="joinHref" :target="joinTarget" rel="noopener noreferrer" class="btn-gold">{{ t.cta.join }}</a>
-          <NuxtLink to="/#course" class="btn-ghost">{{ t.cta.explore }}</NuxtLink>
+          <NuxtLink v-if="!hideExplore" to="/course" class="btn-ghost">{{ t.cta.explore }}</NuxtLink>
         </div>
       </div>
     </div>

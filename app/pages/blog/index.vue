@@ -3,14 +3,6 @@ import { articles } from '~/data/articles'
 
 
 const { t } = useLang()
-const nav = computed(() => [
-  { href: '/', label: t.value.nav.home },
-  { href: '/#systems', label: t.value.nav.systems },
-  { href: '/#course', label: t.value.nav.course },
-  { href: '/blog', label: t.value.nav.blog },
-  { href: '/#contact', label: t.value.nav.contact },
-])
-
 useHead({ title: () => `${t.value.blog.title} · N|A TRADES` })
 useSeoMeta({ description: () => t.value.blog.sub, ogTitle: () => `${t.value.blog.title} · N|A TRADES` })
 </script>
@@ -18,7 +10,7 @@ useSeoMeta({ description: () => t.value.blog.sub, ogTitle: () => `${t.value.blog
 <template>
   <div class="relative min-h-screen overflow-x-clip">
     <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[700px] bg-[radial-gradient(ellipse_at_top,rgba(30,58,138,0.3),transparent_60%)]" />
-    <SiteHeader :nav="nav" />
+    <SiteHeader />
     <main class="relative px-4 pt-32 pb-20 sm:px-6 sm:pt-40">
       <div class="mx-auto max-w-6xl">
         <div class="mx-auto mb-12 max-w-2xl text-center">

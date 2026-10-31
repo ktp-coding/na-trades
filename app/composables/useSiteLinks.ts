@@ -32,7 +32,7 @@ export function useSiteLinks() {
   return {
     courseLink,
     enrollEnabled,
-    joinHref: enrollEnabled ? '/enroll' : courseLink || '/#contact',
+    joinHref: enrollEnabled ? '/enroll' : courseLink || '#contact',
     joinTarget: !enrollEnabled && courseLink ? '_blank' : undefined,
     lineLink: safeUrl(config.lineLink),
     privateCourseLink: safeUrl(config.privateCourseLink),

@@ -29,6 +29,19 @@ pnpm dev               # http://localhost:3000
 
 Only `http(s)` links are accepted; anything else is ignored.
 
+### Pages
+
+| Page | Zone | What it is |
+| --- | --- | --- |
+| `/` | Brand & knowledge | Who N\|A TRADES is, trading systems, latest articles, free videos, one course banner. No prices. |
+| `/about` | Brand & knowledge | The full story and how the framework fits together |
+| `/blog`, `/blog/[slug]` | Brand & knowledge | Articles |
+| `/free` | Brand & knowledge | Free YouTube videos and social links |
+| `/course` | Course | The sales page: who it's for, modules, learning path, plans and prices, FAQ |
+| `/enroll` | Course | Sign-up form with slip upload |
+
+Copy for every page (EN/TH) is in `app/data/i18n.ts`.
+
 ### Enrollment form (`/enroll`)
 
 3-step form (details → bank transfer → slip). Data goes to a Google Sheet and the slip to a Drive folder per plan, through a Google Apps Script web app.

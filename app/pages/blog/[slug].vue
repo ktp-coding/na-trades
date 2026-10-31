@@ -11,14 +11,6 @@ if (!article) {
 const others = articles.filter((a) => a.slug !== article.slug).slice(0, 3)
 
 const { lang, t } = useLang()
-const nav = computed(() => [
-  { href: '/', label: t.value.nav.home },
-  { href: '/#systems', label: t.value.nav.systems },
-  { href: '/#course', label: t.value.nav.course },
-  { href: '/blog', label: t.value.nav.blog },
-  { href: '/#contact', label: t.value.nav.contact },
-])
-
 useHead({ title: `${article.title} · N|A TRADES` })
 useSeoMeta({
   description: () => article.excerpt[lang.value],
@@ -31,7 +23,7 @@ useSeoMeta({
 <template>
   <div v-if="article" class="relative min-h-screen overflow-x-clip">
     <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[700px] bg-[radial-gradient(ellipse_at_top,rgba(30,58,138,0.3),transparent_60%)]" />
-    <SiteHeader :nav="nav" />
+    <SiteHeader />
     <main class="relative px-4 pt-28 pb-12 sm:px-6 sm:pt-36">
       <article class="mx-auto max-w-2xl">
         <NuxtLink to="/blog" class="text-sm text-mist hover:text-gold-soft">{{ t.blog.back }}</NuxtLink>

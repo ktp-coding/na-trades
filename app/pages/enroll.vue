@@ -8,12 +8,6 @@ const route = useRoute()
 
 useHead({ title: () => `${t.value.enroll.title} · N|A TRADES`, meta: [{ name: 'robots', content: 'noindex' }] })
 
-const nav = computed(() => [
-  { href: '/', label: t.value.nav.home },
-  { href: '/#course', label: t.value.nav.course },
-  { href: '/#faq', label: t.value.nav.faq },
-])
-
 // --- State ---------------------------------------------------------------
 const step = ref<1 | 2 | 3 | 4>(1)
 const plan = ref<PlanKey>(PLAN_KEYS.includes(route.query.plan as PlanKey) ? (route.query.plan as PlanKey) : 'online')
@@ -32,12 +26,7 @@ const copied = ref(false)
 const dragging = ref(false)
 
 const fields = computed(() => fieldsForPlan(plan.value))
-const prices: Record<PlanKey, string> = { private: String(config.pricePrivate || ''), online: String(config.priceOnline || '') }
-const formatPrice = (p: string) => {
-  const n = Number(p.replace(/[,\s฿]/g, ''))
-  return p && Number.isFinite(n) && n > 0 ? `฿${n.toLocaleString('en-US')}` : ''
-}
-const priceLabel = (key: PlanKey) => formatPrice(prices[key]) || t.value.enroll.priceOnRequest
+const { priceLabel } = usePlanPrice()
 const bank = {
   name: String(config.bankName || ''),
   no: String(config.bankAccountNo || ''),
@@ -135,7 +124,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="relative min-h-screen overflow-x-clip">
     <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[700px] bg-[radial-gradient(ellipse_at_top,rgba(30,58,138,0.3),transparent_60%)]" />
-    <SiteHeader :nav="nav" />
+    <SiteHeader />
 
     <main class="relative px-4 pt-28 pb-20 sm:px-6 sm:pt-32">
       <div class="mx-auto max-w-5xl">
