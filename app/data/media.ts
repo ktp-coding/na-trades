@@ -7,3 +7,10 @@ export const freeVideoTitles: Record<string, string> = {
   MAKnmNTDu1k: 'Weekly Profiles',
   'ia-ZhkI2eig': '90-Minute Cycles Logic',
 }
+
+// Free PDF handed out through Whop.
+export const freePdf = {
+  href: 'https://whop.com/tradetolive/trend-following-by-na-trades',
+  cover: '/images/free-pdf/trend-following-cover.webp',
+  pages: ['/images/free-pdf/page-1.webp', '/images/free-pdf/page-2.webp', '/images/free-pdf/page-3.webp'],
+}

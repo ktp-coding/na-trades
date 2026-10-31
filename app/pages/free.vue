@@ -1,11 +1,20 @@
 <script setup lang="ts">
-import { freeVideos, freeVideoTitles } from '~/data/media'
+import { freePdf, freeVideos, freeVideoTitles } from '~/data/media'
 import { articles } from '~/data/articles'
 
 const { t } = useLang()
 const { socials, lineLink } = useSiteLinks()
 const youtube = computed(() => socials.find((s) => s.name === 'youtube')?.href || '')
 const [featured, ...moreVideos] = freeVideos
+
+// Tabs: ?tab=pdf opens the PDF tab directly, so the link can be shared.
+const route = useRoute()
+const router = useRouter()
+const tab = computed<'videos' | 'pdf'>({
+  get: () => (route.query.tab === 'pdf' ? 'pdf' : 'videos'),
+  set: (v) => router.replace({ query: { ...route.query, tab: v === 'pdf' ? 'pdf' : undefined } }),
+})
+const selectedImage = ref<{ src: string; alt: string } | null>(null)
 
 useHead({ title: () => `${t.value.free.title} · NA TRADES` })
 useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free.title} · NA TRADES` })
@@ -24,8 +33,80 @@ useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free
           <p class="mt-4 text-mist">{{ t.free.sub }}</p>
         </div>
 
+        <!-- Tabs -->
+        <div role="tablist" class="mx-auto mb-10 flex w-fit rounded-full border border-white/10 bg-ink-2 p-1 text-sm">
+          <button
+            v-for="k in (['videos', 'pdf'] as const)"
+            :key="k"
+            type="button"
+            role="tab"
+            :aria-selected="tab === k"
+            class="rounded-full px-6 py-2.5 transition"
+            :class="tab === k ? 'bg-gold text-ink' : 'text-mist hover:text-white'"
+            @click="tab = k"
+          >
+            {{ k === 'videos' ? t.freePage.tabVideos : t.freePage.tabPdf }}
+          </button>
+        </div>
+
+        <!-- Free PDF -->
+        <div v-if="tab === 'pdf'" class="mx-auto max-w-5xl">
+          <div class="grid items-center gap-8 md:grid-cols-[minmax(0,340px)_1fr] md:gap-12">
+            <a :href="freePdf.href" target="_blank" rel="noopener noreferrer" class="group mx-auto block w-full max-w-[340px]">
+              <img :src="freePdf.cover" :alt="t.freePage.pdf.title" width="1200" height="1500" class="w-full rounded-3xl shadow-2xl shadow-black/50 ring-1 ring-gold/20 transition duration-500 group-hover:-translate-y-1" />
+            </a>
+            <div class="text-center md:text-left">
+              <p class="eyebrow">{{ t.freePage.pdf.eyebrow }}</p>
+              <h2 class="mt-3 font-display text-4xl tracking-wide text-white sm:text-5xl">{{ t.freePage.pdf.title }}</h2>
+              <p class="mt-4 text-slate-300">{{ t.freePage.pdf.sub }}</p>
+              <div class="mt-7">
+                <a :href="freePdf.href" target="_blank" rel="noopener noreferrer" class="btn-gold w-full sm:w-auto">
+                  {{ t.freePage.pdf.cta }}
+                  <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </a>
+                <p class="mt-3 text-xs text-mist">{{ t.freePage.pdf.note }}</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="mt-16 mb-6 text-center text-2xl text-white">{{ t.freePage.pdf.insideTitle }}</h3>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div v-for="(it, i) in t.freePage.pdf.items" :key="it.k" class="card p-6">
+              <p class="font-display text-lg tracking-wide text-gold">0{{ i + 1 }}</p>
+              <h4 class="mt-1 text-lg text-white">{{ it.k }}</h4>
+              <p class="mt-2 text-sm leading-relaxed text-slate-300">{{ it.v }}</p>
+            </div>
+          </div>
+
+          <div class="mt-5 rounded-3xl border border-gold/25 bg-gold/[0.04] p-6 sm:p-8">
+            <h4 class="text-lg text-gold-soft">{{ t.freePage.pdf.stepsTitle }}</h4>
+            <ol class="mt-4 space-y-3 text-slate-300">
+              <li v-for="(st, i) in t.freePage.pdf.steps" :key="st" class="flex gap-3">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-gold/40 text-xs text-gold">{{ i + 1 }}</span>
+                <span>{{ st }}</span>
+              </li>
+            </ol>
+          </div>
+
+          <h3 class="mt-16 mb-6 text-center text-2xl text-white">{{ t.freePage.pdf.previewTitle }}</h3>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <button
+              v-for="(src, i) in freePdf.pages"
+              :key="src"
+              type="button"
+              class="group overflow-hidden rounded-2xl border border-white/[0.07] bg-white"
+              @click="selectedImage = { src, alt: `${t.freePage.pdf.title} ${i + 1}` }"
+            >
+              <img :src="src" :alt="`${t.freePage.pdf.title} ${i + 1}`" width="800" height="800" loading="lazy" class="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" />
+            </button>
+          </div>
+          <div class="mt-10 text-center">
+            <a :href="freePdf.href" target="_blank" rel="noopener noreferrer" class="btn-gold">{{ t.freePage.pdf.cta }}</a>
+          </div>
+        </div>
+
         <!-- Videos: the first one big, the rest in a 2-column row -->
-        <div class="mx-auto max-w-3xl space-y-5">
+        <div v-else class="mx-auto max-w-3xl space-y-5">
           <figure v-if="featured" class="card p-2">
             <YoutubeLite :id="featured" :title="freeVideoTitles[featured] || `${t.free.video} 1`" :play-label="t.free.play" />
             <figcaption class="px-3 pt-3 pb-1 text-white">{{ freeVideoTitles[featured] }}</figcaption>
@@ -85,6 +166,7 @@ useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free
     </main>
 
     <CourseCta />
+    <ImageModal v-model="selectedImage" />
     <SiteFooter />
   </div>
 </template>
