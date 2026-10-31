@@ -1,7 +1,9 @@
 <script setup lang="ts">
-// Deep-space background for hero sections: drifting, twinkling stars in three depth
-// layers, a few bright stars with a soft flare, an occasional shooting star, and slow
-// nebula clouds. Pauses when off screen; draws one still frame for reduced motion.
+// Site-wide deep-space background, fixed behind every page: drifting, twinkling stars
+// in three depth layers, a few bright stars with a soft flare, an occasional shooting
+// star, and nebula clouds. Scrolling moves the layers at different speeds, so new
+// clouds and a distant planet come into view as you go down the page.
+// Draws one still frame (no parallax) for reduced motion.
 const props = withDefaults(defineProps<{ density?: number }>(), { density: 1 })
 
 const wrap = ref<HTMLDivElement>()
@@ -23,7 +25,15 @@ onMounted(() => {
   const meteors: Meteor[] = []
   let raf = 0
   let visible = true
+  let scrollY = window.scrollY
+  const onScroll = () => {
+    scrollY = window.scrollY
+    if (reduce) return
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight)
+    wrap.value?.style.setProperty('--p', String(Math.min(1, scrollY / max)))
+  }
   let nextMeteor = performance.now() + 1500
+  let seededWidth = 0
 
   const seed = () => {
     const count = Math.round(((w * h) / 2600) * props.density)
@@ -45,14 +55,19 @@ onMounted(() => {
   }
 
   const resize = () => {
-    const box = wrap.value!.getBoundingClientRect()
+    const box = { width: window.innerWidth, height: window.innerHeight }
     dpr = Math.min(window.devicePixelRatio || 1, 2)
     w = box.width
     h = box.height
     el.width = Math.round(w * dpr)
     el.height = Math.round(h * dpr)
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-    seed()
+    // Mobile browsers resize the viewport when the URL bar hides; only reseed on a
+    // real width change so the stars don't jump.
+    if (box.width !== seededWidth) {
+      seededWidth = box.width
+      seed()
+    }
     if (reduce) draw(0)
   }
 
@@ -79,27 +94,29 @@ onMounted(() => {
         s.x -= s.depth * 0.06
         if (s.x < -4) s.x = w + 4
       }
+      // Scroll parallax: closer stars move further. Wrap around the viewport.
+      const y = reduce ? s.y : (((s.y - scrollY * s.depth * 0.25) % h) + h) % h
       const tw = reduce ? 0.8 : 0.55 + 0.45 * Math.sin(time * s.speed + s.phase)
       const a = (0.25 + 0.75 * s.depth) * tw
       ctx!.fillStyle = `hsla(${s.hue}, 90%, ${s.hue === 215 ? 92 : 80}%, ${a})`
       ctx!.beginPath()
-      ctx!.arc(s.x, s.y, s.r, 0, Math.PI * 2)
+      ctx!.arc(s.x, y, s.r, 0, Math.PI * 2)
       ctx!.fill()
       if (s.bright) {
-        const g = ctx!.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 7)
+        const g = ctx!.createRadialGradient(s.x, y, 0, s.x, y, s.r * 7)
         g.addColorStop(0, `hsla(${s.hue}, 100%, 85%, ${0.45 * tw})`)
         g.addColorStop(1, 'transparent')
         ctx!.fillStyle = g
-        ctx!.fillRect(s.x - s.r * 7, s.y - s.r * 7, s.r * 14, s.r * 14)
+        ctx!.fillRect(s.x - s.r * 7, y - s.r * 7, s.r * 14, s.r * 14)
         // Thin cross flare.
         ctx!.strokeStyle = `hsla(${s.hue}, 100%, 90%, ${0.35 * tw})`
         ctx!.lineWidth = 0.6
         const L = s.r * 6 * tw
         ctx!.beginPath()
-        ctx!.moveTo(s.x - L, s.y)
-        ctx!.lineTo(s.x + L, s.y)
-        ctx!.moveTo(s.x, s.y - L)
-        ctx!.lineTo(s.x, s.y + L)
+        ctx!.moveTo(s.x - L, y)
+        ctx!.lineTo(s.x + L, y)
+        ctx!.moveTo(s.x, y - L)
+        ctx!.lineTo(s.x, y + L)
         ctx!.stroke()
       }
     }
@@ -136,31 +153,46 @@ onMounted(() => {
     raf = requestAnimationFrame(loop)
   }
 
-  const ro = new ResizeObserver(resize)
-  ro.observe(wrap.value!)
-  const io = new IntersectionObserver(([e]) => (visible = !!e?.isIntersecting))
-  io.observe(wrap.value!)
+  const onVis = () => (visible = document.visibilityState === 'visible')
+  window.addEventListener('resize', resize, { passive: true })
+  window.addEventListener('scroll', onScroll, { passive: true })
+  document.addEventListener('visibilitychange', onVis)
   resize()
+  onScroll()
   if (!reduce) raf = requestAnimationFrame(loop)
 
   onBeforeUnmount(() => {
     cancelAnimationFrame(raf)
-    ro.disconnect()
-    io.disconnect()
+    window.removeEventListener('resize', resize)
+    window.removeEventListener('scroll', onScroll)
+    document.removeEventListener('visibilitychange', onVis)
   })
 })
 </script>
 
 <template>
-  <div ref="wrap" aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
-    <div class="nebula nebula-a" />
-    <div class="nebula nebula-b" />
-    <div class="nebula nebula-c" />
-    <canvas ref="canvas" class="absolute inset-0 h-full w-full [mask-image:linear-gradient(to_bottom,black_70%,transparent)]" />
+  <div ref="wrap" aria-hidden="true" class="pointer-events-none fixed inset-0 overflow-hidden">
+    <div class="field">
+      <div class="nebula nebula-a" />
+      <div class="nebula nebula-b" />
+      <div class="nebula nebula-c" />
+      <div class="nebula nebula-d" />
+      <div class="nebula nebula-e" />
+      <div class="planet"><span class="ring" /></div>
+    </div>
+    <canvas ref="canvas" class="absolute inset-0 h-full w-full" />
   </div>
 </template>
 
 <style scoped>
+/* A tall layer that slides up as the page scrolls (--p goes 0 to 1). */
+.field {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 260vh;
+  transform: translate3d(0, calc(var(--p, 0) * -160vh), 0);
+  will-change: transform;
+}
 .nebula {
   position: absolute;
   border-radius: 9999px;
@@ -170,9 +202,9 @@ onMounted(() => {
 }
 .nebula-a {
   left: -10%;
-  top: 5%;
+  top: 2%;
   width: 55%;
-  height: 60%;
+  height: 24%;
   background: radial-gradient(closest-side, rgba(99, 102, 241, 0.35), transparent);
   animation: drift-a 26s ease-in-out infinite alternate;
 }
@@ -180,17 +212,55 @@ onMounted(() => {
   right: -12%;
   top: 0;
   width: 50%;
-  height: 70%;
+  height: 28%;
   background: radial-gradient(closest-side, rgba(168, 85, 247, 0.28), transparent);
   animation: drift-b 32s ease-in-out infinite alternate;
 }
 .nebula-c {
   left: 30%;
-  top: 45%;
+  top: 22%;
   width: 40%;
-  height: 45%;
+  height: 18%;
   background: radial-gradient(closest-side, rgba(45, 212, 191, 0.14), transparent);
   animation: drift-a 38s ease-in-out infinite alternate-reverse;
+}
+.nebula-d {
+  right: -8%;
+  top: 46%;
+  width: 55%;
+  height: 26%;
+  background: radial-gradient(closest-side, rgba(59, 130, 246, 0.26), transparent);
+  animation: drift-b 34s ease-in-out infinite alternate;
+}
+.nebula-e {
+  left: -14%;
+  top: 70%;
+  width: 60%;
+  height: 28%;
+  background: radial-gradient(closest-side, rgba(192, 38, 211, 0.22), transparent);
+  animation: drift-a 40s ease-in-out infinite alternate;
+}
+.planet {
+  position: absolute;
+  left: 8%;
+  top: 52%;
+  width: clamp(70px, 9vw, 130px);
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 32% 30%, rgba(196, 181, 253, 0.55), rgba(79, 70, 229, 0.35) 45%, rgba(15, 23, 42, 0.9) 75%);
+  box-shadow: 0 0 60px 6px rgba(129, 140, 248, 0.18), inset -12px -10px 30px rgba(2, 6, 23, 0.8);
+  opacity: 0.55;
+}
+.ring {
+  position: absolute;
+  left: -40%;
+  top: 38%;
+  width: 180%;
+  height: 24%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(212, 175, 105, 0.35);
+  border-top-color: rgba(212, 175, 105, 0.08);
+  transform: rotate(-16deg);
 }
 @keyframes drift-a {
   to {
@@ -207,6 +277,9 @@ onMounted(() => {
 @media (prefers-reduced-motion: reduce) {
   .nebula {
     animation: none;
+  }
+  .field {
+    transform: none;
   }
 }
 </style>

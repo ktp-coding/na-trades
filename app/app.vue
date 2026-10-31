@@ -4,5 +4,6 @@ useHead({ htmlAttrs: { lang } })
 </script>
 
 <template>
+  <SpaceBackdrop />
   <NuxtPage />
 </template>

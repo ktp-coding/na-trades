@@ -31,7 +31,6 @@ onMounted(() => {
   <div class="relative min-h-screen overflow-x-clip">
     <!-- Ambient background -->
     <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[1100px] bg-[radial-gradient(ellipse_at_top,rgba(30,58,138,0.35),transparent_60%)]" />
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-[1150px] sm:h-[1250px]"><SpaceBackdrop /></div>
 
     <SiteHeader />
 
