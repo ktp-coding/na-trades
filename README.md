@@ -1,89 +1,35 @@
-# NA Trades Web
+# N|A TRADES Web
 
-A modern web application for trading analysis built with Nuxt 3, TypeScript, TailwindCSS, and Chart.js.
+Landing page for the course **Understand The Logic of Time & Price** (ICT · Quarterly Theory · Fractal Model).
+
+Built with Nuxt 4 and Tailwind CSS 4.
 
 ## Requirements
 
-- Node.js >= 20.0.0
-- pnpm >= 10.6.2 (recommended) or npm >= 10.0.0 or yarn >= 1.22.0
+- Node.js >= 22.12
+- pnpm 10
 
 ## Setup
 
-Make sure to install dependencies:
-
 ```bash
-# pnpm (recommended)
 pnpm install
-
-# npm
-npm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+cp .env.example .env   # fill in links
+pnpm dev               # http://localhost:3000
 ```
 
-## Development Server
+## Environment
 
-Start the development server on `http://localhost:3000`:
+| Variable | Purpose |
+| --- | --- |
+| `NUXT_PUBLIC_COURSE_LINK` | Whop link used by every "สมัครเรียน" button |
+| `NUXT_PUBLIC_SHOW_BUY_COURSE` | `true` to show the 2026 promo images in the gallery |
+| `NUXT_PUBLIC_PRIVATE_COURSE_LINK` / `NUXT_PUBLIC_SHOW_BUY_PRIVATE_COURSE` | Private course section (`true` to show) |
+| `NUXT_PUBLIC_BLOB_BASE_URL` | Vercel Blob base URL for course images (also added to the CSP `img-src`) |
+| `NUXT_PUBLIC_YOUTUBE_LINK`, `_FB_LINK`, `_IG_LINK`, `_TIKTOK_LINK`, `_DISCORD_LINK`, `_TELEGRAM_LINK` | Footer socials (empty = hidden) |
 
-```bash
-# pnpm (recommended)
-pnpm dev
+Only `http(s)` links are accepted; anything else is ignored.
 
-# npm
-npm run dev
+## Security
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# pnpm (recommended)
-pnpm build
-
-# npm
-npm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# pnpm (recommended)
-pnpm preview
-
-# npm
-npm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-## Tech Stack
-
-- Nuxt 3
-- TypeScript
-- TailwindCSS
-- Chart.js
-- shadcn-vue
-- @nuxtjs/tailwindcss
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Security headers (CSP, HSTS, X-Frame-Options, etc.) are set in `nuxt.config.ts` → `routeRules`.
+- Run `pnpm audit` before deploying.
