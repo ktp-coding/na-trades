@@ -250,6 +250,8 @@ const en = {
       sub: 'My notes on trend following: the phases of price delivery, IRL and ERL, and order flow, with a worked chart example.',
       cta: 'Get the free PDF on Whop',
       note: 'Claim it for free on Whop, then download.',
+      videoTitle: 'Watch the walkthrough',
+      videoSub: 'A live session where I go through the PDF step by step.',
       insideTitle: "What's inside",
       items: [
         { k: 'Phases of Price Delivery', v: 'Price moves through Consolidation, Expansion, Retracement and Reversal. Most of the time it runs Expansion → Retracement → Expansion, or Expansion → Reversal → Expansion.' },
@@ -562,6 +564,8 @@ const th: Copy = {
       sub: 'สรุปเรื่อง Trend Following ที่ผมใช้ ตั้งแต่ Phases of Price Delivery, IRL กับ ERL ไปจนถึง Order Flow มีตัวอย่างบนกราฟให้ดูด้วยครับ',
       cta: 'รับ PDF ฟรีที่ Whop',
       note: 'กดรับฟรีบน Whop แล้วดาวน์โหลดได้เลยครับ',
+      videoTitle: 'คลิปอธิบายประกอบ PDF',
+      videoSub: 'ไลฟ์ที่ผมอธิบายเนื้อหาในเล่มทีละส่วน ดูคู่กับ PDF จะเข้าใจง่ายขึ้นครับ',
       insideTitle: 'ในเล่มมีอะไรบ้าง',
       items: [
         { k: 'Phases of Price Delivery', v: 'ราคามี 4 ช่วง คือ Consolidation, Expansion, Retracement และ Reversal ส่วนใหญ่จะวิ่งเป็น Expansion → Retracement → Expansion หรือ Expansion → Reversal → Expansion' },

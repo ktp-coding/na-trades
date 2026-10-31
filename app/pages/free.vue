@@ -69,6 +69,14 @@ useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free
             </div>
           </div>
 
+          <div v-if="freePdf.video" class="mx-auto mt-16 max-w-3xl">
+            <h3 class="text-center text-2xl text-white">{{ t.freePage.pdf.videoTitle }}</h3>
+            <p class="mt-2 mb-6 text-center text-mist">{{ t.freePage.pdf.videoSub }}</p>
+            <div class="card p-2">
+              <YoutubeLite :id="freePdf.video" :title="t.freePage.pdf.videoTitle" :play-label="t.free.play" />
+            </div>
+          </div>
+
           <h3 class="mt-16 mb-6 text-center text-2xl text-white">{{ t.freePage.pdf.insideTitle }}</h3>
           <div class="grid gap-4 sm:grid-cols-2">
             <div v-for="(it, i) in t.freePage.pdf.items" :key="it.k" class="card p-6">

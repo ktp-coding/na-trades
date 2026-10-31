@@ -12,5 +12,7 @@ export const freeVideoTitles: Record<string, string> = {
 export const freePdf = {
   href: 'https://whop.com/tradetolive/trend-following-by-na-trades',
   cover: '/images/free-pdf/trend-following-cover.webp',
+  // Live session that walks through the PDF.
+  video: 'oNYcf-C7r7Q',
   pages: ['/images/free-pdf/page-1.webp', '/images/free-pdf/page-2.webp', '/images/free-pdf/page-3.webp'],
 }
