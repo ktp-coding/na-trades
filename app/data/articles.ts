@@ -47,7 +47,7 @@ const sources: {
 }[] = [
   {
     slug: 'about-na-trades',
-    title: 'About N|A TRADES',
+    title: 'About NA TRADES',
     icon: '/images/icon-na.png',
     theme: 'gold',
     build: (lang) => {

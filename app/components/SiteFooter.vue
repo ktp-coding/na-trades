@@ -10,7 +10,7 @@ const { t } = useLang()
       <h2 class="section-title">{{ t.footer.contact }}</h2>
       <NuxtLink to="/" class="flex items-center gap-3">
         <img src="/images/icon-na.png" alt="" width="32" height="32" loading="lazy" class="icon-mask h-8 w-8" />
-        <span class="text-sm tracking-[0.3em] text-gold-soft">N|A TRADES</span>
+        <span class="text-sm tracking-[0.3em] text-gold-soft">NA TRADES</span>
       </NuxtLink>
       <div v-if="socials.length" class="flex flex-wrap justify-center gap-3">
         <a
@@ -32,7 +32,7 @@ const { t } = useLang()
       <p class="max-w-2xl text-xs leading-relaxed text-mist/60">
         {{ t.footer.disclaimer }}
       </p>
-      <p class="text-xs text-mist/50">© {{ year }} N|A TRADES. {{ t.footer.rights }}</p>
+      <p class="text-xs text-mist/50">© {{ year }} NA TRADES. {{ t.footer.rights }}</p>
     </div>
   </footer>
 </template>

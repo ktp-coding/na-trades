@@ -36,16 +36,16 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "th" },
-      title: "N|A TRADES · Understand The Logic of Time & Price",
+      title: "NA TRADES · Understand The Logic of Time & Price",
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           name: "description",
           content:
-            "คอร์สเทรด ICT Concept, Quarterly Theory และ Fractal Model สอนอ่านเวลาและราคาให้เป็นระบบ โดย N|A TRADES",
+            "คอร์สเทรด ICT Concept, Quarterly Theory และ Fractal Model สอนอ่านเวลาและราคาให้เป็นระบบ โดย NA TRADES",
         },
         { name: "theme-color", content: "#070b16" },
-        { property: "og:title", content: "Understand The Logic of Time & Price · N|A TRADES" },
+        { property: "og:title", content: "Understand The Logic of Time & Price · NA TRADES" },
         {
           property: "og:description",
           content: "ICT · Quarterly Theory · Fractal Model เรียนจบเปิดกราฟแล้วรู้ว่าต้องรออะไร เข้าตรงไหน",

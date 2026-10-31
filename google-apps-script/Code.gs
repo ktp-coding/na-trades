@@ -1,5 +1,5 @@
 /**
- * N|A TRADES enrollment receiver (Google Apps Script web app).
+ * NA TRADES enrollment receiver (Google Apps Script web app).
  *
  * The website (Vercel) POSTs each enrollment here. This script:
  *   1. checks the shared secret,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Home = Zone A: who N|A TRADES is and how we read the market.
+// Home = Zone A: who NA TRADES is and how we read the market.
 // No prices here. The course lives on /course; this page only points to it once (CourseCta).
 import { articles } from '~/data/articles'
 import { freeVideos } from '~/data/media'
@@ -31,7 +31,7 @@ const latest = articles.slice(-3).reverse()
             <div aria-hidden="true" class="aura absolute -inset-16 rounded-full blur-2xl sm:-inset-24" />
             <div aria-hidden="true" class="absolute -inset-6 rounded-full border border-gold/15 sm:-inset-10" />
             <div aria-hidden="true" class="absolute -inset-12 rounded-full border border-gold/[0.07] sm:-inset-20" />
-            <img src="/images/icon-na.png" alt="N|A TRADES" width="384" height="384" class="icon-mask relative h-40 w-40 sm:h-56 sm:w-56" fetchpriority="high" />
+            <img src="/images/icon-na.png" alt="NA TRADES" width="384" height="384" class="icon-mask relative h-40 w-40 sm:h-56 sm:w-56" fetchpriority="high" />
           </div>
 
           <h1 class="text-gold-gradient font-display text-6xl leading-none tracking-wide sm:text-8xl">{{ t.hero.title }}</h1>

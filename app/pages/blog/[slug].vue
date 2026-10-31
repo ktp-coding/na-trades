@@ -11,7 +11,7 @@ if (!article) {
 const others = articles.filter((a) => a.slug !== article.slug).slice(0, 3)
 
 const { lang, t } = useLang()
-useHead({ title: `${article.title} · N|A TRADES` })
+useHead({ title: `${article.title} · NA TRADES` })
 useSeoMeta({
   description: () => article.excerpt[lang.value],
   ogTitle: article.title,

@@ -6,8 +6,8 @@ const { t } = useLang()
 const { joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, showBuyCourse, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
 const { priceLabel } = usePlanPrice()
 
-useHead({ title: () => `${t.value.course.title} · N|A TRADES` })
-useSeoMeta({ description: () => t.value.course.sub, ogTitle: () => `${t.value.course.title} · N|A TRADES` })
+useHead({ title: () => `${t.value.course.title} · NA TRADES` })
+useSeoMeta({ description: () => t.value.course.sub, ogTitle: () => `${t.value.course.title} · NA TRADES` })
 
 const moduleStyles = [
   { no: '01', title: 'ICT Core Concepts', icon: '/images/icon-ict.png', accent: 'from-ict/60 via-ict/15 hover:border-ict-glow/50', glow: 'bg-ict-glow' },
@@ -241,7 +241,7 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
         <div class="card mx-auto flex max-w-4xl flex-col items-center gap-8 p-6 sm:flex-row sm:p-10">
           <div class="relative shrink-0">
             <div aria-hidden="true" class="aura absolute -inset-8 rounded-full blur-2xl" />
-            <img src="/images/icon-na.png" alt="N|A TRADES" width="384" height="384" loading="lazy" class="icon-mask relative h-28 w-28" />
+            <img src="/images/icon-na.png" alt="NA TRADES" width="384" height="384" loading="lazy" class="icon-mask relative h-28 w-28" />
           </div>
           <div class="text-center sm:text-left">
             <p class="eyebrow">{{ t.coursePage.instructorTitle }}</p>

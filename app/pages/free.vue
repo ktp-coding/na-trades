@@ -4,8 +4,8 @@ import { freeVideos } from '~/data/media'
 const { t } = useLang()
 const { socials, lineLink } = useSiteLinks()
 
-useHead({ title: () => `${t.value.free.title} · N|A TRADES` })
-useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free.title} · N|A TRADES` })
+useHead({ title: () => `${t.value.free.title} · NA TRADES` })
+useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free.title} · NA TRADES` })
 </script>
 
 <template>

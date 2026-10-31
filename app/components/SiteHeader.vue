@@ -40,7 +40,7 @@ onBeforeUnmount(() => {
     <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-20 sm:px-6" aria-label="Main">
       <NuxtLink to="/" class="flex items-center gap-3">
         <img src="/images/icon-na.png" alt="" width="40" height="40" class="icon-mask h-10 w-10" />
-        <span class="text-sm tracking-[0.3em] text-gold-soft">N|A TRADES</span>
+        <span class="text-sm tracking-[0.3em] text-gold-soft">NA TRADES</span>
       </NuxtLink>
       <div class="hidden items-center gap-6 lg:flex">
         <NuxtLink

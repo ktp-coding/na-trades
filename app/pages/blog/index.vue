@@ -3,8 +3,8 @@ import { articles } from '~/data/articles'
 
 
 const { t } = useLang()
-useHead({ title: () => `${t.value.blog.title} · N|A TRADES` })
-useSeoMeta({ description: () => t.value.blog.sub, ogTitle: () => `${t.value.blog.title} · N|A TRADES` })
+useHead({ title: () => `${t.value.blog.title} · NA TRADES` })
+useSeoMeta({ description: () => t.value.blog.sub, ogTitle: () => `${t.value.blog.title} · NA TRADES` })
 </script>
 
 <template>

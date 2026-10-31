@@ -6,7 +6,7 @@ const { lineLink, enrollEnabled } = useSiteLinks()
 const { lang, t } = useLang()
 const route = useRoute()
 
-useHead({ title: () => `${t.value.enroll.title} · N|A TRADES`, meta: [{ name: 'robots', content: 'noindex' }] })
+useHead({ title: () => `${t.value.enroll.title} · NA TRADES`, meta: [{ name: 'robots', content: 'noindex' }] })
 
 // --- State ---------------------------------------------------------------
 const step = ref<1 | 2 | 3 | 4>(1)

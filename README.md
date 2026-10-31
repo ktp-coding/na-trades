@@ -1,4 +1,4 @@
-# N|A TRADES Web
+# NA TRADES Web
 
 Landing page for the course **Understand The Logic of Time & Price** (ICT · Quarterly Theory · Fractal Model).
 
@@ -33,7 +33,7 @@ Only `http(s)` links are accepted; anything else is ignored.
 
 | Page | Zone | What it is |
 | --- | --- | --- |
-| `/` | Brand & knowledge | Who N\|A TRADES is, trading systems, latest articles, free videos, one course banner. No prices. |
+| `/` | Brand & knowledge | Who NA TRADES is, trading systems, latest articles, free videos, one course banner. No prices. |
 | `/about` | Brand & knowledge | The full story and how the framework fits together |
 | `/blog`, `/blog/[slug]` | Brand & knowledge | Articles |
 | `/free` | Brand & knowledge | Free YouTube videos and social links |
