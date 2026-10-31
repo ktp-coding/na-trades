@@ -31,14 +31,13 @@ onMounted(() => {
   <div class="relative min-h-screen overflow-x-clip">
     <!-- Ambient background -->
     <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[1100px] bg-[radial-gradient(ellipse_at_top,rgba(30,58,138,0.35),transparent_60%)]" />
-    <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_900px)]" />
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-[1150px] sm:h-[1250px]"><SpaceBackdrop /></div>
 
     <SiteHeader />
 
     <main id="top">
       <!-- 01 Hero -->
       <section class="relative px-4 pt-28 pb-12 sm:px-6 sm:pt-36 sm:pb-20">
-        <MarketBackdrop />
         <div class="relative mx-auto flex max-w-5xl flex-col items-center text-center">
           <div class="relative mb-8 sm:mb-10">
             <div aria-hidden="true" class="aura absolute -inset-16 rounded-full blur-2xl sm:-inset-24" />
@@ -61,7 +60,7 @@ onMounted(() => {
         </div>
       </section>
 
-      <TickerTape />
+      <MarketStrip />
 
       <!-- 02 About (short) -->
       <section id="about" class="scroll-mt-24 px-4 py-14 sm:px-6 sm:py-20">
