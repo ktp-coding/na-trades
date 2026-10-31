@@ -99,7 +99,7 @@ export default defineNuxtConfig({
       privateCourseLink: "",
       showBuyPrivateCourse: "",
       // Enrollment / bank transfer
-      enrollEnabled: "",
+      enrollEnabled: "true",
       pricePrivate: "25900",
       priceOnline: "15900",
       priceCoaching: "10000",
