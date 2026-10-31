@@ -4,8 +4,11 @@ export type SocialName = 'youtube' | 'facebook' | 'instagram' | 'tiktok' | 'disc
 // can never turn into a javascript: URL.
 export const safeUrl = (value: unknown): string => {
   if (typeof value !== 'string' || !value.trim()) return ''
+  // Accept "www.youtube.com/@x" style values too, as the old site did.
+  const raw = value.trim()
+  const withScheme = /^[a-z][a-z\d+.-]*:/i.test(raw) ? raw : `https://${raw.replace(/^\/+/, '')}`
   try {
-    const url = new URL(value.trim())
+    const url = new URL(withScheme)
     return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : ''
   } catch {
     return ''

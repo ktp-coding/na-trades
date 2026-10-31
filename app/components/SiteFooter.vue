@@ -12,7 +12,7 @@ const { t } = useLang()
         <img src="/images/icon-na.png" alt="" width="32" height="32" loading="lazy" class="icon-mask h-8 w-8" />
         <span class="text-sm tracking-[0.3em] text-gold-soft">NA TRADES</span>
       </NuxtLink>
-      <div v-if="socials.length" class="flex flex-wrap justify-center gap-3">
+      <div v-if="socials.length" class="flex flex-wrap justify-center gap-4 sm:gap-6">
         <a
           v-for="s in socials"
           :key="s.name"
@@ -20,9 +20,9 @@ const { t } = useLang()
           target="_blank"
           rel="noopener noreferrer"
           :aria-label="s.label"
-          class="flex h-11 w-11 items-center justify-center rounded-full border border-gold/20 text-gold-soft transition hover:border-gold/60 hover:bg-gold/10"
+          class="flex h-14 w-14 items-center justify-center rounded-full border border-gold/20 bg-gold/[0.04] text-gold-soft transition hover:scale-110 hover:border-gold/60 hover:bg-gold/10"
         >
-          <SocialIcon :name="s.name" class="h-5 w-5" />
+          <SocialIcon :name="s.name" class="h-6 w-6" />
         </a>
       </div>
       <a href="mailto:natrades.contact@gmail.com" class="flex items-center gap-2 text-sm text-mist hover:text-gold-soft">
