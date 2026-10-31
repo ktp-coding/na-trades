@@ -66,7 +66,7 @@ export default defineEventHandler(async (event) => {
   }
   if (!/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(gasUrl) || !config.gasSecret || !target.sheetId || !target.folderId) {
     console.error('[enroll] Missing or invalid Google settings (NUXT_GAS_URL, NUXT_GAS_SECRET, NUXT_SHEET_ID, NUXT_DRIVE_FOLDER_*)')
-    throw createError({ statusCode: 503, statusMessage: 'Enrollment is not configured yet' })
+    throw createError({ statusCode: 503, statusMessage: 'Enrollment is not configured yet', data: { reason: 'not_configured' } })
   }
 
   const now = new Date()
@@ -91,6 +91,7 @@ export default defineEventHandler(async (event) => {
   row['สถานะ'] = 'รอตรวจสลิป'
 
   let res: { ok?: boolean; error?: string } | undefined
+  let reason = ''
   try {
     res = await $fetch<{ ok?: boolean; error?: string }>(gasUrl, {
       method: 'POST',
@@ -110,12 +111,18 @@ export default defineEventHandler(async (event) => {
       timeout: 30000,
       retry: 0,
     })
+    // A web app that is not shared with "Anyone" answers with a Google sign-in page instead of JSON.
+    if (typeof res !== 'object' || res === null) reason = 'gas_not_json'
+    else if (!res.ok) reason = `gas_${String(res.error || 'error').replace(/\W+/g, '_')}`
   } catch (err) {
+    const status = (err as { statusCode?: number })?.statusCode
+    reason = status ? `gas_http_${status}` : 'gas_unreachable'
     console.error('[enroll] Apps Script request failed', err)
   }
-  if (!res?.ok) {
-    console.error('[enroll] Apps Script error', res?.error)
-    throw createError({ statusCode: 502, statusMessage: 'Could not save your enrollment' })
+  if (reason) {
+    console.error('[enroll] Apps Script error:', reason)
+    // The reason code is shown to the visitor so they can pass it on. It holds no secrets.
+    throw createError({ statusCode: 502, statusMessage: 'Could not save your enrollment', data: { reason } })
   }
 
   return { ok: true, orderId }

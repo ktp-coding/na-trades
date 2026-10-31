@@ -125,9 +125,13 @@ const submit = async () => {
     step.value = 4
     scrollTop()
   } catch (err: unknown) {
-    const code = (err as { statusCode?: number })?.statusCode
-    submitError.value =
+    const e = err as { statusCode?: number; data?: { statusMessage?: string; data?: { reason?: string } } }
+    const code = e?.statusCode
+    const msg =
       code === 429 ? t.value.enroll.errors.busy : code === 503 ? t.value.enroll.errors.closed : code === 415 ? t.value.enroll.errors.slipType : t.value.enroll.errors.generic
+    // Short error code so the visitor can send it to us when asking for help.
+    const reason = e?.data?.data?.reason || (code ? `http_${code}` : 'network')
+    submitError.value = `${msg} (${t.value.enroll.errors.code}: ${reason})`
   } finally {
     sending.value = false
   }
@@ -316,15 +320,20 @@ onBeforeUnmount(() => {
               <p class="mt-1 text-sm text-mist">{{ t.enroll.slipSub }}</p>
               <label
                 class="mt-6 flex min-h-48 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed p-6 text-center transition"
-                :class="dragging ? 'border-gold bg-gold/5' : errors.slip ? 'border-red-400/60' : 'border-white/15 hover:border-gold/50'"
+                :class="dragging ? 'border-gold bg-gold/5' : errors.slip ? 'border-red-400/60' : slip ? 'border-emerald-400/40 bg-emerald-400/[0.03]' : 'border-white/15 hover:border-gold/50'"
                 @dragover.prevent="dragging = true"
                 @dragleave.prevent="dragging = false"
                 @drop.prevent="onDrop"
               >
                 <input type="file" class="sr-only" :accept="SLIP_TYPES.join(',')" @change="onPick" />
-                <img v-if="slipPreview" :src="slipPreview" alt="" class="max-h-64 rounded-lg" />
                 <template v-if="slip">
-                  <span class="text-sm text-white">{{ slip.name }}</span>
+                  <img v-if="slipPreview" :src="slipPreview" alt="" class="max-h-64 rounded-lg bg-white/5 ring-1 ring-white/10" />
+                  <svg v-else viewBox="0 0 24 24" class="h-12 w-12 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" stroke-linejoin="round" /><path d="M14 3v5h5M9 13h6M9 17h4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  <span class="mt-1 inline-flex items-center gap-1.5 rounded-full bg-emerald-400/10 px-3 py-1 text-xs text-emerald-300 ring-1 ring-emerald-400/30">
+                    <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 5 5L20 7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                    {{ t.enroll.attached }}
+                  </span>
+                  <span class="max-w-full truncate text-sm text-white">{{ slip.name }} · {{ (slip.size / 1024 / 1024).toFixed(2) }} MB</span>
                   <span class="text-xs text-gold-soft underline">{{ t.enroll.change }}</span>
                 </template>
                 <template v-else>
@@ -338,6 +347,7 @@ onBeforeUnmount(() => {
               <div class="mt-8 flex flex-col-reverse justify-between gap-3 sm:flex-row">
                 <button type="button" class="btn-ghost" :disabled="sending" @click="step = 2">{{ t.enroll.back }}</button>
                 <button type="button" class="btn-gold disabled:opacity-60" :disabled="sending" @click="submit">
+                  <svg v-if="sending" viewBox="0 0 24 24" class="h-4 w-4 animate-spin" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".25" stroke-width="3" /><path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" /></svg>
                   {{ sending ? t.enroll.sending : t.enroll.submit }}
                 </button>
               </div>
