@@ -147,6 +147,9 @@ onMounted(() => {
         </div>
       </section>
 
+      <!-- Reviews -->
+      <StudentReviews :limit="3" more />
+
       <!-- 07 Course banner -->
       <CourseCta />
     </main>

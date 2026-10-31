@@ -324,6 +324,13 @@ const en = {
     instructorTitle: 'Instructor',
     instructorMore: 'Read the full story',
   },
+  reviews: {
+    eyebrow: 'Student Reviews',
+    title: 'What students say',
+    sub: 'Posted by students in the NA TRADES Discord, in their own words (in Thai).',
+    source: 'Student · Discord',
+    more: 'Read all reviews',
+  },
   modal: { close: 'Close' },
 }
 
@@ -636,6 +643,13 @@ const th: Copy = {
     },
     instructorTitle: 'ใครเป็นคนสอน',
     instructorMore: 'อ่านเรื่องของเราต่อ',
+  },
+  reviews: {
+    eyebrow: 'Student Reviews',
+    title: 'นักเรียนพูดถึงคอร์สนี้ยังไง',
+    sub: 'ข้อความจริงจากนักเรียนในกลุ่ม Discord ของ NA TRADES ครับ',
+    source: 'นักเรียน · Discord',
+    more: 'อ่านรีวิวทั้งหมด',
   },
   modal: { close: 'ปิด' },
 }

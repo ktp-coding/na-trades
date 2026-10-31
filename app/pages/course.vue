@@ -273,7 +273,8 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
         </div>
       </section>
 
-      <!-- 08 Reviews: add once students' approved reviews are ready -->
+      <!-- 08 Reviews -->
+      <StudentReviews />
 
       <!-- 09 FAQ -->
       <section id="faq" class="scroll-mt-24 px-4 py-14 sm:px-6 sm:py-20">
