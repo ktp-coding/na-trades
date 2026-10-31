@@ -5,6 +5,7 @@
 
 - เรียนสด → แท็บ `Private` ใน Sheet, สลิปไปที่โฟลเดอร์ `private`
 - เรียนคลิปออนไลน์ → แท็บ `Online` ใน Sheet, สลิปไปที่โฟลเดอร์ `online`
+- ถ้าเลือก 1:1 Coaching เพิ่ม จะมีคอลัมน์ `เรียนตัวต่อตัว 1:1` = ใช่ และยอดที่ต้องโอนรวมค่า 1:1 แล้ว
 - คอลัมน์ใช้ชื่อเดียวกับฟอร์มเดิม (ชื่อ-สกุล จริง, ชื่อเล่น, เบอร์โทรศัพท์, อายุ ฯลฯ) มีลิงก์สลิป และช่อง `สถานะ` (เริ่มต้นเป็น `รอตรวจสลิป`) ไว้แก้เองหลังตรวจ
 
 ทำครั้งเดียว ใช้เวลาประมาณ 10 นาที
@@ -47,8 +48,9 @@ Vercel → Project `na-trades` → **Settings → Environment Variables** แล
 | `NUXT_DRIVE_FOLDER_PRIVATE` | ลิงก์โฟลเดอร์ `private` |
 | `NUXT_DRIVE_FOLDER_ONLINE` | ลิงก์โฟลเดอร์ `online` |
 | `NUXT_PUBLIC_ENROLL_ENABLED` | `true` (ปุ่ม Join ทุกปุ่มจะพาไปหน้า `/enroll`) |
-| `NUXT_PUBLIC_PRICE_PRIVATE` | ราคาเรียนสด เช่น `15900` |
-| `NUXT_PUBLIC_PRICE_ONLINE` | ราคาคลิปออนไลน์ เช่น `4990` |
+| `NUXT_PUBLIC_PRICE_PRIVATE` | ไม่ต้องตั้ง (ในโค้ดเป็น `25900`) ตั้งเฉพาะตอนจะเปลี่ยนราคาเรียนสด |
+| `NUXT_PUBLIC_PRICE_ONLINE` | ไม่ต้องตั้ง (ในโค้ดเป็น `15900`) ตั้งเฉพาะตอนจะเปลี่ยนราคาวิดีโอ |
+| `NUXT_PUBLIC_PRICE_COACHING` | ไม่ต้องตั้ง (ในโค้ดเป็น `10000`) ราคา add-on 1:1 Coaching |
 | `NUXT_PUBLIC_BANK_NAME` | ชื่อธนาคาร |
 | `NUXT_PUBLIC_BANK_ACCOUNT_NO` | เลขบัญชี |
 | `NUXT_PUBLIC_BANK_ACCOUNT_NAME` | ชื่อบัญชี |
