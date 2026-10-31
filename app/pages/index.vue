@@ -12,7 +12,7 @@ const systemMeta: Record<string, { icon: string; slug: string }> = {
   qt: { icon: '/images/icon-qt.png', slug: 'quarterly-theory' },
 }
 
-const latest = articles.slice(-3).reverse()
+const latest = articles.slice(0, 3)
 
 // Old links pointed at sections that used to live on this page (e.g. /#course).
 // The hash never reaches the server, so send those visitors on from the browser.

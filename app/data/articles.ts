@@ -1,5 +1,6 @@
 // Blog articles, built from the same copy as the home page so both stay in sync.
 import { copy, type Lang, type SystemCard } from './i18n'
+import { tips } from './tips'
 
 export type Block =
   | { type: 'p'; text: string }
@@ -90,7 +91,7 @@ const sources: {
   },
 ]
 
-export const articles: Article[] = sources.map((s) => {
+const built: Article[] = sources.map((s) => {
   const en = s.build('en')
   const th = s.build('th')
   return {
@@ -103,5 +104,19 @@ export const articles: Article[] = sources.map((s) => {
     body: { en: en.body, th: th.body },
   }
 })
+
+// Short pieces from the course PDFs come first, so the newest reading is at the top.
+export const articles: Article[] = [
+  ...tips.map((t) => ({
+    slug: t.slug,
+    title: t.title,
+    icon: t.icon,
+    theme: t.theme,
+    tagline: t.module,
+    excerpt: t.excerpt,
+    body: t.body,
+  })),
+  ...built,
+]
 
 export const findArticle = (slug: string) => articles.find((a) => a.slug === slug)
