@@ -35,7 +35,7 @@ onBeforeUnmount(() => {
 <template>
   <header
     class="fixed inset-x-0 top-0 z-40 transition-all duration-300"
-    :class="scrolled || isMenuOpen ? 'border-b border-white/5 bg-ink/80 backdrop-blur-xl' : 'bg-transparent'"
+    :class="scrolled || isMenuOpen ? 'bg-ink/70 backdrop-blur-xl shadow-[0_12px_32px_-12px_rgba(0,0,0,0.9)]' : 'bg-transparent'"
   >
     <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-20 sm:px-6" aria-label="Main">
       <NuxtLink to="/" class="flex items-center gap-3">
@@ -70,7 +70,7 @@ onBeforeUnmount(() => {
         </button>
       </div>
     </nav>
-    <div v-if="isMenuOpen" id="mobile-menu" class="border-t border-white/5 lg:hidden">
+    <div v-if="isMenuOpen" id="mobile-menu" class="lg:hidden">
       <div class="mx-auto flex max-w-6xl flex-col px-4 py-3">
         <NuxtLink v-for="item in nav" :key="item.href" :to="item.href" class="py-3 text-mist hover:text-gold-soft" @click="isMenuOpen = false">{{ item.label }}</NuxtLink>
       </div>

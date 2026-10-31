@@ -5,7 +5,7 @@ const { t } = useLang()
 </script>
 
 <template>
-  <footer id="contact" class="scroll-mt-24 border-t border-white/5 px-4 py-16 sm:px-6">
+  <footer id="contact" class="scroll-mt-24 px-4 py-16 sm:px-6">
     <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
       <h2 class="section-title">{{ t.footer.contact }}</h2>
       <NuxtLink to="/" class="flex items-center gap-3">

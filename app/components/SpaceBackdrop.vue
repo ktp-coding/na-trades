@@ -36,10 +36,10 @@ onMounted(() => {
   let seededWidth = 0
 
   const seed = () => {
-    const count = Math.round(((w * h) / 1500) * props.density)
+    const count = Math.round(((w * h) / 2300) * props.density)
     stars = Array.from({ length: count }, () => {
       const depth = Math.random() < 0.6 ? 0.3 : Math.random() < 0.75 ? 0.6 : 1
-      const bright = depth === 1 && Math.random() < 0.12
+      const bright = depth === 1 && Math.random() < 0.06
       return {
         x: Math.random() * w,
         y: Math.random() * h,
@@ -98,19 +98,19 @@ onMounted(() => {
       // Scroll parallax: closer stars move further. Wrap around the viewport.
       const y = reduce ? s.y : (((s.y - scrollY * s.depth * 0.25) % h) + h) % h
       const tw = reduce ? 0.8 : 0.55 + 0.45 * Math.sin(time * s.speed + s.phase)
-      const a = (0.25 + 0.75 * s.depth) * tw
+      const a = (0.15 + 0.55 * s.depth) * tw
       ctx!.fillStyle = `hsla(${s.hue}, 10%, 96%, ${a})`
       ctx!.beginPath()
       ctx!.arc(s.x, y, s.r, 0, Math.PI * 2)
       ctx!.fill()
       if (s.bright) {
         const g = ctx!.createRadialGradient(s.x, y, 0, s.x, y, s.r * 7)
-        g.addColorStop(0, `hsla(${s.hue}, 10%, 95%, ${0.5 * tw})`)
+        g.addColorStop(0, `hsla(${s.hue}, 10%, 95%, ${0.3 * tw})`)
         g.addColorStop(1, 'transparent')
         ctx!.fillStyle = g
         ctx!.fillRect(s.x - s.r * 7, y - s.r * 7, s.r * 14, s.r * 14)
         // Thin cross flare.
-        ctx!.strokeStyle = `hsla(${s.hue}, 10%, 97%, ${0.4 * tw})`
+        ctx!.strokeStyle = `hsla(${s.hue}, 10%, 97%, ${0.25 * tw})`
         ctx!.lineWidth = 0.6
         const L = s.r * 6 * tw
         ctx!.beginPath()
@@ -206,7 +206,7 @@ onMounted(() => {
   top: 2%;
   width: 55%;
   height: 24%;
-  background: radial-gradient(closest-side, rgba(59, 91, 219, 0.32), transparent);
+  background: radial-gradient(closest-side, rgba(59, 91, 219, 0.18), transparent);
   animation: drift-a 26s ease-in-out infinite alternate;
 }
 .nebula-b {
@@ -214,7 +214,7 @@ onMounted(() => {
   top: 0;
   width: 50%;
   height: 28%;
-  background: radial-gradient(closest-side, rgba(124, 77, 219, 0.3), transparent);
+  background: radial-gradient(closest-side, rgba(124, 77, 219, 0.16), transparent);
   animation: drift-b 32s ease-in-out infinite alternate;
 }
 .nebula-c {
@@ -222,7 +222,7 @@ onMounted(() => {
   top: 22%;
   width: 40%;
   height: 18%;
-  background: radial-gradient(closest-side, rgba(31, 138, 138, 0.3), transparent);
+  background: radial-gradient(closest-side, rgba(31, 138, 138, 0.17), transparent);
   animation: drift-a 38s ease-in-out infinite alternate-reverse;
 }
 .nebula-d {
@@ -230,7 +230,7 @@ onMounted(() => {
   top: 46%;
   width: 55%;
   height: 26%;
-  background: radial-gradient(closest-side, rgba(31, 138, 138, 0.3), transparent);
+  background: radial-gradient(closest-side, rgba(31, 138, 138, 0.17), transparent);
   animation: drift-b 34s ease-in-out infinite alternate;
 }
 .nebula-e {
@@ -238,7 +238,7 @@ onMounted(() => {
   top: 70%;
   width: 60%;
   height: 28%;
-  background: radial-gradient(closest-side, rgba(124, 77, 219, 0.26), transparent);
+  background: radial-gradient(closest-side, rgba(124, 77, 219, 0.15), transparent);
   animation: drift-a 40s ease-in-out infinite alternate;
 }
 .planet {
@@ -250,7 +250,7 @@ onMounted(() => {
   border-radius: 9999px;
   background: radial-gradient(circle at 32% 30%, rgba(240, 240, 245, 0.6), rgba(120, 120, 130, 0.35) 45%, rgba(10, 10, 12, 0.95) 75%);
   box-shadow: 0 0 60px 6px rgba(255, 255, 255, 0.1), inset -12px -10px 30px rgba(0, 0, 0, 0.85);
-  opacity: 0.55;
+  opacity: 0.35;
 }
 .ring {
   position: absolute;
