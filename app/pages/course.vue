@@ -202,7 +202,7 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
               <p class="mt-2 text-mist">{{ t.enroll.plans[key].desc }}</p>
               <p class="mt-6 font-display text-4xl tracking-wide text-gold">{{ priceLabel(key) }}</p>
               <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
-                <li v-for="item in t.course.included.slice(0, 3)" :key="item" class="flex gap-3">
+                <li v-for="item in t.coursePage.planFeatures[key]" :key="item" class="flex gap-3">
                   <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />{{ item }}
                 </li>
               </ul>
@@ -218,6 +218,27 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
             </article>
           </div>
           <p class="mt-6 text-center text-xs text-mist/70">{{ t.course.ctaNote }}</p>
+
+          <!-- 1:1 Coaching add-on (arranged by message, not through the form) -->
+          <article class="mt-8 grid gap-6 rounded-3xl border border-white/[0.08] bg-panel p-6 sm:p-8 md:grid-cols-[1fr_1.2fr]">
+            <div class="flex flex-col">
+              <p class="eyebrow">{{ t.coursePage.coach.tag }}</p>
+              <h3 class="mt-2 font-display text-3xl tracking-wide text-white">{{ t.coursePage.coach.title }}</h3>
+              <p class="mt-2 text-mist">{{ t.coursePage.coach.desc }}</p>
+              <p class="mt-5 font-display text-3xl tracking-wide text-gold">{{ t.coursePage.coach.price }}</p>
+              <div class="mt-auto pt-6">
+                <a href="#contact" class="btn-ghost w-full sm:w-auto">{{ t.coursePage.coach.cta }}</a>
+              </div>
+            </div>
+            <div>
+              <ul class="space-y-2.5 text-sm text-slate-300">
+                <li v-for="item in t.coursePage.coach.items" :key="item" class="flex gap-3">
+                  <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />{{ item }}
+                </li>
+              </ul>
+              <p class="mt-5 text-sm text-gold-soft">{{ t.coursePage.coach.note }}</p>
+            </div>
+          </article>
 
           <div v-if="privateCourseImages.length" class="mt-12">
             <p class="mb-5 text-center text-sm text-mist">{{ t.private.title }}</p>
