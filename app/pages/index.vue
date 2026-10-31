@@ -2,7 +2,7 @@
 // Home = Zone A: who NA TRADES is and how we read the market.
 // No prices here. The course lives on /course; this page only points to it once (CourseCta).
 import { articles } from '~/data/articles'
-import { freeVideos } from '~/data/media'
+import { freeVideos, freeVideoTitles } from '~/data/media'
 
 const { t } = useLang()
 
@@ -138,7 +138,7 @@ onMounted(() => {
           </div>
           <div class="grid gap-5 md:grid-cols-3">
             <div v-for="(id, i) in freeVideos" :key="id" class="card p-2">
-              <YoutubeLite :id="id" :title="`${t.free.video} ${i + 1}`" :play-label="t.free.play" />
+              <YoutubeLite :id="id" :title="freeVideoTitles[id] || `${t.free.video} ${i + 1}`" :play-label="t.free.play" />
             </div>
           </div>
           <div class="mt-8 text-center">

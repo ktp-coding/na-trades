@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { freeVideos } from '~/data/media'
+import { freeVideos, freeVideoTitles } from '~/data/media'
 import { articles } from '~/data/articles'
 
 const { t } = useLang()
@@ -25,14 +25,16 @@ useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free
         </div>
 
         <!-- Videos: the first one big, the rest in a 2-column row -->
-        <div class="mx-auto max-w-5xl space-y-5">
-          <div v-if="featured" class="card p-2 sm:p-3">
-            <YoutubeLite :id="featured" :title="`${t.free.video} 1`" :play-label="t.free.play" />
-          </div>
+        <div class="mx-auto max-w-3xl space-y-5">
+          <figure v-if="featured" class="card p-2">
+            <YoutubeLite :id="featured" :title="freeVideoTitles[featured] || `${t.free.video} 1`" :play-label="t.free.play" />
+            <figcaption class="px-3 pt-3 pb-1 text-white">{{ freeVideoTitles[featured] }}</figcaption>
+          </figure>
           <div class="grid gap-5 sm:grid-cols-2">
-            <div v-for="(id, i) in moreVideos" :key="id" class="card p-2">
-              <YoutubeLite :id="id" :title="`${t.free.video} ${i + 2}`" :play-label="t.free.play" />
-            </div>
+            <figure v-for="(id, i) in moreVideos" :key="id" class="card p-2">
+              <YoutubeLite :id="id" :title="freeVideoTitles[id] || `${t.free.video} ${i + 2}`" :play-label="t.free.play" />
+              <figcaption class="px-3 pt-3 pb-1 text-sm text-white">{{ freeVideoTitles[id] }}</figcaption>
+            </figure>
           </div>
           <div v-if="youtube" class="pt-3 text-center">
             <a :href="youtube" target="_blank" rel="noopener noreferrer" class="btn-ghost inline-flex items-center gap-2">
