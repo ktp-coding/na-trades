@@ -37,14 +37,7 @@ export const ENROLL_FIELDS: EnrollField[] = [
   },
   {
     key: 'email',
-    label: { en: 'Email or Gmail for contact and the Discord link', th: 'Email หรือ Gmail เพื่อติดต่อกลับและส่งลิงก์ Discord สำหรับการเรียน' },
-    type: 'email',
-    required: true,
-    maxLength: 160,
-  },
-  {
-    key: 'youtubeEmail',
-    label: { en: 'Gmail you use for YouTube (for replays)', th: 'Gmail ที่ใช้สำหรับดู YouTube (สำหรับทบทวนย้อนหลัง)' },
+    label: { en: 'Email or Gmail for contact and your Whop / Discord access', th: 'Email หรือ Gmail เพื่อติดต่อกลับ และส่งสิทธิ์เข้าเรียนใน Whop / Discord' },
     type: 'email',
     required: true,
     maxLength: 160,
