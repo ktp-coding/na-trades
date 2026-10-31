@@ -74,16 +74,17 @@ export default defineEventHandler(async (event) => {
   const orderId = `NA-${ymd}-${randomBytes(3).toString('hex').toUpperCase()}`
   const price = String(plan === 'private' ? config.public.pricePrivate : config.public.priceOnline || '')
 
+  // Thai column names, matching the existing Google Form response sheets.
   const row: Record<string, string> = {
-    'Submitted at': now.toLocaleString('sv-SE', { timeZone: 'Asia/Bangkok' }),
-    'Order ID': orderId,
-    Plan: plan,
-    Amount: price,
+    'ประทับเวลา': now.toLocaleString('sv-SE', { timeZone: 'Asia/Bangkok' }),
+    'เลขที่การสมัคร': orderId,
+    'รูปแบบ': plan === 'private' ? 'เรียนสด' : 'คลิปออนไลน์',
+    'ยอดที่ต้องโอน': price,
   }
-  for (const f of fieldsForPlan(plan)) row[f.label.en] = cell((values[f.key] ?? '').trim())
-  row['Marketing consent'] = values.marketing === 'yes' ? 'yes' : 'no'
-  row.Language = values.lang === 'th' ? 'th' : 'en'
-  row.Status = 'Pending review'
+  for (const f of fieldsForPlan(plan)) row[f.label.th] = cell((values[f.key] ?? '').trim())
+  row['ยินยอมให้ใช้รีวิว'] = values.marketing === 'yes' ? 'ใช่' : 'ไม่'
+  row['ภาษา'] = values.lang === 'th' ? 'TH' : 'EN'
+  row['สถานะ'] = 'รอตรวจสลิป'
 
   let res: { ok?: boolean; error?: string } | undefined
   try {

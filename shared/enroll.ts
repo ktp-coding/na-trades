@@ -12,6 +12,8 @@ export interface EnrollField {
   type: 'text' | 'email' | 'tel' | 'textarea' | 'select'
   required: boolean
   maxLength: number
+  /** Digits only (e.g. age). */
+  numeric?: boolean
   placeholder?: L
   hint?: L
   options?: { value: string; label: L }[]
@@ -19,45 +21,39 @@ export interface EnrollField {
   plans?: PlanKey[]
 }
 
+// Same questions as the Google Forms "คอร์สเรียน (Gen3)" and "คอร์สเรียน (Online)".
 export const ENROLL_FIELDS: EnrollField[] = [
-  { key: 'fullName', label: { en: 'Full name', th: 'ชื่อ-นามสกุล' }, type: 'text', required: true, maxLength: 120 },
-  { key: 'nickname', label: { en: 'Nickname', th: 'ชื่อเล่น' }, type: 'text', required: false, maxLength: 60 },
+  { key: 'fullName', label: { en: 'Full name', th: 'ชื่อ-สกุล จริง' }, type: 'text', required: true, maxLength: 120 },
+  { key: 'nickname', label: { en: 'Nickname', th: 'ชื่อเล่น' }, type: 'text', required: true, maxLength: 60 },
+  { key: 'phone', label: { en: 'Phone number', th: 'เบอร์โทรศัพท์' }, type: 'tel', required: true, maxLength: 20 },
+  { key: 'age', label: { en: 'Age', th: 'อายุ' }, type: 'text', required: true, maxLength: 3, numeric: true },
+  {
+    key: 'facebook',
+    label: { en: 'Facebook name', th: 'ชื่อ Facebook' },
+    placeholder: { en: 'Name or profile link', th: 'ชื่อ หรือลิงก์โปรไฟล์' },
+    type: 'text',
+    required: true,
+    maxLength: 200,
+  },
   {
     key: 'email',
-    label: { en: 'Google email (Gmail)', th: 'อีเมล Google (Gmail)' },
-    hint: { en: 'Course access is sent to this email.', th: 'สิทธิ์เข้าเรียนจะส่งไปที่อีเมลนี้' },
+    label: { en: 'Email or Gmail for contact and the Discord link', th: 'Email หรือ Gmail เพื่อติดต่อกลับและส่งลิงก์ Discord สำหรับการเรียน' },
     type: 'email',
     required: true,
     maxLength: 160,
   },
-  { key: 'phone', label: { en: 'Phone number', th: 'เบอร์โทร' }, type: 'tel', required: true, maxLength: 20 },
-  { key: 'lineId', label: { en: 'LINE ID', th: 'LINE ID' }, type: 'text', required: false, maxLength: 60 },
   {
-    key: 'experience',
-    label: { en: 'Trading experience', th: 'ประสบการณ์เทรด' },
-    type: 'select',
+    key: 'youtubeEmail',
+    label: { en: 'Gmail you use for YouTube (for replays)', th: 'Gmail ที่ใช้สำหรับดู YouTube (สำหรับทบทวนย้อนหลัง)' },
+    type: 'email',
     required: true,
-    maxLength: 40,
-    options: [
-      { value: 'none', label: { en: 'New to trading', th: 'ยังไม่เคยเทรด' } },
-      { value: '<1y', label: { en: 'Less than 1 year', th: 'น้อยกว่า 1 ปี' } },
-      { value: '1-3y', label: { en: '1–3 years', th: '1–3 ปี' } },
-      { value: '3y+', label: { en: 'More than 3 years', th: 'มากกว่า 3 ปี' } },
-    ],
+    maxLength: 160,
   },
   {
-    key: 'market',
-    label: { en: 'Main market you trade', th: 'ตลาดที่เทรดเป็นหลัก' },
-    placeholder: { en: 'e.g. NQ, Gold, Forex', th: 'เช่น NQ, ทองคำ, Forex' },
-    type: 'text',
-    required: false,
-    maxLength: 80,
-  },
-  {
-    key: 'note',
-    label: { en: 'Anything you want me to know', th: 'อยากบอกอะไรเพิ่มเติม' },
+    key: 'reason',
+    label: { en: 'Why do you want to learn with NA Trades?', th: 'เหตุผลที่อยากเรียนกับ NA Trades' },
     type: 'textarea',
-    required: false,
+    required: true,
     maxLength: 1000,
   },
 ]
@@ -83,6 +79,7 @@ export function invalidFields(plan: PlanKey, values: Record<string, string>): st
       v.length > f.maxLength ||
       (f.type === 'email' && !EMAIL_RE.test(v)) ||
       (f.type === 'tel' && !PHONE_RE.test(v)) ||
+      (f.numeric && !/^\d{1,3}$/.test(v)) ||
       (f.type === 'select' && !f.options?.some((o) => o.value === v))
     ) {
       bad.push(f.key)

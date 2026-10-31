@@ -213,7 +213,8 @@ onBeforeUnmount(() => {
                     :type="f.type"
                     :maxlength="f.maxLength"
                     :placeholder="f.placeholder?.[lang]"
-                    :autocomplete="f.type === 'email' ? 'email' : f.type === 'tel' ? 'tel' : f.key === 'fullName' ? 'name' : 'off'"
+                    :autocomplete="f.key === 'email' ? 'email' : f.type === 'tel' ? 'tel' : f.key === 'fullName' ? 'name' : 'off'"
+                    :inputmode="f.numeric ? 'numeric' : undefined"
                     class="w-full rounded-xl border bg-ink-2 px-4 py-3 text-white outline-none placeholder:text-mist/40 focus:border-gold"
                     :class="errors[f.key] ? 'border-red-400/70' : 'border-white/10'"
                   />

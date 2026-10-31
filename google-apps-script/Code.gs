@@ -38,7 +38,7 @@ function doPost(e) {
       var sheet = ss.getSheetByName(name) || ss.insertSheet(name);
 
       var row = body.row || {};
-      row['Slip'] = file.getUrl();
+      row['หลักฐานการโอนเงิน (Payment Slip)'] = file.getUrl();
       var keys = Object.keys(row);
 
       var lastCol = sheet.getLastColumn();
