@@ -6,7 +6,6 @@
  *   2. saves the payment slip in the Drive folder for the plan (private / online),
  *   3. appends one row to the plan's tab in the Google Sheet, with a link to the slip.
  *
- * Setup: see google-apps-script/README.md
  */
 
 function doPost(e) {
