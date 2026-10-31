@@ -4,6 +4,18 @@
   --font-display: "Bebas Neue", "Kanit", sans-serif;
   --font-sans: "Kanit", system-ui, sans-serif;
 
+  /* Text one step larger than Tailwind's defaults: Thai in Kanit reads small. */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.6;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.65;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.7;
+  --text-lg: 1.1875rem;
+  --text-lg--line-height: 1.65;
+  --text-xl: 1.3125rem;
+  --text-xl--line-height: 1.6;
+
   --color-ink: #070b16;
   --color-ink-2: #0b1222;
   --color-panel: #0e1528;
