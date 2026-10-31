@@ -160,7 +160,7 @@
     filter: grayscale(1) contrast(1.15);
   }
   .logo-star {
-    filter: grayscale(1) contrast(1.15) brightness(0.85) drop-shadow(0 0 6px rgb(255 255 255 / 0.15));
+    filter: grayscale(1) contrast(1.15) brightness(1) drop-shadow(0 0 8px rgb(255 255 255 / 0.2));
     animation: star-glow 3.5s ease-in-out infinite;
   }
   .icon-mask {
@@ -172,7 +172,7 @@
 @keyframes star-glow {
   0%,
   100% {
-    filter: grayscale(1) contrast(1.15) brightness(0.65) drop-shadow(0 0 2px rgb(255 255 255 / 0.05));
+    filter: grayscale(1) contrast(1.15) brightness(0.95) drop-shadow(0 0 8px rgb(255 255 255 / 0.2));
   }
   50% {
     filter: grayscale(1) contrast(1.15) brightness(1.4) drop-shadow(0 0 34px rgb(255 255 255 / 0.75));
