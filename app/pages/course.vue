@@ -23,12 +23,16 @@ const planHref = (key: PlanKey) => {
 }
 const isExternal = (href: string) => href.startsWith('http')
 
-// Module slides live in /public/images/course. Extra course posters still come from Vercel Blob.
+// Slide previews live in /public/images/course. Extra course posters still come from Vercel Blob.
 const courseImages = computed(() => {
   const list = [
-    { src: '/images/course/module-1-ict.webp', alt: 'Module 01 · ICT Core Concepts' },
-    { src: '/images/course/module-2-qt.webp', alt: 'Module 02 · Quarterly Theory Fundamentals' },
-    { src: '/images/course/module-3-fractal.webp', alt: 'Module 03 · Fractal Model' },
+    // A few pages from the course PDFs, two per module. Not the full PDFs.
+    { src: '/images/course/slide-m1-1.webp', alt: 'Module 01 · Power of 3 (AMD)' },
+    { src: '/images/course/slide-m1-2.webp', alt: 'Module 01 · Price Delivery' },
+    { src: '/images/course/slide-m2-1.webp', alt: 'Module 02 · Quarter Functions' },
+    { src: '/images/course/slide-m2-2.webp', alt: 'Module 02 · True Open' },
+    { src: '/images/course/slide-m3-1.webp', alt: 'Module 03 · Fractal' },
+    { src: '/images/course/slide-m3-2.webp', alt: 'Module 03 · Ideal Swing Formation' },
   ]
   if (blobBaseUrl && showBuyCourse) {
     list.push(
@@ -175,10 +179,13 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
                 v-for="img in courseImages"
                 :key="img.src"
                 type="button"
-                class="group overflow-hidden rounded-2xl border border-white/[0.07] bg-panel"
+                class="group text-left"
                 @click="selectedImage = img"
               >
-                <img :src="img.src" :alt="img.alt" loading="lazy" class="aspect-video w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="block overflow-hidden rounded-xl ring-1 ring-white/10 transition group-hover:ring-gold/40">
+                  <img :src="img.src" :alt="img.alt" loading="lazy" class="aspect-[1332/736] w-full object-cover transition duration-500 group-hover:scale-105" />
+                </span>
+                <span class="mt-2 block px-1 text-sm text-mist group-hover:text-gold-soft">{{ img.alt }}</span>
               </button>
             </div>
           </div>
