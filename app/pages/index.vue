@@ -38,7 +38,8 @@ onMounted(() => {
     <main id="top">
       <!-- 01 Hero -->
       <section class="relative px-4 pt-28 pb-12 sm:px-6 sm:pt-36 sm:pb-20">
-        <div class="mx-auto flex max-w-5xl flex-col items-center text-center">
+        <Sparkles :count="26" />
+        <div class="relative mx-auto flex max-w-5xl flex-col items-center text-center">
           <div class="relative mb-8 sm:mb-10">
             <div aria-hidden="true" class="aura absolute -inset-16 rounded-full blur-2xl sm:-inset-24" />
             <div aria-hidden="true" class="absolute -inset-6 rounded-full border border-gold/15 sm:-inset-10" />

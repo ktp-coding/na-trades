@@ -9,6 +9,7 @@ const { t } = useLang()
     <div class="mx-auto max-w-3xl rounded-[2rem] bg-gradient-to-b from-gold/40 via-gold/10 to-gold/25 p-px">
       <div class="relative overflow-hidden rounded-[calc(2rem-1px)] bg-ink-2 px-6 py-10 text-center sm:px-12">
         <div aria-hidden="true" class="aura absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full blur-2xl" />
+        <Sparkles :count="12" :seed="41" />
         <p class="eyebrow relative mb-3">Full Course</p>
         <h2 class="relative font-display text-3xl tracking-wide text-white sm:text-4xl">{{ t.cta.title }}</h2>
         <p class="relative mt-3 text-mist">{{ t.cta.sub }}</p>

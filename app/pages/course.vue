@@ -60,7 +60,8 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
     <main>
       <!-- 01 Hero -->
       <section class="relative px-4 pt-32 pb-12 sm:px-6 sm:pt-40 sm:pb-16">
-        <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
+        <Sparkles :count="18" :seed="23" />
+        <div class="relative mx-auto flex max-w-4xl flex-col items-center text-center">
           <p class="eyebrow mb-4">{{ t.course.eyebrow }}</p>
           <h1 class="text-gold-gradient font-display text-5xl leading-none tracking-wide sm:text-7xl">{{ t.course.title }}</h1>
           <p class="mt-5 max-w-2xl text-lg text-slate-300">{{ t.hero.sub }}</p>

@@ -9,13 +9,19 @@ const close = () => {
 const onKey = (e: KeyboardEvent) => {
   if (e.key === 'Escape' && image.value) close()
 }
+const { $lenis } = useNuxtApp()
 watch(image, (v) => {
-  if (import.meta.client) document.body.style.overflow = v ? 'hidden' : ''
+  if (!import.meta.client) return
+  document.body.style.overflow = v ? 'hidden' : ''
+  // Smooth scroll keeps listening to the wheel, so pause it while the preview is open.
+  if (v) $lenis?.stop()
+  else $lenis?.start()
 })
 onMounted(() => window.addEventListener('keydown', onKey))
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', onKey)
   document.body.style.overflow = ''
+  $lenis?.start()
 })
 </script>
 
