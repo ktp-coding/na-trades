@@ -16,6 +16,45 @@ export interface Tip {
 
 export const tips: Tip[] = [
   {
+    // Keeps the old /blog/amd-model link working after AMD moved off the home page cards.
+    slug: 'amd-model',
+    title: 'Power of 3 (AMD)',
+    icon: '/images/icon-amd.svg',
+    theme: 'ict',
+    module: { en: 'From Module 1 · Power of 3', th: 'จาก Module 1 · Power of 3' },
+    tagline: { en: 'ICT Concept', th: 'ICT Concept' },
+    excerpt: {
+      en: 'Every candle on every timeframe hides the same three phases: Accumulation, Manipulation, Distribution.',
+      th: 'แท่งเทียนทุกแท่ง ทุก Timeframe มีราคาซ่อนอยู่ 3 ช่วงเสมอ คือ Accumulation, Manipulation และ Distribution',
+    },
+    body: {
+      th: [
+        { type: 'p', text: 'AMD หรือ Power of 3 คือการมองว่าในแท่งเทียนทุกแท่ง ไม่ว่าจะเป็นแท่งวัน แท่ง 4 ชั่วโมง หรือแท่ง 1 ชั่วโมง ราคาจะเดินซ่อนอยู่ 3 ช่วงเสมอ อ่านออกเมื่อไหร่ แท่งเทียนแท่งเดียวก็เล่าเรื่องได้ครบครับ' },
+        { type: 'quote', text: 'Accumulation → Manipulation → Distribution' },
+        { type: 'h2', text: 'แต่ละช่วงบอกอะไรเรา' },
+        { type: 'list', items: [
+          'Accumulation (สะสม) ราคาพักตัวในกรอบแคบ แท่งเทียนสั้น Volume ต่ำ คนส่วนใหญ่เบื่อเพราะตลาดไม่ไปไหน แต่นี่คือจุดเริ่มก่อนราคาวิ่งแรง',
+          'Manipulation (หลอกล่อ) ราคาทะลุกรอบหลอกไปอีกฝั่ง กวาด Stop Loss ของคนส่วนใหญ่ แล้วกลับตัวอย่างรวดเร็ว',
+          'Distribution (กระจาย) ราคาวิ่งแรงไปทางเดียวสู่เป้าหมาย เช่น High หรือ Low เดิม หรือโซน FVG',
+        ] },
+        { type: 'p', text: 'แท่งขาขึ้นจึงมักเดินแบบ Open → Low → High → Close ส่วนแท่งขาลงเดินแบบ Open → High → Low → Close ครับ' },
+        { type: 'note', text: 'ในคอร์ส AMD เป็นเรื่องแรกของ Module 1 แล้วใน Module 2 จะเอาไปจับกับเวลา เป็นโครงสร้าง AMDX กับ XAMD เพื่อดูว่า Quarter ไหนน่าเทรด' },
+      ],
+      en: [
+        { type: 'p', text: 'AMD, also called the Power of 3, says that every candle on every timeframe hides the same three phases. Read them and a single candle tells you how price was delivered.' },
+        { type: 'quote', text: 'Accumulation → Manipulation → Distribution' },
+        { type: 'h2', text: 'What each phase tells you' },
+        { type: 'list', items: [
+          'Accumulation: price rests in a tight range with small candles and low volume. Most traders get bored here, but this is where the next expansion starts.',
+          'Manipulation: a fake breakout to the other side that sweeps stop losses, then a fast reversal.',
+          'Distribution: price expands in one direction toward its target, such as an old high or a Fair Value Gap.',
+        ] },
+        { type: 'p', text: 'That is why a bullish candle tends to print Open → Low → High → Close, and a bearish candle Open → High → Low → Close.' },
+        { type: 'note', text: 'In the course, AMD is the first lesson of Module 1. In Module 2 it is paired with time as the AMDX and XAMD structures, to show which quarter is worth trading.' },
+      ],
+    },
+  },
+  {
     slug: 'four-states-of-price',
     title: 'The 4 States of Price',
     icon: '/images/icon-ict.png',

@@ -60,13 +60,13 @@ const sources: {
       }
     },
   },
-  ...(['amd', 'ict', 'qt'] as const).map((key) => {
+  ...(['ict', 'qt', 'fractal'] as const).map((key) => {
     const card = (lang: Lang) => copy[lang].systems.cards.find((c) => c.key === key)!
     return {
-      slug: { amd: 'amd-model', ict: 'ict-concept', qt: 'quarterly-theory' }[key],
+      slug: { ict: 'ict-concept', qt: 'quarterly-theory', fractal: 'fractal-model' }[key],
       title: card('en').title,
-      icon: key === 'qt' ? '/images/icon-qt.png' : key === 'ict' ? '/images/icon-ict.png' : '/images/icon-amd.svg',
-      theme: key === 'qt' ? ('qt' as const) : ('ict' as const),
+      icon: { ict: '/images/icon-ict.png', qt: '/images/icon-qt.png', fractal: '/images/icon-fractal.png' }[key],
+      theme: { ict: 'ict' as const, qt: 'qt' as const, fractal: 'fractal' as const }[key],
       build: (lang: Lang) => fromSystem(card(lang), lang),
     }
   }),

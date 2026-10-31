@@ -4,7 +4,7 @@
 export type Lang = 'en' | 'th'
 
 export interface SystemCard {
-  key: 'amd' | 'ict' | 'qt'
+  key: 'ict' | 'qt' | 'fractal'
   title: string
   tagline: string
   intro: string[]
@@ -57,22 +57,6 @@ const en = {
     title: 'Trading Systems',
     cards: [
       {
-        key: 'amd',
-        title: 'AMD Model',
-        tagline: 'Power of 3 · Inside Every Candle',
-        intro: ['AMD, also called the Power of 3, says that every candle on every timeframe hides the same three phases. Read them and a single candle tells you how price was delivered.'],
-        highlight: 'Accumulation → Manipulation → Distribution',
-        focusLabel: 'What each phase tells you',
-        focus: [
-          'Accumulation: price rests in a tight range with small candles and low volume. Most traders get bored here, but this is where the next expansion starts.',
-          'Manipulation: a fake breakout to the other side that sweeps stop losses, then a fast reversal.',
-          'Distribution: price expands in one direction toward its target, such as an old high or a Fair Value Gap.',
-        ],
-        closing: 'That is why a bullish candle tends to print Open → Low → High → Close, and a bearish candle Open → High → Low → Close.',
-        note: 'In the course, AMD is the first lesson of Module 1. In Module 2 it is paired with time as the AMDX and XAMD structures, to show which quarter is worth trading.',
-        points: ['Works on candles of every timeframe', 'Manipulation usually sweeps stops before the real move', 'Knowing the target tells you how far expansion can go'],
-      },
-      {
         key: 'ict',
         title: 'ICT Concept',
         tagline: 'Price Delivery & Market Logic',
@@ -80,7 +64,7 @@ const en = {
         focusLabel: 'The focus is on understanding:',
         focus: ['Liquidity and inducement', 'Market structure shifts', 'Institutional reference points such as Order Blocks and Fair Value Gaps'],
         closing: 'Once you can read these, you can see who is in control of price and why.',
-        note: 'Within the course, ICT serves as the price logic engine, supporting confirmation and precise entries when aligned with time.',
+        note: 'In the course, ICT is Module 1. It starts with the Power of 3 (AMD), then moves on to Price Delivery, PD Arrays and liquidity, and serves as the price logic that confirms entries when aligned with time.',
         points: ['Liquidity-based market behavior', 'Structure-driven confirmations', 'Time and price alignment'],
       },
       {
@@ -95,13 +79,29 @@ const en = {
         note: 'Within the course, QT acts as the time filter, showing when to wait and when to start looking for an entry.',
         points: ['Higher-timeframe directional bias', 'Time-based filtering', 'Context for all price action decisions'],
       },
+      {
+        key: 'fractal',
+        title: 'Fractal Model',
+        tagline: 'Entries & How Far Price Can Go',
+        intro: ['Fractal means a pattern that repeats. The same price pattern forms on every timeframe, so one way of thinking works whether you trade positions, swings or scalps.'],
+        highlight: 'Swing Low → Reversal → Expansion',
+        focusLabel: 'The Fractal Model answers:',
+        focus: [
+          'Is each candle strong or hesitant, read from its body and wicks',
+          'Where a swing high or low forms, and whether CISD has confirmed it',
+          'How far price can still run, using projections',
+        ],
+        closing: 'You do not change how you think for each timeframe. You only pick the timeframe that fits your style.',
+        note: 'In the course, the Fractal Model is Module 3. It finds the entry once ICT has given the direction and QT the time window. If the conditions are not all there, there is no trade.',
+        points: ['One way of thinking on every timeframe', 'Confirm the swing with CISD before entering', 'Conditions not met = no trade'],
+      },
     ] as SystemCard[],
     framework: {
       title: 'How the Framework Works Together',
       rows: [
         { k: 'Quarterly Theory', v: 'defines when the market is likely to move' },
         { k: 'ICT Concept', v: 'explains why price behaves the way it does' },
-        { k: 'AMD Model', v: 'define how to execute within that window' },
+        { k: 'Fractal Model', v: 'finds the entry within that window' },
       ],
       closing: 'This creates a structured, repeatable approach built on',
       closingHighlight: 'time, logic, and price behavior — not randomness.',
@@ -384,22 +384,6 @@ const th: Copy = {
     title: '3 ระบบที่ผมใช้เทรด',
     cards: [
       {
-        key: 'amd',
-        title: 'AMD Model',
-        tagline: 'Power of 3 · ราคาในแท่งเทียนแต่ละแท่งเดินยังไง',
-        intro: ['AMD หรือ Power of 3 คือการมองว่าในแท่งเทียนทุกแท่ง ไม่ว่าจะเป็นแท่งวัน แท่ง 4 ชั่วโมง หรือแท่ง 1 ชั่วโมง ราคาจะเดินซ่อนอยู่ 3 ช่วงเสมอ อ่านออกเมื่อไหร่ แท่งเทียนแท่งเดียวก็เล่าเรื่องได้ครบครับ'],
-        highlight: 'Accumulation → Manipulation → Distribution',
-        focusLabel: 'แต่ละช่วงบอกอะไรเรา',
-        focus: [
-          'Accumulation (สะสม) ราคาพักตัวในกรอบแคบ แท่งเทียนสั้น Volume ต่ำ คนส่วนใหญ่เบื่อเพราะตลาดไม่ไปไหน แต่นี่คือจุดเริ่มก่อนราคาวิ่งแรง',
-          'Manipulation (หลอกล่อ) ราคาทะลุกรอบหลอกไปอีกฝั่ง กวาด Stop Loss ของคนส่วนใหญ่ แล้วกลับตัวอย่างรวดเร็ว',
-          'Distribution (กระจาย) ราคาวิ่งแรงไปทางเดียวสู่เป้าหมาย เช่น High หรือ Low เดิม หรือโซน FVG',
-        ],
-        closing: 'แท่งขาขึ้นจึงมักเดินแบบ Open → Low → High → Close ส่วนแท่งขาลงเดินแบบ Open → High → Low → Close ครับ',
-        note: 'ในคอร์ส AMD เป็นเรื่องแรกของ Module 1 แล้วใน Module 2 จะเอาไปจับกับเวลา เป็นโครงสร้าง AMDX กับ XAMD เพื่อดูว่า Quarter ไหนน่าเทรด',
-        points: ['ใช้ได้กับแท่งเทียนทุก Timeframe', 'ช่วง Manipulation มักกวาด Stop Loss ก่อนวิ่งจริง', 'รู้เป้าหมาย ก็รู้ว่าราคายังไปต่อได้อีกแค่ไหน'],
-      },
-      {
         key: 'ict',
         title: 'ICT Concept',
         tagline: 'ราคาวิ่งไปหาอะไร',
@@ -407,7 +391,7 @@ const th: Copy = {
         focusLabel: 'เรื่องหลัก ๆ ที่ต้องเข้าใจ',
         focus: ['Liquidity อยู่ตรงไหน คนส่วนใหญ่วางสต็อปไว้ตรงไหน', 'ตอนไหนที่โครงสร้างเปลี่ยน', 'โซนที่ราคามักกลับมา เช่น Order Block กับ Fair Value Gap'],
         closing: 'พอดูเรื่องพวกนี้เป็น ก็จะรู้ว่าตอนนี้ใครคุมราคาอยู่ แล้วทำไมราคาถึงวิ่งแบบนั้นครับ',
-        note: 'ในคอร์ส ICT คือส่วนที่ใช้อ่านราคา และใช้ยืนยันอีกชั้นก่อนเข้าออเดอร์',
+        note: 'ในคอร์ส ICT คือ Module 1 เริ่มจาก Power of 3 (AMD) แล้วต่อด้วย Price Delivery, PD Arrays และ Liquidity เป็นส่วนที่ใช้อ่านราคา และยืนยันอีกชั้นก่อนเข้าออเดอร์',
         points: ['ดูก่อนว่า Liquidity อยู่ตรงไหน', 'รอให้โครงสร้างยืนยันก่อนเข้า', 'ราคากับช่วงเวลาต้องตรงกันด้วย'],
       },
       {
@@ -422,13 +406,29 @@ const th: Copy = {
         note: 'ในคอร์ส ผมใช้ QT กรองว่าช่วงไหนควรรอ และช่วงไหนควรเริ่มมองหาจุดเข้า',
         points: ['ใช้ Timeframe ใหญ่หาทิศทาง', 'ใช้เวลากรองจังหวะเข้า', 'ใช้ได้ตั้งแต่รอบปีไปจนถึงรอบ 90 นาที'],
       },
+      {
+        key: 'fractal',
+        title: 'Fractal Model',
+        tagline: 'เข้าตรงไหน แล้วไปต่อได้อีกแค่ไหน',
+        intro: ['Fractal คือรูปแบบที่เกิดซ้ำ รูปแบบราคาเดียวกันเกิดได้ในทุกรอบเวลา เลยใช้แนวคิดเดียวกันได้ทุก Timeframe ไม่ว่าจะเทรดแบบ Position, Swing หรือ Scalping ครับ'],
+        highlight: 'Swing Low → Reversal → Expansion',
+        focusLabel: 'Fractal Model ช่วยตอบว่า',
+        focus: [
+          'แท่งเทียนแต่ละแท่งแข็งแรงหรือลังเล ดูจากตัวแท่งกับไส้',
+          'Swing High หรือ Low เกิดตรงไหน และยืนยันด้วย CISD แล้วหรือยัง',
+          'ราคาน่าจะไปต่อได้อีกแค่ไหน จากการทำ Projection',
+        ],
+        closing: 'ไม่ต้องเปลี่ยนวิธีคิดตามกรอบเวลา เปลี่ยนแค่ Timeframe ให้เข้ากับสไตล์การเทรดของตัวเองครับ',
+        note: 'ในคอร์ส Fractal Model คือ Module 3 ใช้หาจุดเข้าหลังรู้ทิศจาก ICT และรู้ช่วงเวลาจาก QT แล้ว ถ้าเงื่อนไขไม่ครบก็ไม่เทรด รอโอกาสถัดไป',
+        points: ['ใช้แนวคิดเดียวกันได้ทุก Timeframe', 'ยืนยัน Swing ด้วย CISD ก่อนเข้า', 'เงื่อนไขไม่ครบ = ไม่เทรด'],
+      },
     ],
     framework: {
       title: 'ใช้ 3 อย่างนี้ด้วยกันยังไง',
       rows: [
         { k: 'Quarterly Theory', v: 'ดูว่าน่าจะวิ่งช่วงไหน' },
         { k: 'ICT Concept', v: 'ดูว่าน่าจะวิ่งไปหาอะไร' },
-        { k: 'AMD Model', v: 'หาจังหวะเข้าในช่วงนั้น' },
+        { k: 'Fractal Model', v: 'หาจุดเข้าในช่วงนั้น' },
       ],
       closing: 'ก่อนเข้าออเดอร์ ผมจะไล่ตามลำดับนี้ทุกครั้งครับ',
       closingHighlight: 'ดูเวลาก่อน แล้วดูราคา แล้วค่อยหาจังหวะเข้า',

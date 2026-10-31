@@ -7,9 +7,9 @@ import { freeVideos, freeVideoTitles } from '~/data/media'
 const { t } = useLang()
 
 const systemMeta: Record<string, { icon: string; slug: string }> = {
-  amd: { icon: '/images/icon-amd.svg', slug: 'amd-model' },
   ict: { icon: '/images/icon-ict.png', slug: 'ict-concept' },
   qt: { icon: '/images/icon-qt.png', slug: 'quarterly-theory' },
+  fractal: { icon: '/images/icon-fractal.png', slug: 'fractal-model' },
 }
 
 const latest = articles.slice(0, 3)
