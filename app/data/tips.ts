@@ -21,7 +21,7 @@ export const tips: Tip[] = [
     title: 'Power of 3 (AMD)',
     icon: '/images/icon-amd.svg',
     theme: 'ict',
-    module: { en: 'From Module 1 · Power of 3', th: 'จาก Module 1 · Power of 3' },
+    module: { en: 'Module 1 · Power of 3', th: 'Module 1 · Power of 3' },
     tagline: { en: 'ICT Concept', th: 'ICT Concept' },
     excerpt: {
       en: 'Every candle on every timeframe hides the same three phases: Accumulation, Manipulation, Distribution.',
@@ -59,7 +59,7 @@ export const tips: Tip[] = [
     title: 'The 4 States of Price',
     icon: '/images/icon-ict.png',
     theme: 'ict',
-    module: { en: 'From Module 1 · Price Delivery', th: 'จาก Module 1 · Price Delivery' },
+    module: { en: 'Module 1 · Price Delivery', th: 'Module 1 · Price Delivery' },
     tagline: { en: 'Price Delivery', th: 'Price Delivery' },
     excerpt: {
       en: 'Price only ever does four things, and it always has to leave a range before it can retrace or reverse.',
@@ -103,7 +103,7 @@ export const tips: Tip[] = [
     title: 'Time Is Fractal',
     icon: '/images/icon-qt.png',
     theme: 'qt',
-    module: { en: 'From Module 2 · Time is Fractal', th: 'จาก Module 2 · Time is Fractal' },
+    module: { en: 'Module 2 · Time is Fractal', th: 'Module 2 · Time is Fractal' },
     tagline: { en: 'Quarterly Theory', th: 'Quarterly Theory' },
     excerpt: {
       en: 'The same cycle repeats from the year down to 90 minutes, and every cycle splits into four quarters.',
@@ -147,7 +147,7 @@ export const tips: Tip[] = [
     title: 'True Open as a Time Filter',
     icon: '/images/icon-qt.png',
     theme: 'qt',
-    module: { en: 'From Module 2 · True Opens', th: 'จาก Module 2 · True Opens' },
+    module: { en: 'Module 2 · True Opens', th: 'Module 2 · True Opens' },
     tagline: { en: 'Quarterly Theory', th: 'Quarterly Theory' },
     excerpt: {
       en: 'One price level that tells you which side to look for: above it, think short; below it, think long.',
@@ -187,7 +187,7 @@ export const tips: Tip[] = [
     title: 'Read Candles in Threes',
     icon: '/images/icon-fractal.png',
     theme: 'fractal',
-    module: { en: 'From Module 3 · Understand Candlestick', th: 'จาก Module 3 · Understand Candlestick' },
+    module: { en: 'Module 3 · Understand Candlestick', th: 'Module 3 · Understand Candlestick' },
     tagline: { en: 'Fractal Model', th: 'Fractal Model' },
     excerpt: {
       en: 'One candle is a word. Three candles tell the whole story, without needing an indicator.',

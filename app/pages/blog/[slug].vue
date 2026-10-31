@@ -29,7 +29,7 @@ useSeoMeta({
         <NuxtLink to="/blog" class="text-sm text-mist hover:text-gold-soft">{{ t.blog.back }}</NuxtLink>
         <header class="mt-8 flex flex-col items-start gap-5">
           <img :src="article.icon" alt="" width="384" height="384" class="icon-mask h-16 w-16" />
-          <p class="eyebrow">{{ article.tagline[lang] }}</p>
+          <p class="eyebrow" :class="trackingFix(article.tagline[lang])">{{ article.tagline[lang] }}</p>
           <h1 class="text-gold-gradient font-display text-5xl leading-none tracking-wide sm:text-6xl">{{ article.title }}</h1>
         </header>
 

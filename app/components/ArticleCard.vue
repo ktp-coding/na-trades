@@ -20,7 +20,7 @@ const themes: Record<Article['theme'], string> = {
   >
     <div class="flex items-center gap-4">
       <img :src="article.icon" alt="" width="384" height="384" loading="lazy" class="icon-mask h-14 w-14 shrink-0" />
-      <p class="text-xs tracking-[0.25em] text-gold uppercase">{{ article.tagline[lang] }}</p>
+      <p class="text-xs tracking-[0.25em] text-gold uppercase" :class="trackingFix(article.tagline[lang])">{{ article.tagline[lang] }}</p>
     </div>
     <h3 class="mt-5 font-display text-3xl tracking-wide text-white">{{ article.title }}</h3>
     <p class="mt-3 flex-1 text-sm leading-relaxed text-mist">{{ article.excerpt[lang] }}</p>

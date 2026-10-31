@@ -328,7 +328,7 @@ const en = {
       note: 'Best if you want to turn the knowledge into a clear trading process of your own.',
       how: 'Add it in the enrollment form after you choose a plan.',
     },
-    instructorTitle: 'Instructor',
+    instructorTitle: 'Taught by NA TRADES',
     instructorMore: 'Read the full story',
   },
   reviews: {
@@ -655,7 +655,7 @@ const th: Copy = {
       note: 'เหมาะกับคนที่อยากเอาความรู้ไปทำให้วิธีเทรดของตัวเองชัดขึ้นครับ',
       how: 'เลือกเพิ่มได้ในฟอร์มสมัคร หลังเลือกแบบเรียนครับ',
     },
-    instructorTitle: 'ใครเป็นคนสอน',
+    instructorTitle: 'สอนโดย NA TRADES',
     instructorMore: 'อ่านเรื่องของเราต่อ',
   },
   reviews: {

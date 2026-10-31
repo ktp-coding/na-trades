@@ -56,7 +56,7 @@ useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free
               <img :src="freePdf.cover" :alt="t.freePage.pdf.title" width="1200" height="1500" class="w-full rounded-3xl shadow-2xl shadow-black/50 ring-1 ring-gold/20 transition duration-500 group-hover:-translate-y-1" />
             </a>
             <div class="text-center md:text-left">
-              <p class="eyebrow">{{ t.freePage.pdf.eyebrow }}</p>
+              <p class="eyebrow" :class="trackingFix(t.freePage.pdf.eyebrow)">{{ t.freePage.pdf.eyebrow }}</p>
               <h2 class="mt-3 font-display text-4xl tracking-wide text-white sm:text-5xl">{{ t.freePage.pdf.title }}</h2>
               <p class="mt-4 text-slate-300">{{ t.freePage.pdf.sub }}</p>
               <div class="mt-7">

@@ -222,7 +222,7 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
           <!-- 1:1 Coaching add-on: info only, it is picked in the enroll form after the plan -->
           <article class="mt-8 grid gap-6 rounded-3xl border border-white/[0.08] bg-panel p-6 sm:p-8 md:grid-cols-[1fr_1.2fr]">
             <div class="flex flex-col">
-              <p class="eyebrow">{{ t.coursePage.coach.tag }}</p>
+              <p class="eyebrow" :class="trackingFix(t.coursePage.coach.tag)">{{ t.coursePage.coach.tag }}</p>
               <h3 class="mt-2 font-display text-3xl tracking-wide text-white">{{ t.coursePage.coach.title }}</h3>
               <p class="mt-2 text-mist">{{ t.coursePage.coach.desc }}</p>
               <p class="mt-5 font-display text-3xl tracking-wide text-gold">{{ t.coursePage.coach.price }}</p>
@@ -263,9 +263,10 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
             <img src="/images/icon-na.png" alt="NA TRADES" width="384" height="384" loading="lazy" class="icon-mask relative h-28 w-28" />
           </div>
           <div class="text-center sm:text-left">
-            <p class="eyebrow">{{ t.coursePage.instructorTitle }}</p>
+            <p class="eyebrow">Instructor</p>
+            <h3 class="mt-2 text-2xl text-white">{{ t.coursePage.instructorTitle }}</h3>
             <p class="mt-3 text-lg text-gold-soft">{{ t.about.paragraphs[0] }}</p>
-            <p class="mt-3 text-slate-300">{{ t.about.paragraphs[3] }}</p>
+            <p class="mt-3 text-slate-300">{{ t.about.paragraphs[1] }}</p>
             <NuxtLink to="/about" class="mt-4 inline-flex items-center gap-2 text-sm text-gold hover:text-gold-soft">
               {{ t.coursePage.instructorMore }} <span aria-hidden="true">→</span>
             </NuxtLink>
