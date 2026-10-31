@@ -34,6 +34,20 @@ const bank = {
   no: String(config.bankAccountNo || ''),
   owner: String(config.bankAccountName || ''),
 }
+// Logo picked from the bank name in NUXT_PUBLIC_BANK_NAME (English code or Thai name).
+const bankLogos: [RegExp, string][] = [
+  [/kbank|kasikorn|กสิกร/i, 'kbank'],
+  [/scb|siam commercial|ไทยพาณิชย์/i, 'scb'],
+  [/bbl|bangkok bank|กรุงเทพ/i, 'bbl'],
+  [/ktb|krungthai|กรุงไทย/i, 'ktb'],
+  [/bay|krungsri|กรุงศรี/i, 'bay'],
+  [/ttb|tmbthanachart|ทหารไทย|ทีทีบี/i, 'ttb'],
+  [/gsb|ออมสิน/i, 'gsb'],
+]
+const bankLogo = computed(() => {
+  const hit = bankLogos.find(([re]) => re.test(bank.name))
+  return hit ? `/images/banks/${hit[1]}.webp` : ''
+})
 
 const scrollTop = () => {
   if (import.meta.client) window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -267,7 +281,10 @@ onBeforeUnmount(() => {
               <dl class="mt-6 divide-y divide-white/5 rounded-2xl border border-white/10 bg-ink-2">
                 <div class="flex items-center justify-between gap-4 px-5 py-4">
                   <dt class="text-sm text-mist">{{ t.enroll.bank }}</dt>
-                  <dd class="text-right text-white">{{ bank.name || '—' }}</dd>
+                  <dd class="flex items-center justify-end gap-3 text-right text-white">
+                    <img v-if="bankLogo" :src="bankLogo" alt="" width="200" height="200" class="h-9 w-9 shrink-0 rounded-full bg-white" />
+                    <span>{{ bank.name || '—' }}</span>
+                  </dd>
                 </div>
                 <div class="flex items-center justify-between gap-4 px-5 py-4">
                   <dt class="text-sm text-mist">{{ t.enroll.accountNo }}</dt>
