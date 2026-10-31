@@ -60,6 +60,12 @@ export const ENROLL_FIELDS: EnrollField[] = [
 
 export const fieldsForPlan = (plan: PlanKey) => ENROLL_FIELDS.filter((f) => !f.plans || f.plans.includes(plan))
 
+/** "12,900", "12900" and "฿12,900" all give 12900. Empty or invalid gives 0. */
+export const parsePrice = (p: string) => {
+  const n = Number(String(p).replace(/[,\s฿]/g, ''))
+  return p && Number.isFinite(n) && n > 0 ? n : 0
+}
+
 export const SLIP_MAX_BYTES = 4 * 1024 * 1024
 export const SLIP_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf']
 

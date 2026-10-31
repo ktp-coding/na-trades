@@ -11,6 +11,7 @@ useHead({ title: () => `${t.value.enroll.title} · NA TRADES`, meta: [{ name: 'r
 // --- State ---------------------------------------------------------------
 const step = ref<1 | 2 | 3 | 4>(1)
 const plan = ref<PlanKey>(PLAN_KEYS.includes(route.query.plan as PlanKey) ? (route.query.plan as PlanKey) : 'online')
+const coaching = ref(false)
 const values = reactive<Record<string, string>>({})
 for (const f of fieldsForPlan('private').concat(fieldsForPlan('online'))) values[f.key] = ''
 const consent = ref(false)
@@ -26,7 +27,8 @@ const copied = ref(false)
 const dragging = ref(false)
 
 const fields = computed(() => fieldsForPlan(plan.value))
-const { priceLabel } = usePlanPrice()
+const { priceLabel, coachingLabel, totalLabel } = usePlanPrice()
+const total = computed(() => totalLabel(plan.value, coaching.value))
 const bank = {
   name: String(config.bankName || ''),
   no: String(config.bankAccountNo || ''),
@@ -94,6 +96,7 @@ const submit = async () => {
   }
   const fd = new FormData()
   fd.append('plan', plan.value)
+  fd.append('coaching', coaching.value ? 'yes' : 'no')
   for (const f of fields.value) fd.append(f.key, (values[f.key] ?? '').trim())
   fd.append('consent', consent.value ? 'yes' : 'no')
   fd.append('marketing', marketing.value ? 'yes' : 'no')
@@ -165,6 +168,29 @@ onBeforeUnmount(() => {
                   <span class="mt-1 block text-sm text-mist">{{ t.enroll.plans[key].desc }}</span>
                 </label>
               </div>
+
+              <!-- Add-on, shown once a plan is picked -->
+              <h2 class="mt-8 text-lg text-white">{{ t.enroll.addonTitle }}</h2>
+              <label
+                class="mt-4 block cursor-pointer rounded-2xl border p-4 transition"
+                :class="coaching ? 'border-gold bg-gold/[0.06]' : 'border-white/10 hover:border-white/25'"
+              >
+                <span class="flex items-start gap-3">
+                  <input v-model="coaching" type="checkbox" class="mt-1 h-4 w-4 shrink-0 accent-[#c9a96a]" />
+                  <span class="flex-1">
+                    <span class="flex items-start justify-between gap-3">
+                      <span class="text-white">{{ t.coursePage.coach.title }}</span>
+                      <span class="shrink-0 font-display text-xl tracking-wide text-gold-soft">+ {{ coachingLabel() }}</span>
+                    </span>
+                    <span class="mt-1 block text-sm text-mist">{{ t.coursePage.coach.desc }}</span>
+                    <ul class="mt-3 space-y-1.5 text-sm text-slate-300">
+                      <li v-for="item in t.coursePage.coach.items" :key="item" class="flex gap-3">
+                        <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />{{ item }}
+                      </li>
+                    </ul>
+                  </span>
+                </span>
+              </label>
 
               <h2 class="mt-8 text-lg text-white">{{ t.enroll.detailsTitle }}</h2>
               <p class="mt-1 text-sm text-mist">{{ t.enroll.detailsSub }}</p>
@@ -258,7 +284,7 @@ onBeforeUnmount(() => {
                 </div>
                 <div class="flex items-center justify-between gap-4 px-5 py-4">
                   <dt class="text-sm text-mist">{{ t.enroll.amount }}</dt>
-                  <dd class="font-display text-3xl tracking-wide text-gold">{{ priceLabel(plan) }}</dd>
+                  <dd class="font-display text-3xl tracking-wide text-gold">{{ total }}</dd>
                 </div>
               </dl>
               <div class="mt-8 flex flex-col-reverse justify-between gap-3 sm:flex-row">
@@ -321,9 +347,19 @@ onBeforeUnmount(() => {
             <p class="text-sm text-mist">{{ t.enroll.summary }}</p>
             <p class="mt-3 text-white">{{ t.enroll.plans[plan].name }}</p>
             <p class="text-xs text-mist">{{ t.enroll.sub }}</p>
-            <div class="mt-4 flex items-end justify-between border-t border-white/5 pt-4">
-              <span class="text-sm text-mist">{{ t.enroll.amount }}</span>
-              <span class="font-display text-2xl tracking-wide text-gold">{{ priceLabel(plan) }}</span>
+            <div class="mt-4 space-y-2 border-t border-white/5 pt-4 text-sm">
+              <div class="flex justify-between gap-3">
+                <span class="text-mist">{{ t.enroll.plans[plan].name }}</span>
+                <span class="text-white">{{ priceLabel(plan) }}</span>
+              </div>
+              <div v-if="coaching" class="flex justify-between gap-3">
+                <span class="text-mist">{{ t.coursePage.coach.title }}</span>
+                <span class="text-white">+ {{ coachingLabel() }}</span>
+              </div>
+            </div>
+            <div class="mt-3 flex items-end justify-between border-t border-white/5 pt-3">
+              <span class="text-sm text-mist">{{ t.enroll.total }}</span>
+              <span class="font-display text-2xl tracking-wide text-gold">{{ total }}</span>
             </div>
             <p v-if="!enrollEnabled" class="mt-4 text-xs text-mist/70">{{ t.enroll.errors.closed }}</p>
             <a v-if="lineLink" :href="lineLink" target="_blank" rel="noopener noreferrer" class="mt-4 block text-sm text-gold-soft hover:underline">{{ t.enroll.help }} →</a>

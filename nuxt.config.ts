@@ -102,6 +102,7 @@ export default defineNuxtConfig({
       enrollEnabled: "",
       pricePrivate: "25900",
       priceOnline: "15900",
+      priceCoaching: "10000",
       bankName: "",
       bankAccountNo: "",
       bankAccountName: "",

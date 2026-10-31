@@ -1,5 +1,5 @@
 import { randomBytes } from 'node:crypto'
-import { PLAN_KEYS, SLIP_MAX_BYTES, fieldsForPlan, invalidFields, type PlanKey } from '#shared/enroll'
+import { PLAN_KEYS, SLIP_MAX_BYTES, parsePrice, fieldsForPlan, invalidFields, type PlanKey } from '#shared/enroll'
 
 // Accepts the enrollment form (multipart) and forwards it to the Google Apps
 // Script web app, which writes the row to Google Sheets and saves the slip
@@ -72,13 +72,17 @@ export default defineEventHandler(async (event) => {
   const now = new Date()
   const ymd = now.toISOString().slice(2, 10).replace(/-/g, '')
   const orderId = `NA-${ymd}-${randomBytes(3).toString('hex').toUpperCase()}`
-  const price = String(plan === 'private' ? config.public.pricePrivate : config.public.priceOnline || '')
+  const coaching = values.coaching === 'yes'
+  const base = parsePrice(String((plan === 'private' ? config.public.pricePrivate : config.public.priceOnline) || ''))
+  const extra = coaching ? parsePrice(String(config.public.priceCoaching || '')) : 0
+  const price = base && (!coaching || extra) ? String(base + extra) : ''
 
   // Thai column names, matching the existing Google Form response sheets.
   const row: Record<string, string> = {
     'ประทับเวลา': now.toLocaleString('sv-SE', { timeZone: 'Asia/Bangkok' }),
     'เลขที่การสมัคร': orderId,
     'รูปแบบ': plan === 'private' ? 'เรียนสด' : 'คลิปออนไลน์',
+    'เรียนตัวต่อตัว 1:1': coaching ? 'ใช่' : 'ไม่',
     'ยอดที่ต้องโอน': price,
   }
   for (const f of fieldsForPlan(plan)) row[f.label.th] = cell((values[f.key] ?? '').trim())

@@ -219,16 +219,14 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
           </div>
           <p class="mt-6 text-center text-xs text-mist/70">{{ t.course.ctaNote }}</p>
 
-          <!-- 1:1 Coaching add-on (arranged by message, not through the form) -->
+          <!-- 1:1 Coaching add-on: info only, it is picked in the enroll form after the plan -->
           <article class="mt-8 grid gap-6 rounded-3xl border border-white/[0.08] bg-panel p-6 sm:p-8 md:grid-cols-[1fr_1.2fr]">
             <div class="flex flex-col">
               <p class="eyebrow">{{ t.coursePage.coach.tag }}</p>
               <h3 class="mt-2 font-display text-3xl tracking-wide text-white">{{ t.coursePage.coach.title }}</h3>
               <p class="mt-2 text-mist">{{ t.coursePage.coach.desc }}</p>
               <p class="mt-5 font-display text-3xl tracking-wide text-gold">{{ t.coursePage.coach.price }}</p>
-              <div class="mt-auto pt-6">
-                <a href="#contact" class="btn-ghost w-full sm:w-auto">{{ t.coursePage.coach.cta }}</a>
-              </div>
+              <p class="mt-auto pt-5 text-sm text-mist">{{ t.coursePage.coach.how }}</p>
             </div>
             <div>
               <ul class="space-y-2.5 text-sm text-slate-300">
