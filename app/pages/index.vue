@@ -1,44 +1,13 @@
 <script setup lang="ts">
-const config = useRuntimeConfig().public
+import { articles } from '~/data/articles'
 
-// Env values arrive as strings. Only accept http(s) links so a bad value
-// can never turn into a javascript: URL.
-const safeUrl = (value: unknown): string => {
-  if (typeof value !== 'string' || !value.trim()) return ''
-  try {
-    const url = new URL(value.trim())
-    return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : ''
-  } catch {
-    return ''
-  }
-}
-const isOn = (value: unknown) => String(value ?? '').trim().toLowerCase() === 'true'
+const { joinHref, joinTarget, privateCourseLink, showBuyCourse, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
 
-const courseLink = safeUrl(config.courseLink)
-const privateCourseLink = safeUrl(config.privateCourseLink)
-const showBuyCourse = isOn(config.showBuyCourse)
-const showBuyPrivateCourse = isOn(config.showBuyPrivateCourse)
-const blobBaseUrl = safeUrl(config.blobBaseUrl).replace(/\/$/, '')
-const joinHref = courseLink || '#contact'
-
-const socials = [
-  { name: 'youtube', label: 'YouTube', href: safeUrl(config.youtubeLink) },
-  { name: 'facebook', label: 'Facebook', href: safeUrl(config.fbLink) },
-  { name: 'instagram', label: 'Instagram', href: safeUrl(config.igLink) },
-  { name: 'tiktok', label: 'TikTok', href: safeUrl(config.tiktokLink) },
-  { name: 'discord', label: 'Discord', href: safeUrl(config.discordLink) },
-  { name: 'telegram', label: 'Telegram', href: safeUrl(config.telegramLink) },
-].filter((s) => s.href) as { name: 'youtube' | 'facebook' | 'instagram' | 'tiktok' | 'discord' | 'telegram'; label: string; href: string }[]
-
-const year = new Date().getFullYear()
-
-// --- Navigation -----------------------------------------------------------
-const isMenuOpen = ref(false)
-const scrolled = ref(false)
 const nav = [
-  { href: '#why', label: 'ทำไมต้องคอร์สนี้' },
+  { href: '#about', label: 'About' },
   { href: '#modules', label: 'เนื้อหา' },
   { href: '#offer', label: 'สิ่งที่ได้' },
+  { href: '/blog', label: 'บทความ' },
   { href: '#free', label: 'เรียนฟรี' },
   { href: '#faq', label: 'FAQ' },
 ]
@@ -180,22 +149,11 @@ const closeImage = () => {
 }
 
 const onKey = (e: KeyboardEvent) => {
-  if (e.key === 'Escape') {
-    if (selectedImage.value) closeImage()
-    isMenuOpen.value = false
-  }
+  if (e.key === 'Escape' && selectedImage.value) closeImage()
 }
-const onScroll = () => {
-  scrolled.value = window.scrollY > 24
-}
-onMounted(() => {
-  window.addEventListener('keydown', onKey)
-  window.addEventListener('scroll', onScroll, { passive: true })
-  onScroll()
-})
+onMounted(() => window.addEventListener('keydown', onKey))
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', onKey)
-  window.removeEventListener('scroll', onScroll)
   document.body.style.overflow = ''
 })
 </script>
@@ -206,42 +164,7 @@ onBeforeUnmount(() => {
     <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[1100px] bg-[radial-gradient(ellipse_at_top,rgba(30,58,138,0.35),transparent_60%)]" />
     <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_900px)]" />
 
-    <!-- Header -->
-    <header
-      class="fixed inset-x-0 top-0 z-40 transition-all duration-300"
-      :class="scrolled || isMenuOpen ? 'border-b border-white/5 bg-ink/80 backdrop-blur-xl' : 'bg-transparent'"
-    >
-      <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-20 sm:px-6" aria-label="เมนูหลัก">
-        <a href="#top" class="flex items-center gap-3">
-          <img src="/images/icon-na.png" alt="" width="40" height="40" class="icon-mask h-10 w-10" />
-          <span class="text-sm tracking-[0.3em] text-gold-soft">N|A TRADES</span>
-        </a>
-        <div class="hidden items-center gap-8 md:flex">
-          <a v-for="item in nav" :key="item.href" :href="item.href" class="text-sm text-mist transition hover:text-gold-soft">{{ item.label }}</a>
-        </div>
-        <div class="flex items-center gap-2">
-          <a :href="joinHref" :target="courseLink ? '_blank' : undefined" rel="noopener noreferrer" class="btn-gold !px-5 !py-2 !text-sm">สมัครเรียน</a>
-          <button
-            type="button"
-            class="-mr-2 rounded-full p-2 text-slate-200 md:hidden"
-            :aria-expanded="isMenuOpen"
-            aria-controls="mobile-menu"
-            aria-label="เปิดเมนู"
-            @click="isMenuOpen = !isMenuOpen"
-          >
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-              <path v-if="!isMenuOpen" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
-              <path v-else stroke-linecap="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </nav>
-      <div v-if="isMenuOpen" id="mobile-menu" class="border-t border-white/5 md:hidden">
-        <div class="mx-auto flex max-w-6xl flex-col px-4 py-3">
-          <a v-for="item in nav" :key="item.href" :href="item.href" class="py-3 text-mist hover:text-gold-soft" @click="isMenuOpen = false">{{ item.label }}</a>
-        </div>
-      </div>
-    </header>
+    <SiteHeader :nav="nav" />
 
     <main id="top">
       <!-- Hero -->
@@ -265,7 +188,7 @@ onBeforeUnmount(() => {
           </p>
 
           <div class="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
-            <a :href="joinHref" :target="courseLink ? '_blank' : undefined" rel="noopener noreferrer" class="btn-gold w-full sm:w-auto">
+            <a :href="joinHref" :target="joinTarget" rel="noopener noreferrer" class="btn-gold w-full sm:w-auto">
               สมัครเรียนเลย
               <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" /></svg>
             </a>
@@ -278,6 +201,38 @@ onBeforeUnmount(() => {
             <li class="card px-4 py-3"><span class="block font-display text-2xl text-gold-soft">Whop</span>เข้าเรียนได้ทันที</li>
             <li class="card px-4 py-3"><span class="block font-display text-2xl text-gold-soft">Discord</span>คอมมูนิตี้นักเรียน</li>
           </ul>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="scroll-mt-24 px-4 py-16 sm:px-6 sm:py-24">
+        <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+          <div>
+            <p class="eyebrow mb-4">About</p>
+            <h2 class="section-title">Price only makes sense when time and structure align.</h2>
+          </div>
+          <div class="card space-y-4 p-6 leading-relaxed text-slate-300 sm:p-8">
+            <p>
+              Our approach combines ICT Concepts with Quarterly Theory to explain how price is delivered, why it
+              moves, and when meaningful expansion is most likely to occur. Rather than reacting to indicators or
+              isolated patterns, every trade is framed within market structure, liquidity, and time-based context.
+            </p>
+            <p>
+              This framework forms the foundation of the Understand The Logic of Time &amp; Price course — a
+              structured system designed to develop clarity, discipline, and consistency. The goal is not just
+              better entries, but a deeper understanding of market behavior that supports long-term growth,
+              especially within the demands of prop firm trading.
+            </p>
+            <p>
+              NA TRADES is committed to mastering the process, respecting market logic, and building repeatable
+              execution through time, price, and intent.
+            </p>
+            <div class="grid gap-3 border-t border-white/5 pt-5 text-sm sm:grid-cols-3">
+              <p><span class="block text-gold-soft">Quarterly Theory</span>defines when the market is likely to move</p>
+              <p><span class="block text-gold-soft">ICT Concept</span>explains why price behaves the way it does</p>
+              <p><span class="block text-gold-soft">AMD Models</span>define how to execute within that window</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -387,7 +342,7 @@ onBeforeUnmount(() => {
                 </li>
               </ul>
               <div class="relative mt-10 flex flex-col items-center">
-                <a :href="joinHref" :target="courseLink ? '_blank' : undefined" rel="noopener noreferrer" class="btn-gold w-full sm:w-auto sm:min-w-72">ดูราคาและสมัครผ่าน Whop</a>
+                <a :href="joinHref" :target="joinTarget" rel="noopener noreferrer" class="btn-gold w-full sm:w-auto sm:min-w-72">ดูราคาและสมัครผ่าน Whop</a>
                 <p class="mt-4 text-xs text-mist/70">ชำระเงินผ่าน Whop · ได้สิทธิ์เข้าเรียนทันทีหลังสมัคร</p>
               </div>
             </div>
@@ -436,6 +391,22 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
+      <!-- Blog -->
+      <section id="blog" class="scroll-mt-24 px-4 py-16 sm:px-6 sm:py-24">
+        <div class="mx-auto max-w-6xl">
+          <div class="mb-10 flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:items-end sm:text-left">
+            <div>
+              <p class="eyebrow mb-4">Blog</p>
+              <h2 class="section-title">อ่านแนวคิดก่อนเรียน</h2>
+            </div>
+            <NuxtLink to="/blog" class="btn-ghost !py-2.5 !text-sm">บทความทั้งหมด</NuxtLink>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <ArticleCard v-for="a in articles.slice(1, 5)" :key="a.slug" :article="a" />
+          </div>
+        </div>
+      </section>
+
       <!-- FAQ -->
       <section id="faq" class="scroll-mt-24 px-4 py-16 sm:px-6 sm:py-24">
         <div class="mx-auto max-w-3xl">
@@ -464,41 +435,12 @@ onBeforeUnmount(() => {
           </div>
           <h2 class="section-title">ตลาดไม่ได้สุ่ม<br />มันมีเวลาของมัน</h2>
           <p class="mt-4 text-mist">เริ่มอ่านให้ออกตั้งแต่วันนี้</p>
-          <a :href="joinHref" :target="courseLink ? '_blank' : undefined" rel="noopener noreferrer" class="btn-gold mt-8">สมัครเรียนเลย</a>
+          <a :href="joinHref" :target="joinTarget" rel="noopener noreferrer" class="btn-gold mt-8">สมัครเรียนเลย</a>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer id="contact" class="border-t border-white/5 px-4 py-12 sm:px-6">
-      <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
-        <div class="flex items-center gap-3">
-          <img src="/images/icon-na.png" alt="" width="32" height="32" loading="lazy" class="icon-mask h-8 w-8" />
-          <span class="text-sm tracking-[0.3em] text-gold-soft">N|A TRADES</span>
-        </div>
-        <div v-if="socials.length" class="flex flex-wrap justify-center gap-3">
-          <a
-            v-for="s in socials"
-            :key="s.name"
-            :href="s.href"
-            target="_blank"
-            rel="noopener noreferrer"
-            :aria-label="s.label"
-            class="flex h-11 w-11 items-center justify-center rounded-full border border-gold/20 text-gold-soft transition hover:border-gold/60 hover:bg-gold/10"
-          >
-            <SocialIcon :name="s.name" class="h-5 w-5" />
-          </a>
-        </div>
-        <a href="mailto:natrades.contact@gmail.com" class="flex items-center gap-2 text-sm text-mist hover:text-gold-soft">
-          <SocialIcon name="mail" class="h-4 w-4" />
-          natrades.contact@gmail.com
-        </a>
-        <p class="max-w-2xl text-xs leading-relaxed text-mist/60">
-          การเทรดมีความเสี่ยงสูง เนื้อหาทั้งหมดเพื่อการศึกษา ไม่ใช่คำแนะนำการลงทุน ผลลัพธ์ในอดีตไม่ได้รับประกันผลในอนาคต
-        </p>
-        <p class="text-xs text-mist/50">© {{ year }} N|A TRADES. All rights reserved.</p>
-      </div>
-    </footer>
+    <SiteFooter />
 
     <!-- Image modal -->
     <Transition
