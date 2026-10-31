@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bebas Neue", "Kanit", sans-serif;
+  --font-sans: "Kanit", system-ui, sans-serif;
+
+  /* Text one step larger than Tailwind's defaults: Thai in Kanit reads small. */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.6;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.65;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.7;
+  --text-lg: 1.1875rem;
+  --text-lg--line-height: 1.65;
+  --text-xl: 1.3125rem;
+  --text-xl--line-height: 1.6;
+
+  --color-ink: #050507;
+  --color-ink-2: #0b0b0f;
+  --color-panel: #101014;
+  --color-line: #222228;
+
+  --color-gold: #c9a96a;
+  --color-gold-soft: #e7d3a4;
+  --color-gold-deep: #8d7140;
+  --color-mist: #bdbdc7;
+
+  --color-ict: #1e3a8a;
+  --color-ict-glow: #3b5bdb;
+  --color-qt: #4c1d95;
+  --color-qt-glow: #7c4ddb;
+  --color-fractal: #0f4c4c;
+  --color-fractal-glow: #1f8a8a;
+}
+
+/* Desktop gets one more step of text size. */
+@media (min-width: 1024px) {
+  :root {
+    --text-xs: 0.875rem;
+    --text-sm: 1rem;
+    --text-base: 1.125rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.375rem;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ink font-sans font-normal text-slate-200 antialiased;
+    /* A soft dark halo keeps text crisp over the starfield. */
+    text-shadow: 0 0 14px rgb(0 0 0 / 0.85);
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-gold) 35%, transparent);
+    color: #fff;
+  }
+  /* Pointer on everything clickable (Tailwind 4 no longer sets it on buttons). */
+  button:not(:disabled),
+  [role='button'],
+  [role='tab'],
+  summary,
+  select,
+  label:has(> input[type='file']),
+  label:has(> input[type='checkbox']),
+  input[type='checkbox'] {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .text-gold-gradient {
+    text-shadow: none;
+    background: linear-gradient(180deg, #f6e7c1 0%, #d9bc80 45%, #a8864a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .btn-gold {
+    text-shadow: none;
+    @apply relative isolate overflow-hidden inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-base font-medium text-ink transition duration-300;
+    background: linear-gradient(180deg, #ecd9a8 0%, #c9a96a 55%, #a8864a 100%);
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.15) inset, 0 10px 30px -10px rgb(201 169 106 / 0.6);
+  }
+  .btn-gold:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.25) inset, 0 14px 40px -10px rgb(201 169 106 / 0.8);
+  }
+  /* A light sheen passes over gold buttons on hover. */
+  .btn-gold::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.55) 50%, transparent 70%);
+    transform: translateX(-120%);
+    pointer-events: none;
+  }
+  .btn-gold:hover::after {
+    animation: sheen-once 0.9s ease-out;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold/30 px-7 py-3.5 text-base text-gold-soft transition duration-300 hover:border-gold/70 hover:bg-gold/5;
+  }
+  .eyebrow {
+    @apply text-xs font-normal tracking-[0.35em] text-gold uppercase sm:text-sm;
+  }
+  .section-title {
+    @apply text-3xl leading-tight font-medium text-white sm:text-4xl md:text-5xl;
+  }
+  /* Borderless dark glow behind long text, so stars don't sit under the words. */
+  .reading-veil {
+    position: relative;
+    isolation: isolate;
+  }
+  .reading-veil::before {
+    content: '';
+    position: absolute;
+    inset: -4rem -6rem;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse closest-side, rgb(5 5 7 / 0.88) 60%, transparent);
+  }
+  .card {
+    @apply relative rounded-3xl border border-white/[0.08] bg-ink-2/90 backdrop-blur-md;
+  }
+  /* Soft gold light under the pointer (position set by plugins/motion.client.ts). */
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(231 211 164 / 0.09), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
+  /* Sections fade up as they scroll into view (class added by the motion plugin). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .aura {
+    background: radial-gradient(circle, rgb(255 255 255 / 0.22) 0%, rgb(255 255 255 / 0.06) 35%, transparent 68%);
+    animation: aura-pulse 3.5s ease-in-out infinite;
+  }
+  /* Black-and-white logo. The big ones glow brighter and dimmer like a star. */
+  .logo-mono {
+    filter: grayscale(1) contrast(1.15);
+  }
+  .logo-star {
+    filter: grayscale(1) contrast(1.15) brightness(1) drop-shadow(0 0 8px rgb(255 255 255 / 0.2));
+    animation: star-glow 3.5s ease-in-out infinite;
+  }
+  .icon-mask {
+    -webkit-mask-image: radial-gradient(circle closest-side, #000 80%, transparent 100%);
+    mask-image: radial-gradient(circle closest-side, #000 80%, transparent 100%);
+  }
+}
+
+@keyframes star-glow {
+  0%,
+  100% {
+    filter: grayscale(1) contrast(1.15) brightness(0.7) drop-shadow(0 0 3px rgb(255 255 255 / 0.07));
+  }
+  50% {
+    filter: grayscale(1) contrast(1.15) brightness(1.4) drop-shadow(0 0 34px rgb(255 255 255 / 0.75));
+  }
+}
+@keyframes aura-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-star,
+  .aura {
+    animation: none;
+  }
+}
+
+@keyframes sheen-once {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+/* Lenis handles smooth scrolling; native smooth scroll would fight it. */
+html.lenis {
+  scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
