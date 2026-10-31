@@ -239,6 +239,9 @@ const en = {
     community: 'Follow & community',
     communitySub: 'New videos, chart breakdowns and updates are posted here first.',
     line: 'LINE',
+    youtube: 'More videos on YouTube',
+    readTitle: 'Keep reading',
+    readSub: 'Short articles on the ideas from the videos. Free to read.',
   },
   coursePage: {
     forTitle: 'This course is for you if',
@@ -525,6 +528,9 @@ const th: Copy = {
     community: 'ติดตามและพูดคุย',
     communitySub: 'มีคลิปใหม่หรืออัปเดตอะไร จะลงที่นี่ก่อนครับ',
     line: 'LINE',
+    youtube: 'ดูคลิปอื่น ๆ ใน YouTube',
+    readTitle: 'อ่านต่อ',
+    readSub: 'บทความสั้น ๆ ที่เล่าเรื่องในคลิปละเอียดขึ้น อ่านฟรีครับ',
   },
   coursePage: {
     forTitle: 'เหมาะกับใคร',
