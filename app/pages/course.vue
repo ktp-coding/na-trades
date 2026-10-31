@@ -68,7 +68,7 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
           <div class="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
             <a :href="joinHref" :target="joinTarget" rel="noopener noreferrer" class="btn-gold w-full sm:w-auto">
               {{ t.course.cta }}
-              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <FaIcon name="arrow-right" />
             </a>
             <a href="#plans" class="btn-ghost w-full sm:w-auto">{{ t.coursePage.plansTitle }}</a>
           </div>
@@ -269,7 +269,7 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
             <p class="mt-3 text-lg text-gold-soft">{{ t.about.paragraphs[0] }}</p>
             <p class="mt-3 text-slate-300">{{ t.about.paragraphs[1] }}</p>
             <NuxtLink to="/about" class="mt-4 inline-flex items-center gap-2 text-sm text-gold hover:text-gold-soft">
-              {{ t.coursePage.instructorMore }} <span aria-hidden="true">→</span>
+              {{ t.coursePage.instructorMore }} <FaIcon name="arrow-right" />
             </NuxtLink>
           </div>
         </div>

@@ -309,7 +309,7 @@ onBeforeUnmount(() => {
                 </div>
               </dl>
               <div class="mt-8 flex flex-col-reverse justify-between gap-3 sm:flex-row">
-                <button type="button" class="btn-ghost" @click="step = 1">{{ t.enroll.back }}</button>
+                <button type="button" class="btn-ghost" @click="step = 1"><FaIcon name="arrow-left" /> {{ t.enroll.back }}</button>
                 <button type="button" class="btn-gold" @click="step = 3; scrollTop()">{{ t.enroll.transferred }}</button>
               </div>
             </div>
@@ -345,7 +345,7 @@ onBeforeUnmount(() => {
               <p v-if="errors.slip" class="mt-2 text-sm text-red-300">{{ errors.slip }}</p>
               <p v-if="submitError" class="mt-4 rounded-xl border border-red-400/30 bg-red-400/10 px-4 py-3 text-sm text-red-200">{{ submitError }}</p>
               <div class="mt-8 flex flex-col-reverse justify-between gap-3 sm:flex-row">
-                <button type="button" class="btn-ghost" :disabled="sending" @click="step = 2">{{ t.enroll.back }}</button>
+                <button type="button" class="btn-ghost" :disabled="sending" @click="step = 2"><FaIcon name="arrow-left" /> {{ t.enroll.back }}</button>
                 <button type="button" class="btn-gold disabled:opacity-60" :disabled="sending" @click="submit">
                   <svg v-if="sending" viewBox="0 0 24 24" class="h-4 w-4 animate-spin" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".25" stroke-width="3" /><path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round" /></svg>
                   {{ sending ? t.enroll.sending : t.enroll.submit }}
@@ -389,7 +389,7 @@ onBeforeUnmount(() => {
               <span class="font-display text-2xl tracking-wide text-gold">{{ total }}</span>
             </div>
             <p v-if="!enrollEnabled" class="mt-4 text-xs text-mist/70">{{ t.enroll.errors.closed }}</p>
-            <a v-if="lineLink" :href="lineLink" target="_blank" rel="noopener noreferrer" class="mt-4 block text-sm text-gold-soft hover:underline">{{ t.enroll.help }} →</a>
+            <a v-if="lineLink" :href="lineLink" target="_blank" rel="noopener noreferrer" class="mt-4 block text-sm text-gold-soft hover:underline">{{ t.enroll.help }} <FaIcon name="arrow-up-right-from-square" class="ml-1" /></a>
           </aside>
         </div>
       </div>

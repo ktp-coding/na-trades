@@ -54,7 +54,7 @@ onMounted(() => {
           <div class="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
             <NuxtLink to="/blog" class="btn-gold w-full sm:w-auto">
               {{ t.home.readArticles }}
-              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <FaIcon name="arrow-right" />
             </NuxtLink>
             <NuxtLink to="/course" class="btn-ghost w-full sm:w-auto">{{ t.home.seeCourse }}</NuxtLink>
           </div>
@@ -71,7 +71,7 @@ onMounted(() => {
             <p>{{ t.about.paragraphs[1] }}</p>
             <p class="text-gold-soft">{{ t.about.paragraphs[3] }}</p>
             <NuxtLink to="/about" class="inline-flex items-center gap-2 text-sm text-gold hover:text-gold-soft">
-              {{ t.home.aboutMore }} <span aria-hidden="true">→</span>
+              {{ t.home.aboutMore }} <FaIcon name="arrow-right" />
             </NuxtLink>
           </div>
         </div>
@@ -96,7 +96,7 @@ onMounted(() => {
                 <p v-if="c.highlight" class="text-gold-soft">{{ c.highlight }}</p>
               </div>
               <span class="mt-auto inline-flex items-center gap-2 pt-6 text-sm text-gold group-hover:text-gold-soft">
-                {{ t.home.readArticle }} <span aria-hidden="true">→</span>
+                {{ t.home.readArticle }} <FaIcon name="arrow-right" />
               </span>
             </NuxtLink>
           </div>
@@ -124,7 +124,7 @@ onMounted(() => {
         <div class="mx-auto max-w-6xl">
           <div class="mb-10 flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
             <h2 class="section-title">{{ t.home.latest }}</h2>
-            <NuxtLink to="/blog" class="text-sm text-gold hover:text-gold-soft">{{ t.blog.all }} →</NuxtLink>
+            <NuxtLink to="/blog" class="inline-flex items-center gap-2 text-sm text-gold hover:text-gold-soft">{{ t.blog.all }} <FaIcon name="arrow-right" /></NuxtLink>
           </div>
           <div class="grid gap-5 md:grid-cols-3">
             <ArticleCard v-for="a in latest" :key="a.slug" :article="a" />
