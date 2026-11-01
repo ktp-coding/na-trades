@@ -45,6 +45,9 @@ export function lastSession(ts: number[], closes: (number | null)[]) {
   return { spark, prev }
 }
 
+// Last good quote per market, served if Yahoo fails, so a hiccup doesn't blank the cards.
+const lastGood = new Map<string, Quote>()
+
 async function fetchOne(key: string, symbol: string): Promise<Quote> {
   try {
     const res: any = await $fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}`, {
@@ -61,9 +64,12 @@ async function fetchOne(key: string, symbol: string): Promise<Quote> {
     // Keep the sparkline light: at most ~48 points.
     const step = Math.max(1, Math.ceil(all.length / 48))
     const spark = all.filter((_, i) => i % step === 0 || i === all.length - 1)
-    return { key, price, change, spark }
+    if (price == null) throw new Error('no price')
+    const quote = { key, price, change, spark }
+    lastGood.set(key, quote)
+    return quote
   } catch {
-    return { key, price: null, change: null, spark: [] }
+    return lastGood.get(key) ?? { key, price: null, change: null, spark: [] }
   }
 }
 
