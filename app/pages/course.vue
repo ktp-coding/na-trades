@@ -3,7 +3,7 @@
 import { PLAN_KEYS, type PlanKey } from '#shared/enroll'
 
 const { t } = useLang()
-const { joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, showBuyCourse, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
+const { joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
 const { priceLabel } = usePlanPrice()
 
 useHead({ title: () => `${t.value.course.title} · NA TRADES` })
@@ -22,26 +22,6 @@ const planHref = (key: PlanKey) => {
   return (key === 'private' ? privateCourseLink : courseLink) || '#contact'
 }
 const isExternal = (href: string) => href.startsWith('http')
-
-// Slide previews live in /public/images/course. Extra course posters still come from Vercel Blob.
-const courseImages = computed(() => {
-  const list = [
-    // A few pages from the course PDFs, two per module. Not the full PDFs.
-    { src: '/images/course/slide-m1-1.webp', alt: 'Module 01 · Power of 3 (AMD)' },
-    { src: '/images/course/slide-m1-2.webp', alt: 'Module 01 · Price Delivery' },
-    { src: '/images/course/slide-m2-1.webp', alt: 'Module 02 · Quarter Functions' },
-    { src: '/images/course/slide-m2-2.webp', alt: 'Module 02 · True Open' },
-    { src: '/images/course/slide-m3-1.webp', alt: 'Module 03 · Fractal' },
-    { src: '/images/course/slide-m3-2.webp', alt: 'Module 03 · Ideal Swing Formation' },
-  ]
-  if (blobBaseUrl && showBuyCourse) {
-    list.push(
-      { src: `${blobBaseUrl}/images/2026P1-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P1' },
-      { src: `${blobBaseUrl}/images/2026P3-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P3' },
-    )
-  }
-  return list
-})
 
 const privateCourseImages = computed(() =>
   blobBaseUrl && showBuyPrivateCourse
@@ -169,24 +149,6 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
                   <span class="text-slate-200">{{ item }}</span>
                 </li>
               </ul>
-            </div>
-          </div>
-
-          <div v-if="courseImages.length" class="mt-12">
-            <p class="mb-5 text-center text-sm text-mist">{{ t.course.previews }}</p>
-            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <button
-                v-for="img in courseImages"
-                :key="img.src"
-                type="button"
-                class="group text-left"
-                @click="selectedImage = img"
-              >
-                <span class="block overflow-hidden rounded-xl ring-1 ring-white/10 transition group-hover:ring-gold/40">
-                  <img :src="img.src" :alt="img.alt" loading="lazy" class="aspect-[1332/736] w-full object-cover transition duration-500 group-hover:scale-105" />
-                </span>
-                <span class="mt-2 block px-1 text-sm text-mist group-hover:text-gold-soft">{{ img.alt }}</span>
-              </button>
             </div>
           </div>
         </div>
