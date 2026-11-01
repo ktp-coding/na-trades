@@ -171,6 +171,9 @@ const en = {
     email: 'Email',
     disclaimer: 'Trading involves substantial risk. All content is for educational purposes only and is not financial advice. Past performance does not guarantee future results.',
     rights: 'All rights reserved.',
+    line: 'Message me on LINE',
+    motto: 'Time first, then price, then the entry.',
+    explore: 'Explore',
   },
   enroll: {
     title: 'Join the Course',
@@ -498,6 +501,9 @@ const th: Copy = {
     email: 'อีเมล',
     disclaimer: 'การเทรดมีความเสี่ยงสูง เนื้อหาทั้งหมดเพื่อการศึกษา ไม่ใช่คำแนะนำการลงทุน ผลลัพธ์ในอดีตไม่ได้รับประกันผลในอนาคต',
     rights: 'สงวนลิขสิทธิ์',
+    line: 'ทักผมทาง LINE',
+    motto: 'ดูเวลาก่อน แล้วดูราคา แล้วค่อยหาจังหวะเข้า',
+    explore: 'ไปต่อที่',
   },
   enroll: {
     title: 'สมัครเรียน',
