@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Start date, enroll deadline and class time for the Live Private Group (set by env).
 const { t } = useLang()
-const { startDate, closeDate, schedule, hasInfo } = usePrivateClass()
+const { startDate, closeDate, enrollRange, schedule, hasInfo } = usePrivateClass()
 </script>
 
 <template>
@@ -18,8 +18,8 @@ const { startDate, closeDate, schedule, hasInfo } = usePrivateClass()
     </div>
     <div v-if="closeDate" class="flex items-center gap-2">
       <svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-gold" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v8l5 3" stroke-linecap="round" /><path d="M20 12a8 8 0 1 1-2.3-5.6" stroke-linecap="round" /></svg>
-      <dt class="text-mist">{{ t.enroll.privateDates.close }}</dt>
-      <dd class="text-slate-200">{{ closeDate }}</dd>
+      <dt class="text-mist">{{ enrollRange ? t.enroll.privateDates.open : t.enroll.privateDates.close }}</dt>
+      <dd class="text-slate-200">{{ enrollRange || closeDate }}</dd>
     </div>
   </dl>
 </template>
