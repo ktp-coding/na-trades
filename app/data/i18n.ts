@@ -336,6 +336,19 @@ const en = {
     },
     instructorTitle: 'Taught by NA TRADES',
     instructorMore: 'Read the full story',
+    propfirm: {
+      tag: 'Prop Firm',
+      title: 'Prop firm guidance for students',
+      desc: 'Students who are taking, or planning to take, a prop firm challenge can talk it through with the instructor.',
+      items: [
+        'Choose a firm and account size that fit your trading style',
+        'Plan Phase 1 / Phase 2 around the drawdown and consistency rules',
+        'Pick which sessions to trade and how many trades per day',
+        'Review your results during the challenge and adjust together',
+      ],
+      note: 'Guidance only. Passing depends on your own discipline and practice.',
+      cta: 'Ask about this',
+    },
   },
   reviews: {
     eyebrow: 'Student Reviews',
@@ -669,6 +682,19 @@ const th: Copy = {
     },
     instructorTitle: 'สอนโดย NA TRADES',
     instructorMore: 'อ่านเรื่องของเราต่อ',
+    propfirm: {
+      tag: 'Prop Firm',
+      title: 'ให้คำปรึกษาสำหรับสายสอบกองทุน',
+      desc: 'นักเรียนที่กำลังสอบ หรือวางแผนจะสอบกองทุน (Prop Firm) สามารถปรึกษากับผู้สอนได้',
+      items: [
+        'เลือกกองทุนและขนาดบัญชีให้เหมาะกับสไตล์การเทรด',
+        'วางแผนสอบ Phase 1 / Phase 2 ให้อยู่ในกฎ Drawdown และ Consistency',
+        'เลือกช่วงเวลาเทรด และจำนวนเทรดต่อวันให้เหมาะสม',
+        'ทบทวนผลเทรดระหว่างสอบ และปรับแผนไปด้วยกัน',
+      ],
+      note: 'เป็นการให้คำแนะนำ ผลการสอบขึ้นอยู่กับวินัยและการฝึกฝนของผู้เรียนเอง',
+      cta: 'สอบถามเพิ่มเติม',
+    },
   },
   reviews: {
     eyebrow: 'Student Reviews',

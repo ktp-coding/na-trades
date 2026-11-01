@@ -3,7 +3,7 @@
 import { PLAN_KEYS, type PlanKey } from '#shared/enroll'
 
 const { t } = useLang()
-const { joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, showBuyCourse, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
+const { lineLink, messengerLink, joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, showBuyCourse, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
 const { priceLabel } = usePlanPrice()
 
 useHead({ title: () => `${t.value.course.title} · NA TRADES` })
@@ -152,6 +152,36 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
               <p class="mt-1 text-mist">{{ step.v }}</p>
             </li>
           </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04b Prop firm guidance for students -->
+      <section id="propfirm" class="scroll-mt-24 px-4 py-14 sm:px-6 sm:py-20">
+        <div class="mx-auto max-w-5xl rounded-[2rem] bg-gradient-to-br from-gold/40 via-white/[0.06] to-gold/20 p-px">
+          <div class="grid gap-8 rounded-[calc(2rem-1px)] bg-ink-2 px-6 py-10 sm:px-10 md:grid-cols-[1fr_1.2fr] md:gap-12">
+            <div class="flex flex-col">
+              <p class="eyebrow">{{ t.coursePage.propfirm.tag }}</p>
+              <h2 class="mt-2 text-2xl text-white sm:text-3xl">{{ t.coursePage.propfirm.title }}</h2>
+              <p class="mt-3 text-mist">{{ t.coursePage.propfirm.desc }}</p>
+              <div v-if="lineLink || messengerLink" class="mt-6 flex flex-wrap gap-3">
+                <a v-if="lineLink" :href="lineLink" target="_blank" rel="noopener noreferrer" class="btn-ghost inline-flex items-center gap-2">
+                  <SocialIcon name="line" class="h-5 w-5" /> LINE
+                </a>
+                <a v-if="messengerLink" :href="messengerLink" target="_blank" rel="noopener noreferrer" class="btn-ghost inline-flex items-center gap-2">
+                  <SocialIcon name="facebook" class="h-5 w-5" /> Messenger
+                </a>
+              </div>
+            </div>
+            <div>
+              <ul class="space-y-4">
+                <li v-for="item in t.coursePage.propfirm.items" :key="item" class="flex items-start gap-3">
+                  <svg viewBox="0 0 24 24" class="mt-0.5 h-5 w-5 shrink-0 text-gold" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12.5 4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  <span class="text-slate-200">{{ item }}</span>
+                </li>
+              </ul>
+              <p class="mt-6 text-sm text-mist">{{ t.coursePage.propfirm.note }}</p>
+            </div>
           </div>
         </div>
       </section>
