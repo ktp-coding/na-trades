@@ -288,8 +288,10 @@ const en = {
       'You know basic candlesticks and want to understand time and liquidity',
       'You trade a prop firm, or plan to, and need a process you can repeat',
       'You are willing to practise and review your own charts',
-      'You have studied some ICT or SMC but cannot apply it in live trading yet',
+      'You have studied some ICT but cannot apply it in live trading yet',
+      'You can read a chart but do not know which hours to trade',
       'You want a clear trading routine you can repeat every day',
+      'You trade futures such as NQ, ES or gold',
     ],
     notForTitle: 'Not for you if',
     notForItems: [
@@ -637,8 +639,10 @@ const th: Copy = {
       'ชอบโดนสต็อปก่อน แล้วราคาค่อยวิ่งไปทางที่คิดไว้',
       'เทรด Prop Firm อยู่ หรือกำลังจะสอบ',
       'พร้อมฝึก และย้อนดูกราฟตัวเอง',
-      'เคยเรียน ICT หรือ SMC มาบ้าง แต่ยังเอามาใช้จริงไม่ได้',
+      'เคยเรียน ICT มาบ้าง แต่ยังเอามาใช้จริงไม่ได้',
+      'ดูกราฟเป็น แต่ไม่รู้ว่าควรเทรดช่วงเวลาไหน',
       'อยากมีขั้นตอนการเทรดที่ชัดเจน และทำซ้ำได้ทุกวัน',
+      'เทรด Futures อย่าง NQ, ES หรือทองคำ',
     ],
     notForTitle: 'อาจยังไม่เหมาะ ถ้า',
     notForItems: [
