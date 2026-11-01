@@ -1,7 +1,6 @@
 // Live Private Group dates, from env so they can change per round without a code change.
 // NUXT_PUBLIC_PRIVATE_START_DATE   first live class, YYYY-MM-DD (e.g. 2026-11-28)
-// NUXT_PUBLIC_PRIVATE_OPEN_DATE    first day to enroll, YYYY-MM-DD (optional; with CLOSE shows a range)
-// NUXT_PUBLIC_PRIVATE_CLOSE_DATE   last day to enroll, YYYY-MM-DD (optional)
+// NUXT_PUBLIC_PRIVATE_CLOSE_DATE   last day to enroll, YYYY-MM-DD (optional), shown as "เปิดรับสมัคร วันนี้ – 26 พ.ย. 2026"
 // NUXT_PUBLIC_PRIVATE_SCHEDULE     free text, e.g. "ทุกวันเสาร์ 20:00–22:00" (optional)
 // Anything empty or not a valid date is simply not shown.
 
@@ -33,27 +32,19 @@ function parts(value: string) {
   return { y, mo, d }
 }
 
-/** "2026-11-02" + "2026-11-26" → "2 – 26 พ.ย. 2026"; across months/years the parts are kept. */
-export function formatDateRange(from: string, to: string, lang: 'th' | 'en'): string {
-  const a = parts(from)
-  const b = parts(to)
-  if (!a || !b) return ''
-  const months = lang === 'th' ? TH_MONTHS : EN_MONTHS
-  const end = `${b.d} ${months[b.mo - 1]} ${b.y}`
-  if (a.y !== b.y) return `${a.d} ${months[a.mo - 1]} ${a.y} – ${end}`
-  if (a.mo !== b.mo) return `${a.d} ${months[a.mo - 1]} – ${end}`
-  return `${a.d} – ${end}`
+/** "2026-11-26" → "26 พ.ย. 2026" / "26 Nov 2026" (no weekday). */
+export function formatShortDate(value: string, lang: 'th' | 'en'): string {
+  const p = parts(value)
+  if (!p) return ''
+  return `${p.d} ${(lang === 'th' ? TH_MONTHS : EN_MONTHS)[p.mo - 1]} ${p.y}`
 }
 
 export function usePrivateClass() {
   const config = useRuntimeConfig().public
   const { lang } = useLang()
   const startDate = computed(() => formatClassDate(String(config.privateStartDate || ''), lang.value))
-  const closeDate = computed(() => formatClassDate(String(config.privateCloseDate || ''), lang.value))
-  const enrollRange = computed(() =>
-    formatDateRange(String(config.privateOpenDate || ''), String(config.privateCloseDate || ''), lang.value),
-  )
+  const closeDate = computed(() => formatShortDate(String(config.privateCloseDate || ''), lang.value))
   const schedule = computed(() => String(config.privateSchedule || '').trim().slice(0, 120))
   const hasInfo = computed(() => Boolean(startDate.value || closeDate.value || schedule.value))
-  return { startDate, closeDate, enrollRange, schedule, hasInfo }
+  return { startDate, closeDate, schedule, hasInfo }
 }
