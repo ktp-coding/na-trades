@@ -40,7 +40,7 @@ const en = {
     stats: [
       { v: '3', l: 'Core modules' },
       { v: '3', l: 'Summary PDFs' },
-      { v: '2', l: 'Live or online' },
+      { v: '2', l: 'Ways to learn (live / online)' },
       { v: 'Discord', l: 'Student community' },
     ],
   },
@@ -385,9 +385,9 @@ const th: Copy = {
     secondary: 'ดูระบบเทรด',
     stats: [
       { v: '3', l: 'โมดูลหลัก' },
-      { v: '3', l: 'เล่ม PDF สรุป' },
-      { v: '2', l: 'เรียนสด หรือ วิดีโอออนไลน์' },
-      { v: 'Discord', l: 'กลุ่มนักเรียน' },
+      { v: '3', l: 'เล่มสรุปเนื้อหา (PDF)' },
+      { v: '2', l: 'รูปแบบการเรียน (สด / ออนไลน์)' },
+      { v: 'Discord', l: 'คอมมูนิตี้นักเรียน' },
     ],
   },
   about: {
