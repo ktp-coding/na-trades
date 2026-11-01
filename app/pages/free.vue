@@ -18,6 +18,7 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
 
 useHead({ title: () => `${t.value.free.title} · NA TRADES` })
 useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free.title} · NA TRADES` })
+useShareImage('free')
 </script>
 
 <template>

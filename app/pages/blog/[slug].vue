@@ -18,6 +18,7 @@ useSeoMeta({
   ogDescription: () => article.excerpt[lang.value],
   ogType: 'article',
 })
+useShareImage('blog')
 </script>
 
 <template>

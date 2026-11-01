@@ -7,16 +7,12 @@ const { joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, show
 const { priceLabel, coachingLabel, coachingPrice } = usePlanPrice()
 
 useHead({ title: () => `${t.value.course.title} · NA TRADES` })
-const siteUrl = useRuntimeConfig().public.siteUrl
 useSeoMeta({
   description: () => t.value.course.sub,
   ogTitle: () => `${t.value.course.title} · NA TRADES`,
   ogDescription: () => t.value.course.sub,
-  // The course keeps its own cover as the share image; the rest of the site uses og-site.png.
-  ogImage: `${siteUrl}/images/og-cover.png`,
-  ogImageWidth: 900,
-  ogImageHeight: 507,
 })
+useShareImage('course')
 
 const moduleStyles = [
   { no: '01', title: 'ICT Core Concepts', icon: '/images/icon-ict.png', accent: 'from-ict/60 via-ict/15 hover:border-ict-glow/50', glow: 'bg-ict-glow' },
