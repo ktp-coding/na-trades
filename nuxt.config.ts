@@ -10,6 +10,9 @@ const blobOrigin = (() => {
   }
 })();
 
+// Public address of the site, used for absolute share-image and canonical URLs.
+const siteUrl = (process.env.NUXT_PUBLIC_SITE_URL || "https://natrades.com").replace(/\/+$/, "");
+
 const csp = [
   "default-src 'self'",
   // Nuxt injects a small inline bootstrap script for the runtime config/payload.
@@ -51,7 +54,10 @@ export default defineNuxtConfig({
           content: "ICT · Quarterly Theory · Fractal Model เรียนจบเปิดกราฟแล้วรู้ว่าต้องรออะไร เข้าตรงไหน",
         },
         { property: "og:type", content: "website" },
-        { property: "og:image", content: "/images/og-cover.png" },
+        { property: "og:image", content: `${siteUrl}/images/og-cover.png` },
+        { property: "og:image:width", content: "900" },
+        { property: "og:image:height", content: "507" },
+        { property: "og:site_name", content: "NA TRADES" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
       link: [
@@ -88,6 +94,7 @@ export default defineNuxtConfig({
     driveFolderPrivate: process.env.NUXT_DRIVE_FOLDER_PRIVATE || "",
     driveFolderOnline: process.env.NUXT_DRIVE_FOLDER_ONLINE || "",
     public: {
+      siteUrl,
       fbLink: process.env.NUXT_PUBLIC_FB_LINK || "",
       telegramLink: process.env.NUXT_PUBLIC_TELEGRAM_LINK || "",
       youtubeLink: process.env.NUXT_PUBLIC_YOUTUBE_LINK || "",
