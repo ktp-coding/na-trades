@@ -10,7 +10,6 @@ const columns = computed(() => [
       { to: '/', label: t.value.nav.home },
       { to: '/about', label: t.value.nav.about },
       { to: '/blog', label: t.value.nav.blog },
-      { to: '#contact', label: t.value.nav.contact },
     ],
   },
   {
@@ -25,24 +24,12 @@ const columns = computed(() => [
 </script>
 
 <template>
-  <!-- Tall enough that "Contact" links can bring its heading up under the header. -->
-  <footer id="contact" class="flex min-h-[calc(100svh-5rem)] scroll-mt-24 flex-col px-4 pt-16 pb-8 sm:min-h-[calc(100svh-6rem)] sm:px-6">
-    <div class="mx-auto flex w-full max-w-6xl flex-1 flex-col">
-      <!-- Contact -->
-      <div class="flex flex-col items-center gap-5 text-center">
-        <h2 class="section-title">{{ t.footer.contact }}</h2>
-        <a href="mailto:natrades.contact@gmail.com" class="flex items-center gap-2 text-mist hover:text-gold-soft">
-          <SocialIcon name="mail" class="h-4 w-4" />
-          natrades.contact@gmail.com
-        </a>
-        <a v-if="lineLink" :href="lineLink" target="_blank" rel="noopener noreferrer" class="btn-gold">{{ t.footer.line }}</a>
-      </div>
-
-      <div class="min-h-14 flex-1" />
+  <footer id="contact" class="scroll-mt-24 px-4 pt-20 pb-8 sm:px-6">
+    <div class="mx-auto flex w-full max-w-6xl flex-col">
 
       <!-- Columns -->
-      <div class="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-[1.6fr_1fr_1fr]">
-        <div class="col-span-2 flex flex-col gap-5 sm:col-span-1">
+      <div class="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+        <div class="col-span-2 flex flex-col gap-5 lg:col-span-1">
           <NuxtLink to="/" class="flex items-center gap-3">
             <img src="/images/icon-na.png" alt="" width="44" height="44" loading="lazy" class="icon-mask logo-star h-11 w-11" />
             <span class="text-sm tracking-[0.3em] text-gold-soft">NA TRADES</span>
@@ -71,6 +58,15 @@ const columns = computed(() => [
           <NuxtLink v-for="l in col.links" :key="l.to" :to="l.to" class="text-sm text-mist transition hover:text-gold-soft">{{ l.label }}</NuxtLink>
           <a v-if="col === columns[1]" :href="joinHref" :target="joinTarget" rel="noopener noreferrer" class="text-sm text-gold-soft transition hover:text-gold">{{ t.nav.join }}</a>
         </nav>
+
+        <div class="col-span-2 flex flex-col gap-4 lg:col-span-1">
+          <span class="text-sm font-medium text-white">{{ t.nav.contact }}</span>
+          <a href="mailto:natrades.contact@gmail.com" class="flex items-center gap-2 text-sm text-mist transition hover:text-gold-soft">
+            <SocialIcon name="mail" class="h-4 w-4 shrink-0" />
+            natrades.contact@gmail.com
+          </a>
+          <a v-if="lineLink" :href="lineLink" target="_blank" rel="noopener noreferrer" class="text-sm text-mist transition hover:text-gold-soft">{{ t.footer.line }}</a>
+        </div>
       </div>
 
       <!-- Legal -->
