@@ -317,6 +317,7 @@ const en = {
         'Ask and discuss with the instructor directly',
         'Homework and exercises for every topic, with instructor feedback',
         'Every class is recorded so you can rewatch it',
+        'Full Video Course on Whop included, every module',
         'Missed a class or behind on homework? Keep going until you finish. No cut-off.',
       ],
       online: [
@@ -685,6 +686,7 @@ const th: Copy = {
         'สอบถามและพูดคุยกับผู้สอนได้โดยตรง',
         'มีการบ้านและแบบฝึกหัดทุกหัวข้อ พร้อมคอมเมนต์จากผู้สอน',
         'ทุกคลาสมีวิดีโอบันทึกไว้ดูย้อนหลัง',
+        'ได้สิทธิ์ดูวิดีโอ Video Course บน Whop ครบทุก Module',
         'เรียนไม่ครบหรือทำการบ้านไม่ทัน ก็เรียนต่อจนจบได้ ไม่ตัดสิทธิ์',
       ],
       online: [
