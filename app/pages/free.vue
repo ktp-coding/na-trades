@@ -165,6 +165,7 @@ useSeoMeta({ description: () => t.value.free.sub, ogTitle: () => `${t.value.free
               rel="noopener noreferrer"
               class="card flex items-center justify-center gap-3 px-4 py-4 text-slate-200 transition hover:border-gold/30 hover:text-gold-soft"
             >
+              <SocialIcon name="line" class="h-5 w-5" />
               {{ t.freePage.line }}
             </a>
           </div>
