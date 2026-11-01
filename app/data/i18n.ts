@@ -288,11 +288,14 @@ const en = {
       'You know basic candlesticks and want to understand time and liquidity',
       'You trade a prop firm, or plan to, and need a process you can repeat',
       'You are willing to practise and review your own charts',
+      'You have studied some ICT or SMC but cannot apply it in live trading yet',
+      'You want a clear trading routine you can repeat every day',
     ],
     notForTitle: 'Not for you if',
     notForItems: [
       'You expect fast profits without practice',
       'You just want indicator signals to follow without understanding why',
+      'You have no time to watch charts or practise on past charts',
     ],
     pathTitle: 'How the course is laid out',
     path: [
@@ -634,11 +637,14 @@ const th: Copy = {
       'ชอบโดนสต็อปก่อน แล้วราคาค่อยวิ่งไปทางที่คิดไว้',
       'เทรด Prop Firm อยู่ หรือกำลังจะสอบ',
       'พร้อมฝึก และย้อนดูกราฟตัวเอง',
+      'เคยเรียน ICT หรือ SMC มาบ้าง แต่ยังเอามาใช้จริงไม่ได้',
+      'อยากมีขั้นตอนการเทรดที่ชัดเจน และทำซ้ำได้ทุกวัน',
     ],
     notForTitle: 'อาจยังไม่เหมาะ ถ้า',
     notForItems: [
       'อยากได้กำไรเร็ว ๆ แต่ไม่อยากฝึก',
       'อยากได้แค่สัญญาณจากอินดิเคเตอร์ไปกดตาม โดยไม่อยากเข้าใจว่าทำไม',
+      'ไม่มีเวลาดูกราฟ หรือฝึกย้อนหลังเลย',
     ],
     pathTitle: 'เรียนอะไรบ้าง ตามลำดับ',
     path: [
