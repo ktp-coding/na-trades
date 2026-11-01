@@ -174,6 +174,8 @@ const en = {
     line: 'Message me on LINE',
     motto: 'Time first, then price, then the entry.',
     explore: 'Explore',
+    learn: 'Learn',
+    follow: 'Follow',
   },
   enroll: {
     title: 'Join the Course',
@@ -503,7 +505,9 @@ const th: Copy = {
     rights: 'สงวนลิขสิทธิ์',
     line: 'ทักผมทาง LINE',
     motto: 'ดูเวลาก่อน แล้วดูราคา แล้วค่อยหาจังหวะเข้า',
-    explore: 'ไปต่อที่',
+    explore: 'เมนู',
+    learn: 'เรียนกับผม',
+    follow: 'ติดตามผม',
   },
   enroll: {
     title: 'สมัครเรียน',
