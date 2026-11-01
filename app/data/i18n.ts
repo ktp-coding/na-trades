@@ -188,7 +188,7 @@ const en = {
     total: 'Total',
     plans: {
       private: { name: 'Live Private Group', desc: 'Live online classes on Discord. Homework, feedback and recordings.' },
-      online: { name: 'Online Video Course', desc: 'Video lessons on Whop plus the Discord community. Learn at your own pace.' },
+      online: { name: 'Video Course', desc: 'Video lessons on Whop plus the Discord community. Learn at your own pace.' },
     },
     priceOnRequest: 'Price on request',
     detailsTitle: 'Your details',
@@ -328,8 +328,8 @@ const en = {
       tag: 'Add-on',
       title: '1:1 Coaching',
       desc: 'For anyone who wants one-to-one guidance. Add it to either plan.',
-      privateDeal: 'Special price {price} for Live Private Group students',
-      privateApplied: 'Special price for Live Private Group students',
+      privateDeal: 'Special price {price} with Live Private Group',
+      privateApplied: 'Special price with Live Private Group',
       items: [
         '3 one-to-one sessions with the instructor (60 minutes each)',
         'A look at your foundation and how you trade now',
@@ -538,8 +538,8 @@ const th: Copy = {
     addonCheck: 'เพิ่มเรียนตัวต่อตัว 1:1',
     total: 'รวม',
     plans: {
-      private: { name: 'เรียนสดแบบกลุ่มส่วนตัว', desc: 'เรียนสดผ่าน Discord มีการบ้าน คอมเมนต์ และคลิปย้อนหลัง' },
-      online: { name: 'เรียนผ่านวิดีโอออนไลน์', desc: 'วิดีโอบน Whop พร้อม Discord Community จัดเวลาเรียนเองได้' },
+      private: { name: 'Live Private Group', desc: 'เรียนสดผ่าน Discord มีการบ้าน คอมเมนต์ และคลิปย้อนหลัง' },
+      online: { name: 'Video Course', desc: 'วิดีโอบน Whop พร้อม Discord Community จัดเวลาเรียนเองได้' },
     },
     priceOnRequest: 'สอบถามราคา',
     detailsTitle: 'ข้อมูลผู้เรียน',
@@ -679,8 +679,8 @@ const th: Copy = {
       tag: 'เพิ่มเติม',
       title: 'เรียนตัวต่อตัว (1:1 Coaching)',
       desc: 'สำหรับผู้ที่ต้องการการดูแลแบบรายบุคคล เลือกเพิ่มได้ทั้ง 2 แบบ',
-      privateDeal: 'ราคาพิเศษ {price} สำหรับผู้สมัครเรียนสด',
-      privateApplied: 'ราคาพิเศษสำหรับผู้สมัครเรียนสด',
+      privateDeal: 'ราคาพิเศษ {price} สำหรับ Live Private Group',
+      privateApplied: 'ราคาพิเศษสำหรับ Live Private Group',
       items: [
         'เรียนตัวต่อตัวกับผู้สอน 3 ครั้ง ครั้งละ 60 นาที',
         'ดูพื้นฐานกับแนวทางการเทรดที่ใช้อยู่ตอนนี้',
