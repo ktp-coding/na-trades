@@ -14,6 +14,7 @@
     "audit": "pnpm audit --prod=false"
   },
   "dependencies": {
+    "lenis": "1.1.20",
     "nuxt": "^4.6.3",
     "vue": "^3.5.44"
   },
