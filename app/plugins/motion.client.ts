@@ -42,7 +42,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const top = Math.max(0, y - header - 16)
     if (lenis) {
       lenis.resize()
-      lenis.scrollTo(top, { immediate })
+      lenis.scrollTo(top, { immediate, force: true })
     } else window.scrollTo({ top, behavior: 'auto' })
     return true
   }
@@ -74,6 +74,15 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
   nuxtApp.provide('scrollToHash', settleOnHash)
+  // Plain scroll for page changes. Going through Lenis (immediate) also cancels any
+  // smooth scroll still easing from the old page, which otherwise drags the new page
+  // back down to where you were.
+  nuxtApp.provide('scrollToTop', (top = 0, smooth = false) => {
+    if (lenis) {
+      lenis.resize()
+      lenis.scrollTo(top, { immediate: !smooth, force: true })
+    } else window.scrollTo({ top, behavior: 'auto' })
+  })
   if (location.hash) nuxtApp.hooks.hookOnce('page:finish', () => settleOnHash(location.hash))
 
   if (!lenis) return { provide: { lenis: null as Lenis | null } }

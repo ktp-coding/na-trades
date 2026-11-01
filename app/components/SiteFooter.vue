@@ -5,8 +5,9 @@ const { t } = useLang()
 </script>
 
 <template>
-  <footer id="contact" class="scroll-mt-24 px-4 py-16 sm:px-6">
-    <div class="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
+  <!-- Tall enough that "Contact" links can bring its heading up under the header. -->
+  <footer id="contact" class="flex min-h-[calc(100svh-5rem)] scroll-mt-24 flex-col px-4 pt-16 pb-10 sm:min-h-[calc(100svh-6rem)] sm:px-6">
+    <div class="mx-auto flex w-full max-w-6xl flex-1 flex-col items-center gap-6 text-center">
       <h2 class="section-title">{{ t.footer.contact }}</h2>
       <NuxtLink to="/" class="flex items-center gap-3">
         <img src="/images/icon-na.png" alt="" width="32" height="32" loading="lazy" class="icon-mask logo-mono h-8 w-8" />
@@ -29,10 +30,12 @@ const { t } = useLang()
         <SocialIcon name="mail" class="h-4 w-4" />
         natrades.contact@gmail.com
       </a>
+      <div class="mt-auto flex flex-col items-center gap-6 pt-10">
       <p class="max-w-2xl text-xs leading-relaxed text-mist/60">
         {{ t.footer.disclaimer }}
       </p>
       <p class="text-xs text-mist/50">© {{ year }} NA TRADES. {{ t.footer.rights }}</p>
+      </div>
     </div>
   </footer>
 </template>
