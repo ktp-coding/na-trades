@@ -3,6 +3,7 @@ const { t } = useLang()
 
 useHead({ title: () => `${t.value.disclaimerPage.title} · NA TRADES` })
 useSeoMeta({ description: () => t.value.disclaimerPage.intro, ogTitle: () => `${t.value.disclaimerPage.title} · NA TRADES` })
+useShareImage('disclaimer')
 </script>
 
 <template>

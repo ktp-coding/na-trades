@@ -10,6 +10,9 @@ const blobOrigin = (() => {
   }
 })();
 
+// Public address of the site, used for absolute share-image and canonical URLs.
+const siteUrl = (process.env.NUXT_PUBLIC_SITE_URL || "https://www.natrades.com").replace(/\/+$/, "");
+
 const csp = [
   "default-src 'self'",
   // Nuxt injects a small inline bootstrap script for the runtime config/payload.
@@ -45,13 +48,16 @@ export default defineNuxtConfig({
             "คอร์สเทรด ICT Concept, Quarterly Theory และ Fractal Model สอนอ่านเวลาและราคาให้เป็นระบบ โดย NA TRADES",
         },
         { name: "theme-color", content: "#070b16" },
-        { property: "og:title", content: "Understand The Logic of Time & Price · NA TRADES" },
+        { property: "og:title", content: "NA TRADES · The Logic of Time & Price" },
         {
           property: "og:description",
-          content: "ICT · Quarterly Theory · Fractal Model เรียนจบเปิดกราฟแล้วรู้ว่าต้องรออะไร เข้าตรงไหน",
+          content: "เข้าใจเวลา อ่านราคาเป็น เทรดอย่างมีเหตุผล · ICT · Quarterly Theory · Fractal Model",
         },
         { property: "og:type", content: "website" },
-        { property: "og:image", content: "/images/og-cover.png" },
+        { property: "og:image", content: `${siteUrl}/images/og/home.jpg` },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { property: "og:site_name", content: "NA TRADES" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
       link: [
@@ -88,6 +94,7 @@ export default defineNuxtConfig({
     driveFolderPrivate: process.env.NUXT_DRIVE_FOLDER_PRIVATE || "",
     driveFolderOnline: process.env.NUXT_DRIVE_FOLDER_ONLINE || "",
     public: {
+      siteUrl,
       fbLink: process.env.NUXT_PUBLIC_FB_LINK || "",
       telegramLink: process.env.NUXT_PUBLIC_TELEGRAM_LINK || "",
       youtubeLink: process.env.NUXT_PUBLIC_YOUTUBE_LINK || "",

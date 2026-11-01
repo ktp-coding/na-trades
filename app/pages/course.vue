@@ -7,7 +7,12 @@ const { joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, show
 const { priceLabel, coachingLabel, coachingPrice } = usePlanPrice()
 
 useHead({ title: () => `${t.value.course.title} · NA TRADES` })
-useSeoMeta({ description: () => t.value.course.sub, ogTitle: () => `${t.value.course.title} · NA TRADES` })
+useSeoMeta({
+  description: () => t.value.course.sub,
+  ogTitle: () => `${t.value.course.title} · NA TRADES`,
+  ogDescription: () => t.value.course.sub,
+})
+useShareImage('course')
 
 const moduleStyles = [
   { no: '01', title: 'ICT Core Concepts', icon: '/images/icon-ict.png', accent: 'from-ict/60 via-ict/15 hover:border-ict-glow/50', glow: 'bg-ict-glow' },

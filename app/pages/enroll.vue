@@ -7,6 +7,7 @@ const { lang, t } = useLang()
 const route = useRoute()
 
 useHead({ title: () => `${t.value.enroll.title} · NA TRADES`, meta: [{ name: 'robots', content: 'noindex' }] })
+useShareImage('course')
 
 // --- State ---------------------------------------------------------------
 const step = ref<1 | 2 | 3 | 4>(1)
