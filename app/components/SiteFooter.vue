@@ -61,15 +61,15 @@ const columns = computed(() => [
 
         <div class="col-span-2 flex flex-col gap-4 lg:col-span-1">
           <span class="text-sm font-medium text-white">{{ t.nav.contact }}</span>
+          <a v-if="messengerLink" :href="messengerLink" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-mist transition hover:text-gold-soft">
+            <SocialIcon name="facebook" class="h-4 w-4 shrink-0" />
+            {{ t.footer.messenger }}
+          </a>
           <a href="mailto:natrades.contact@gmail.com" class="flex items-center gap-2 text-sm text-mist transition hover:text-gold-soft">
             <SocialIcon name="mail" class="h-4 w-4 shrink-0" />
             natrades.contact@gmail.com
           </a>
           <a v-if="lineLink" :href="lineLink" target="_blank" rel="noopener noreferrer" class="text-sm text-mist transition hover:text-gold-soft">{{ t.footer.line }}</a>
-          <a v-if="messengerLink" :href="messengerLink" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-mist transition hover:text-gold-soft">
-            <SocialIcon name="facebook" class="h-4 w-4 shrink-0" />
-            {{ t.footer.messenger }}
-          </a>
         </div>
       </div>
 
