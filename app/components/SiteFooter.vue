@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { socials, lineLink, joinHref, joinTarget } = useSiteLinks()
+const { socials, lineLink, messengerLink, joinHref, joinTarget } = useSiteLinks()
 const year = new Date().getFullYear()
 const { t } = useLang()
 
@@ -66,6 +66,10 @@ const columns = computed(() => [
             natrades.contact@gmail.com
           </a>
           <a v-if="lineLink" :href="lineLink" target="_blank" rel="noopener noreferrer" class="text-sm text-mist transition hover:text-gold-soft">{{ t.footer.line }}</a>
+          <a v-if="messengerLink" :href="messengerLink" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-mist transition hover:text-gold-soft">
+            <SocialIcon name="facebook" class="h-4 w-4 shrink-0" />
+            {{ t.footer.messenger }}
+          </a>
         </div>
       </div>
 
