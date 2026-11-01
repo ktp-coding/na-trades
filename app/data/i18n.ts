@@ -295,7 +295,7 @@ const en = {
     ],
     notForTitle: 'Not for you if',
     notForItems: [
-      'You expect fast profits without practice',
+      'You want fast profits or a ready-made formula without practice',
       'You have no time to watch charts or practise on past charts',
       'You want someone to trade for you or hand you entries every day',
       'You would be trading money you cannot afford to lose',
@@ -647,7 +647,7 @@ const th: Copy = {
     ],
     notForTitle: 'อาจยังไม่เหมาะ ถ้า',
     notForItems: [
-      'อยากได้กำไรเร็ว ๆ แต่ไม่อยากฝึก',
+      'อยากได้กำไรเร็ว ๆ หรือสูตรสำเร็จ โดยไม่อยากฝึก',
       'ไม่มีเวลาดูกราฟ หรือฝึกย้อนหลังเลย',
       'อยากได้คนเทรดให้ หรือบอกจุดเข้าให้ทุกวัน',
       'ใช้เงินที่เสียไม่ได้มาเทรด',
