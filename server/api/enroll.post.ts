@@ -86,7 +86,7 @@ export default defineEventHandler(async (event) => {
     'เรียนตัวต่อตัว 1:1': coaching ? 'ใช่' : 'ไม่',
     'ยอดที่ต้องโอน': price,
   }
-  for (const f of fieldsForPlan(plan)) row[f.label.th] = cell((values[f.key] ?? '').trim())
+  for (const f of fieldsForPlan(plan)) row[f.column ?? f.label.th] = cell((values[f.key] ?? '').trim())
   row['ยินยอมให้ใช้รีวิว'] = values.marketing === 'yes' ? 'ใช่' : 'ไม่'
   row['ภาษา'] = values.lang === 'th' ? 'TH' : 'EN'
   row['สถานะ'] = 'รอตรวจสลิป'

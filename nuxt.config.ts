@@ -62,6 +62,11 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+        { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+        { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+        { rel: "manifest", href: "/site.webmanifest" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
         {
@@ -118,6 +123,10 @@ export default defineNuxtConfig({
       bankAccountNo: process.env.NUXT_PUBLIC_BANK_ACCOUNT_NO || "",
       bankAccountName: process.env.NUXT_PUBLIC_BANK_ACCOUNT_NAME || "",
       lineLink: process.env.NUXT_PUBLIC_LINE_LINK || "",
+      // Live Private Group round: dates as YYYY-MM-DD, schedule as free text. Empty = hidden.
+      privateStartDate: process.env.NUXT_PUBLIC_PRIVATE_START_DATE || "",
+      privateCloseDate: process.env.NUXT_PUBLIC_PRIVATE_CLOSE_DATE || "",
+      privateSchedule: process.env.NUXT_PUBLIC_PRIVATE_SCHEDULE || "",
     },
   },
 });

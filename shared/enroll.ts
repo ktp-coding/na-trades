@@ -16,6 +16,8 @@ export interface EnrollField {
   numeric?: boolean
   placeholder?: L
   hint?: L
+  /** Sheet column name. Defaults to label.th; set it to keep the column when the label changes. */
+  column?: string
   options?: { value: string; label: L }[]
   /** Only ask for these plans. Omit to ask for every plan. */
   plans?: PlanKey[]
@@ -37,7 +39,10 @@ export const ENROLL_FIELDS: EnrollField[] = [
   },
   {
     key: 'email',
-    label: { en: 'Email or Gmail for contact and your Whop / Discord access', th: 'Email หรือ Gmail เพื่อติดต่อกลับ และส่งสิทธิ์เข้าเรียนใน Whop / Discord' },
+    label: { en: 'Email', th: 'Email' },
+    placeholder: { en: 'e.g. name@gmail.com', th: 'เช่น name@gmail.com' },
+    hint: { en: 'For contact and your Whop / Discord access', th: 'ใช้ติดต่อกลับ และส่งสิทธิ์เข้าเรียน Whop / Discord' },
+    column: 'Email หรือ Gmail เพื่อติดต่อกลับ และส่งสิทธิ์เข้าเรียนใน Whop / Discord',
     type: 'email',
     required: true,
     maxLength: 160,
