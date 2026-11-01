@@ -9,7 +9,6 @@ const nav = computed(() => [
   { href: '/blog', label: t.value.nav.blog },
   { href: '/free', label: t.value.nav.free },
   { href: '/course', label: t.value.nav.course },
-  { href: '#contact', label: t.value.nav.contact },
 ])
 const isActive = (href: string) => href.startsWith('/') && (route.path === href || route.path.startsWith(`${href}/`))
 const isMenuOpen = ref(false)

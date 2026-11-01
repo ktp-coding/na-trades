@@ -104,7 +104,9 @@ export default defineNuxtConfig({
       enrollEnabled: process.env.NUXT_PUBLIC_ENROLL_ENABLED || "",
       pricePrivate: process.env.NUXT_PUBLIC_PRICE_PRIVATE || "25900",
       priceOnline: process.env.NUXT_PUBLIC_PRICE_ONLINE || "15900",
-      priceCoaching: process.env.NUXT_PUBLIC_PRICE_COACHING || "10000",
+      priceCoaching: process.env.NUXT_PUBLIC_PRICE_COACHING || "12900",
+      // 1:1 Coaching price when bought with the live (private) plan.
+      priceCoachingPrivate: process.env.NUXT_PUBLIC_PRICE_COACHING_PRIVATE || "9900",
       bankName: process.env.NUXT_PUBLIC_BANK_NAME || "",
       bankAccountNo: process.env.NUXT_PUBLIC_BANK_ACCOUNT_NO || "",
       bankAccountName: process.env.NUXT_PUBLIC_BANK_ACCOUNT_NAME || "",

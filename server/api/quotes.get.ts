@@ -20,29 +20,56 @@ const SYMBOLS: Record<string, string> = {
   SI: 'SI=F',
   CL: 'CL=F',
   DXY: 'DX-Y.NYB',
-  EURUSD: 'EURUSD=X',
-  GBPUSD: 'GBPUSD=X',
+  '6E': '6E=F',
+  '6B': '6B=F',
 }
+
+// Picks the latest trading session out of a few days of 15-minute bars, so the card
+// still has a line (and a fair % change) on weekends and holidays when futures and
+// FX are closed. A session ends at any gap of more than 90 minutes in the bars;
+// markets that never close (crypto) just use the last 24 hours.
+export function lastSession(ts: number[], closes: (number | null)[]) {
+  const pts = ts.map((t, i) => [t, closes[i]] as const).filter((p): p is readonly [number, number] => typeof p[1] === 'number')
+  if (!pts.length) return { spark: [] as number[], prev: null as number | null }
+  let start = 0
+  for (let i = pts.length - 1; i > 0; i--) {
+    if (pts[i]![0] - pts[i - 1]![0] > 90 * 60) {
+      start = i
+      break
+    }
+  }
+  const dayAgo = pts.at(-1)![0] - 24 * 3600
+  while (start < pts.length - 1 && pts[start]![0] < dayAgo) start++
+  const spark = pts.slice(start).map((p) => p[1])
+  const prev = start > 0 ? pts[start - 1]![1] : null
+  return { spark, prev }
+}
+
+// Last good quote per market, served if Yahoo fails, so a hiccup doesn't blank the cards.
+const lastGood = new Map<string, Quote>()
 
 async function fetchOne(key: string, symbol: string): Promise<Quote> {
   try {
     const res: any = await $fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}`, {
-      query: { interval: '15m', range: '1d', includePrePost: 'true' },
+      query: { interval: '15m', range: '5d', includePrePost: 'true' },
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; na-trades/1.0)' },
       timeout: 6000,
     })
     const r = res?.chart?.result?.[0]
     const meta = r?.meta ?? {}
-    const closes: number[] = (r?.indicators?.quote?.[0]?.close ?? []).filter((v: unknown): v is number => typeof v === 'number')
-    const price: number | null = typeof meta.regularMarketPrice === 'number' ? meta.regularMarketPrice : closes.at(-1) ?? null
-    const prev: number | null = meta.chartPreviousClose ?? meta.previousClose ?? null
+    const { spark: all, prev: sessionPrev } = lastSession(r?.timestamp ?? [], r?.indicators?.quote?.[0]?.close ?? [])
+    const price: number | null = typeof meta.regularMarketPrice === 'number' ? meta.regularMarketPrice : all.at(-1) ?? null
+    const prev: number | null = sessionPrev ?? meta.previousClose ?? null
     const change = price != null && prev ? ((price - prev) / prev) * 100 : null
     // Keep the sparkline light: at most ~48 points.
-    const step = Math.max(1, Math.ceil(closes.length / 48))
-    const spark = closes.filter((_, i) => i % step === 0 || i === closes.length - 1)
-    return { key, price, change, spark }
+    const step = Math.max(1, Math.ceil(all.length / 48))
+    const spark = all.filter((_, i) => i % step === 0 || i === all.length - 1)
+    if (price == null) throw new Error('no price')
+    const quote = { key, price, change, spark }
+    lastGood.set(key, quote)
+    return quote
   } catch {
-    return { key, price: null, change: null, spark: [] }
+    return lastGood.get(key) ?? { key, price: null, change: null, spark: [] }
   }
 }
 

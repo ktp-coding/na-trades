@@ -74,7 +74,8 @@ export default defineEventHandler(async (event) => {
   const orderId = `NA-${ymd}-${randomBytes(3).toString('hex').toUpperCase()}`
   const coaching = values.coaching === 'yes'
   const base = parsePrice(String((plan === 'private' ? config.public.pricePrivate : config.public.priceOnline) || ''))
-  const extra = coaching ? parsePrice(String(config.public.priceCoaching || '')) : 0
+  const coachingPrice = (plan === 'private' && config.public.priceCoachingPrivate) || config.public.priceCoaching
+  const extra = coaching ? parsePrice(String(coachingPrice || '')) : 0
   const price = base && (!coaching || extra) ? String(base + extra) : ''
 
   // Thai column names, matching the existing Google Form response sheets.

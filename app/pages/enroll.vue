@@ -27,7 +27,7 @@ const copied = ref(false)
 const dragging = ref(false)
 
 const fields = computed(() => fieldsForPlan(plan.value))
-const { priceLabel, coachingLabel, totalLabel } = usePlanPrice()
+const { priceLabel, coachingLabel, coachingPrice, totalLabel } = usePlanPrice()
 const total = computed(() => totalLabel(plan.value, coaching.value))
 const bank = {
   name: String(config.bankName || ''),
@@ -207,7 +207,10 @@ function shortName(name: string, max = 40) {
                   <span class="flex-1">
                     <span class="flex items-start justify-between gap-3">
                       <span class="text-white">{{ t.coursePage.coach.title }}</span>
-                      <span class="shrink-0 font-display text-xl tracking-wide text-gold-soft">+ {{ coachingLabel() }}</span>
+                      <span class="shrink-0 font-display text-xl tracking-wide text-gold-soft">+ {{ coachingLabel(plan) }}</span>
+                    </span>
+                    <span v-if="coachingPrice('private') !== coachingPrice('online')" class="mt-1 block text-sm text-gold-soft">
+                      {{ plan === 'private' ? t.coursePage.coach.privateApplied : t.coursePage.coach.privateDeal.replace('{price}', coachingLabel('private')) }}
                     </span>
                     <span class="mt-1 block text-sm text-mist">{{ t.coursePage.coach.desc }}</span>
                     <ul class="mt-3 space-y-1.5 text-sm text-slate-300">
@@ -390,7 +393,7 @@ function shortName(name: string, max = 40) {
               </div>
               <div v-if="coaching" class="flex justify-between gap-3">
                 <span class="text-mist">{{ t.coursePage.coach.title }}</span>
-                <span class="text-white">+ {{ coachingLabel() }}</span>
+                <span class="text-white">+ {{ coachingLabel(plan) }}</span>
               </div>
             </div>
             <div class="mt-3 flex items-end justify-between border-t border-white/5 pt-3">

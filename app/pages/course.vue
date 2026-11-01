@@ -3,8 +3,8 @@
 import { PLAN_KEYS, type PlanKey } from '#shared/enroll'
 
 const { t } = useLang()
-const { joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, showBuyCourse, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
-const { priceLabel } = usePlanPrice()
+const { joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
+const { priceLabel, coachingLabel, coachingPrice } = usePlanPrice()
 
 useHead({ title: () => `${t.value.course.title} · NA TRADES` })
 useSeoMeta({ description: () => t.value.course.sub, ogTitle: () => `${t.value.course.title} · NA TRADES` })
@@ -22,26 +22,6 @@ const planHref = (key: PlanKey) => {
   return (key === 'private' ? privateCourseLink : courseLink) || '#contact'
 }
 const isExternal = (href: string) => href.startsWith('http')
-
-// Slide previews live in /public/images/course. Extra course posters still come from Vercel Blob.
-const courseImages = computed(() => {
-  const list = [
-    // A few pages from the course PDFs, two per module. Not the full PDFs.
-    { src: '/images/course/slide-m1-1.webp', alt: 'Module 01 · Power of 3 (AMD)' },
-    { src: '/images/course/slide-m1-2.webp', alt: 'Module 01 · Price Delivery' },
-    { src: '/images/course/slide-m2-1.webp', alt: 'Module 02 · Quarter Functions' },
-    { src: '/images/course/slide-m2-2.webp', alt: 'Module 02 · True Open' },
-    { src: '/images/course/slide-m3-1.webp', alt: 'Module 03 · Fractal' },
-    { src: '/images/course/slide-m3-2.webp', alt: 'Module 03 · Ideal Swing Formation' },
-  ]
-  if (blobBaseUrl && showBuyCourse) {
-    list.push(
-      { src: `${blobBaseUrl}/images/2026P1-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P1' },
-      { src: `${blobBaseUrl}/images/2026P3-Understand The Logic of Time & Price.png`, alt: 'Understand The Logic of Time & Price P3' },
-    )
-  }
-  return list
-})
 
 const privateCourseImages = computed(() =>
   blobBaseUrl && showBuyPrivateCourse
@@ -171,24 +151,6 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
               </ul>
             </div>
           </div>
-
-          <div v-if="courseImages.length" class="mt-12">
-            <p class="mb-5 text-center text-sm text-mist">{{ t.course.previews }}</p>
-            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <button
-                v-for="img in courseImages"
-                :key="img.src"
-                type="button"
-                class="group text-left"
-                @click="selectedImage = img"
-              >
-                <span class="block overflow-hidden rounded-xl ring-1 ring-white/10 transition group-hover:ring-gold/40">
-                  <img :src="img.src" :alt="img.alt" loading="lazy" class="aspect-[1332/736] w-full object-cover transition duration-500 group-hover:scale-105" />
-                </span>
-                <span class="mt-2 block px-1 text-sm text-mist group-hover:text-gold-soft">{{ img.alt }}</span>
-              </button>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -233,7 +195,10 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
               <p class="eyebrow" :class="trackingFix(t.coursePage.coach.tag)">{{ t.coursePage.coach.tag }}</p>
               <h3 class="mt-2 font-display text-3xl tracking-wide text-white">{{ t.coursePage.coach.title }}</h3>
               <p class="mt-2 text-mist">{{ t.coursePage.coach.desc }}</p>
-              <p class="mt-5 font-display text-3xl tracking-wide text-gold">{{ t.coursePage.coach.price }}</p>
+              <p class="mt-5 font-display text-3xl tracking-wide text-gold">+ {{ coachingLabel('online') }}</p>
+              <p v-if="coachingPrice('private') !== coachingPrice('online')" class="mt-2 w-fit rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-sm text-gold-soft">
+                {{ t.coursePage.coach.privateDeal.replace('{price}', coachingLabel('private')) }}
+              </p>
               <p class="mt-auto pt-5 text-sm text-mist">{{ t.coursePage.coach.how }}</p>
             </div>
             <div>
@@ -242,6 +207,23 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
                   <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />{{ item }}
                 </li>
               </ul>
+              <!-- Prop firm guidance, included in 1:1 coaching -->
+              <div class="relative mt-6 overflow-hidden rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/[0.10] via-gold/[0.03] to-transparent p-5">
+                <div aria-hidden="true" class="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-gold/20 blur-2xl" />
+                <div class="relative flex flex-wrap items-center gap-2">
+                  <span class="rounded-full bg-gold px-2.5 py-0.5 text-xs font-medium text-ink">{{ t.coursePage.propfirm.tag }}</span>
+                  <span class="rounded-full border border-gold/40 px-2.5 py-0.5 text-xs text-gold-soft">Prop Firm</span>
+                </div>
+                <h4 class="relative mt-3 text-lg text-white">{{ t.coursePage.propfirm.title }}</h4>
+                <p class="relative mt-1 text-sm text-mist">{{ t.coursePage.propfirm.desc }}</p>
+                <ul class="relative mt-4 grid gap-2.5 text-sm text-slate-200 sm:grid-cols-2">
+                  <li v-for="item in t.coursePage.propfirm.items" :key="item" class="flex items-start gap-2">
+                    <svg viewBox="0 0 24 24" class="mt-0.5 h-4 w-4 shrink-0 text-gold" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 12.5 4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
+                <p class="relative mt-4 text-xs text-mist">{{ t.coursePage.propfirm.note }}</p>
+              </div>
               <p class="mt-5 text-sm text-gold-soft">{{ t.coursePage.coach.note }}</p>
             </div>
           </article>
