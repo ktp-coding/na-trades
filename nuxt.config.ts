@@ -11,7 +11,7 @@ const blobOrigin = (() => {
 })();
 
 // Public address of the site, used for absolute share-image and canonical URLs.
-const siteUrl = (process.env.NUXT_PUBLIC_SITE_URL || "https://natrades.com").replace(/\/+$/, "");
+const siteUrl = (process.env.NUXT_PUBLIC_SITE_URL || "https://www.natrades.com").replace(/\/+$/, "");
 
 const csp = [
   "default-src 'self'",
