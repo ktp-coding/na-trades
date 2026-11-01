@@ -321,10 +321,12 @@ const en = {
         'Missed a class or behind on homework? Keep going until you finish. No cut-off.',
       ],
       online: [
-        'Video lessons on Whop',
+        'Video lessons on Whop covering all 3 modules: ICT · Quarterly Theory · Fractal Model',
+        'Full written notes and PDF slides for every lesson, downloadable',
         'Join the NA TRADES Discord community',
         'Learn on your own schedule',
-        'Come back and review any time',
+        'Lifetime access, with new content updates free',
+        'Add 1:1 Coaching any time',
       ],
     },
     coach: {
@@ -690,10 +692,12 @@ const th: Copy = {
         'เรียนไม่ครบหรือทำการบ้านไม่ทัน ก็เรียนต่อจนจบได้ ไม่ตัดสิทธิ์',
       ],
       online: [
-        'เรียนผ่านวิดีโอบน Whop',
+        'วิดีโอบน Whop ครบ 3 Module: ICT · Quarterly Theory · Fractal Model',
+        'เนื้อหาฉบับเต็มและสไลด์ PDF ทุกบท ดาวน์โหลดได้',
         'เข้า Discord Community ของ NA TRADES ได้',
         'จัดเวลาเรียนเองได้ตามสะดวก',
-        'กลับมาดูทบทวนได้ตลอดเวลา',
+        'ดูได้ตลอดชีพ และได้อัปเดตเนื้อหาใหม่ฟรี',
+        'เพิ่มเรียนตัวต่อตัว 1:1 ได้ภายหลัง',
       ],
     },
     coach: {
