@@ -54,7 +54,7 @@ const sources: {
     build: (lang) => {
       const [first, ...rest] = copy[lang].about.paragraphs
       return {
-        tagline: 'Time, Price & Intent',
+        tagline: 'The Logic of Time & Price',
         excerpt: first!,
         body: [{ type: 'quote', text: first! }, ...rest.map((text) => ({ type: 'p' as const, text }))],
       }

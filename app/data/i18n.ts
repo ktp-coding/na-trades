@@ -244,7 +244,7 @@ const en = {
     freeMore: 'All free videos',
   },
   aboutPage: {
-    eyebrow: 'Time, Price & Intent',
+    eyebrow: 'The Logic of Time & Price',
     blogLink: 'Read the articles',
   },
   freePage: {
@@ -577,7 +577,7 @@ const th: Copy = {
     freeMore: 'ดูคลิปฟรีทั้งหมด',
   },
   aboutPage: {
-    eyebrow: 'Time, Price & Intent',
+    eyebrow: 'The Logic of Time & Price',
     blogLink: 'อ่านบทความ',
   },
   freePage: {
