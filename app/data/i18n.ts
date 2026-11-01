@@ -47,7 +47,7 @@ const en = {
   about: {
     title: 'About',
     paragraphs: [
-      'NA TRADES is built on the belief that price only makes sense when time and structure align.',
+      'I believe charts become far easier to read and trade when you look at time and price together. Price tells you where the market is going; time tells you when. Seeing both is what lets you trade with logic.',
       'Our approach combines ICT Concepts with Quarterly Theory to explain how price is delivered, why it moves, and when meaningful expansion is most likely to occur. Every trade is framed within market structure, liquidity, and time-based context, with indicators used to mark the time windows that matter.',
       'This framework forms the foundation of the Understand The Logic of Time & Price course — a structured system designed to develop clarity, discipline, and consistency. The goal is not just better entries, but a deeper understanding of market behavior that supports long-term growth, especially within the demands of prop firm trading.',
       'NA TRADES is committed to mastering the process, respecting market logic, and building repeatable execution through time, price, and intent.',
@@ -380,7 +380,7 @@ const th: Copy = {
   about: {
     title: 'รู้จัก NA TRADES และแนวทางการเทรด',
     paragraphs: [
-      'ผมเชื่อว่าราคาจะอ่านง่ายขึ้นมาก ถ้าดูเวลาไปพร้อมกับโครงสร้าง เพราะโครงสร้างบอกว่าราคาจะไปไหน ส่วนเวลาบอกว่าจะไปเมื่อไหร่',
+      'ผมเชื่อว่าเราจะวิเคราะห์กราฟและเทรดได้ง่ายขึ้นมาก ถ้าดูมิติของเวลาไปพร้อมกับมิติของราคา เพราะ Price บอกว่าราคาจะไปที่ไหน ส่วน Time บอกว่าจะไปเมื่อไหร่ เมื่อเห็นทั้งสองมิติ ก็จะเทรดได้อย่างมีเหตุผล',
       'แนวทางของเราใช้ ICT Concept กับ Quarterly Theory เป็นหลัก ดูว่าราคาน่าจะวิ่งไปหาอะไร แล้วน่าจะวิ่งช่วงไหน ก่อนเข้าออเดอร์จะดูโครงสร้าง Liquidity กับเวลาก่อนทุกครั้ง ส่วนอินดิเคเตอร์ใช้ช่วยดูช่วงเวลา',
       'คอร์ส Understand The Logic of Time & Price ก็สอนตามวิธีนี้เลย เน้นให้เข้าใจว่าราคาวิ่งแบบนี้เพราะอะไร พอเข้าใจแล้ว เจอกราฟแบบไหนก็พอจะอ่านออก ไม่ต้องไปท่องแพทเทิร์น ใครเทรด Prop Firm อยู่น่าจะได้ใช้เยอะ เพราะต้องเทรดให้สม่ำเสมอ',
       'ที่เหลือคือฝึกเยอะ ๆ ทำซ้ำจนเป็นนิสัย แล้วค่อย ๆ ปรับไปทีละนิด',
@@ -506,7 +506,7 @@ const th: Copy = {
     rights: 'สงวนลิขสิทธิ์',
     line: 'ติดต่อทาง LINE',
     messenger: 'ติดต่อทาง Facebook',
-    motto: 'เข้าใจเวลา อ่านราคาเป็น เทรดอย่างมี Logic',
+    motto: 'เข้าใจเวลา อ่านราคาเป็น เทรดอย่างมีเหตุผล',
     explore: 'เมนู',
     learn: 'การเรียน',
     follow: 'ติดตาม NA TRADES',
