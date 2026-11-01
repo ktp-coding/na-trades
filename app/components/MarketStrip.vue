@@ -75,7 +75,7 @@ const updated = computed(() => {
         >
           <FaIcon name="arrow-up-right-from-square" class="absolute right-3 bottom-3 text-[10px] text-mist/0 transition group-hover:text-mist/70" />
           <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
-            <span class="font-display text-lg tracking-wider text-white sm:text-xl">{{ m.key }}</span>
+            <span class="flex items-center gap-2"><MarketLogo :market="m.key" /><span class="font-display text-lg tracking-wider text-white sm:text-xl">{{ m.key }}</span></span>
             <span
               v-if="m.change != null"
               class="text-xs font-medium tabular-nums"
