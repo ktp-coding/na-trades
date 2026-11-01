@@ -194,6 +194,7 @@ function shortName(name: string, max = 40) {
                     <span class="shrink-0 font-display text-xl tracking-wide text-gold-soft">{{ priceLabel(key) }}</span>
                   </span>
                   <span class="mt-1 block text-sm text-mist">{{ t.enroll.plans[key].desc }}</span>
+                  <PrivateClassDates v-if="key === 'private'" class="mt-3" />
                 </label>
               </div>
 

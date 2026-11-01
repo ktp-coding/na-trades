@@ -175,6 +175,7 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
             >
               <h3 class="font-display text-3xl tracking-wide text-white">{{ t.enroll.plans[key].name }}</h3>
               <p class="mt-2 text-mist">{{ t.enroll.plans[key].desc }}</p>
+              <PrivateClassDates v-if="key === 'private'" class="mt-4" />
               <p class="mt-6 font-display text-4xl tracking-wide text-gold">{{ priceLabel(key) }}</p>
               <ul class="mt-6 space-y-2.5 text-sm text-slate-300">
                 <li v-for="item in t.coursePage.planFeatures[key]" :key="item" class="flex gap-3">

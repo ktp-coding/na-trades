@@ -123,6 +123,10 @@ export default defineNuxtConfig({
       bankAccountNo: process.env.NUXT_PUBLIC_BANK_ACCOUNT_NO || "",
       bankAccountName: process.env.NUXT_PUBLIC_BANK_ACCOUNT_NAME || "",
       lineLink: process.env.NUXT_PUBLIC_LINE_LINK || "",
+      // Live Private Group round: dates as YYYY-MM-DD, schedule as free text. Empty = hidden.
+      privateStartDate: process.env.NUXT_PUBLIC_PRIVATE_START_DATE || "",
+      privateCloseDate: process.env.NUXT_PUBLIC_PRIVATE_CLOSE_DATE || "",
+      privateSchedule: process.env.NUXT_PUBLIC_PRIVATE_SCHEDULE || "",
     },
   },
 });
