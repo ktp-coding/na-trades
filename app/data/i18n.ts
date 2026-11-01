@@ -326,8 +326,8 @@ const en = {
       tag: 'Add-on',
       title: '1:1 Coaching',
       desc: 'For anyone who wants one-to-one guidance. Add it to either plan.',
-      privateDeal: 'Only {price} when added to the live plan',
-      privateApplied: 'Live plan price',
+      privateDeal: 'Special price {price} for Live Private Group students',
+      privateApplied: 'Special price for Live Private Group students',
       items: [
         '3 one-to-one sessions with the instructor (60 minutes each)',
         'A look at your foundation and how you trade now',
@@ -675,8 +675,8 @@ const th: Copy = {
       tag: 'เพิ่มเติม',
       title: 'เรียนตัวต่อตัว (1:1 Coaching)',
       desc: 'สำหรับผู้ที่ต้องการการดูแลแบบรายบุคคล เลือกเพิ่มได้ทั้ง 2 แบบ',
-      privateDeal: 'เหลือ {price} เมื่อเลือกคู่กับแบบเรียนสด',
-      privateApplied: 'ราคาพิเศษสำหรับแบบเรียนสด',
+      privateDeal: 'ราคาพิเศษ {price} สำหรับผู้สมัครเรียนสด',
+      privateApplied: 'ราคาพิเศษสำหรับผู้สมัครเรียนสด',
       items: [
         'เรียนตัวต่อตัวกับผู้สอน 3 ครั้ง ครั้งละ 60 นาที',
         'ดูพื้นฐานกับแนวทางการเทรดที่ใช้อยู่ตอนนี้',
