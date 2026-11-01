@@ -39,7 +39,7 @@ export const ENROLL_FIELDS: EnrollField[] = [
   },
   {
     key: 'email',
-    label: { en: 'Email', th: 'Email' },
+    label: { en: 'Email / Gmail', th: 'Email / Gmail' },
     hint: { en: 'For contact and your Whop / Discord access', th: 'ใช้ติดต่อกลับ และส่งสิทธิ์เข้าเรียน Whop / Discord' },
     column: 'Email หรือ Gmail เพื่อติดต่อกลับ และส่งสิทธิ์เข้าเรียนใน Whop / Discord',
     type: 'email',
