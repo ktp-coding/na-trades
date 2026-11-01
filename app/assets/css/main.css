@@ -209,6 +209,26 @@
   }
 }
 
+/* Plan price: soft gold glow that breathes slowly. */
+.price-glow {
+  animation: price-glow 3.2s ease-in-out infinite;
+}
+@keyframes price-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 6px rgb(201 169 106 / 0.15);
+  }
+  50% {
+    text-shadow: 0 0 14px rgb(201 169 106 / 0.75), 0 0 32px rgb(201 169 106 / 0.35);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .price-glow {
+    animation: none;
+    text-shadow: 0 0 12px rgb(201 169 106 / 0.45);
+  }
+}
+
 @keyframes sheen-once {
   from {
     transform: translateX(-120%);
