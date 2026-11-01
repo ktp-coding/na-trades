@@ -4,7 +4,7 @@ import { PLAN_KEYS, type PlanKey } from '#shared/enroll'
 
 const { t } = useLang()
 const { joinHref, joinTarget, enrollEnabled, courseLink, privateCourseLink, showBuyPrivateCourse, blobBaseUrl } = useSiteLinks()
-const { priceLabel } = usePlanPrice()
+const { priceLabel, coachingLabel, coachingPrice } = usePlanPrice()
 
 useHead({ title: () => `${t.value.course.title} · NA TRADES` })
 useSeoMeta({ description: () => t.value.course.sub, ogTitle: () => `${t.value.course.title} · NA TRADES` })
@@ -195,7 +195,10 @@ const selectedImage = ref<{ src: string; alt: string } | null>(null)
               <p class="eyebrow" :class="trackingFix(t.coursePage.coach.tag)">{{ t.coursePage.coach.tag }}</p>
               <h3 class="mt-2 font-display text-3xl tracking-wide text-white">{{ t.coursePage.coach.title }}</h3>
               <p class="mt-2 text-mist">{{ t.coursePage.coach.desc }}</p>
-              <p class="mt-5 font-display text-3xl tracking-wide text-gold">{{ t.coursePage.coach.price }}</p>
+              <p class="mt-5 font-display text-3xl tracking-wide text-gold">+ {{ coachingLabel('online') }}</p>
+              <p v-if="coachingPrice('private') !== coachingPrice('online')" class="mt-2 w-fit rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-sm text-gold-soft">
+                {{ t.coursePage.coach.privateDeal.replace('{price}', coachingLabel('private')) }}
+              </p>
               <p class="mt-auto pt-5 text-sm text-mist">{{ t.coursePage.coach.how }}</p>
             </div>
             <div>

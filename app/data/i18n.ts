@@ -322,13 +322,14 @@ const en = {
     coach: {
       tag: 'Add-on',
       title: '1:1 Coaching',
-      price: '+ ฿10,000',
       desc: 'For anyone who wants one-to-one guidance. Add it to either plan.',
+      privateDeal: 'Only {price} when added to the live plan',
+      privateApplied: 'Live plan price',
       items: [
         '3 one-to-one sessions with the instructor (60 minutes each)',
         'A look at your foundation and how you trade now',
         'Help shaping a trading style that fits you',
-        'Review of your trading journal and results',
+        'Weekly review of your trade log while the sessions run',
         'Advice and feedback just for you',
       ],
       note: 'Best if you want to turn the knowledge into a clear trading process of your own.',
@@ -667,13 +668,14 @@ const th: Copy = {
     coach: {
       tag: 'เพิ่มเติม',
       title: 'เรียนตัวต่อตัว (1:1 Coaching)',
-      price: '+ ฿10,000',
       desc: 'สำหรับผู้ที่ต้องการการดูแลแบบรายบุคคล เลือกเพิ่มได้ทั้ง 2 แบบ',
+      privateDeal: 'เหลือ {price} เมื่อเลือกคู่กับแบบเรียนสด',
+      privateApplied: 'ราคาพิเศษสำหรับแบบเรียนสด',
       items: [
         'เรียนตัวต่อตัวกับผู้สอน 3 ครั้ง ครั้งละ 60 นาที',
         'ดูพื้นฐานกับแนวทางการเทรดที่ใช้อยู่ตอนนี้',
         'ช่วยปรับรูปแบบการเทรดให้เข้ากับตัวเอง',
-        'ดูบันทึกการเทรดและทบทวนผลด้วยกัน',
+        'ตรวจ Trade Log ให้ทุกสัปดาห์ตลอดช่วงที่เรียน 1:1',
         'ได้คำแนะนำที่ตรงกับตัวเอง ไม่ใช่สูตรเดียวใช้กับทุกคน',
       ],
       note: 'เหมาะกับคนที่อยากเอาความรู้ไปทำให้วิธีเทรดของตัวเองชัดขึ้น',
