@@ -20,8 +20,8 @@ const SYMBOLS: Record<string, string> = {
   SI: 'SI=F',
   CL: 'CL=F',
   DXY: 'DX-Y.NYB',
-  EURUSD: 'EURUSD=X',
-  GBPUSD: 'GBPUSD=X',
+  '6E': '6E=F',
+  '6B': '6B=F',
 }
 
 // Picks the latest trading session out of a few days of 15-minute bars, so the card

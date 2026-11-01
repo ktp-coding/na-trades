@@ -21,8 +21,8 @@ const markets = [
   { key: 'SI', name: 'Silver', digits: 2, tv: 'COMEX:SI1!' },
   { key: 'CL', name: 'Crude Oil', digits: 2, tv: 'NYMEX:CL1!' },
   { key: 'DXY', name: 'US Dollar Index', digits: 2, tv: 'TVC:DXY' },
-  { key: 'EURUSD', name: 'Euro / Dollar', digits: 4, tv: 'FX:EURUSD' },
-  { key: 'GBPUSD', name: 'Pound / Dollar', digits: 4, tv: 'FX:GBPUSD' },
+  { key: '6E', name: 'Euro FX', digits: 5, tv: 'CME:6E1!' },
+  { key: '6B', name: 'British Pound', digits: 4, tv: 'CME:6B1!' },
 ]
 
 const { data, refresh } = useFetch<{ quotes: Quote[]; at: number }>('/api/quotes', { server: false, lazy: true })
