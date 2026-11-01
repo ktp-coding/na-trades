@@ -363,6 +363,21 @@ const en = {
     source: 'Student · Discord',
     more: 'Read all reviews',
   },
+  disclaimerPage: {
+    title: 'Risk Disclaimer',
+    link: 'Read the full disclaimer',
+    updated: 'Last updated: November 2026',
+    intro: 'Please read this before using any content from NA TRADES or enrolling in a course.',
+    sections: [
+      { k: 'Education only', v: 'All content on this website, in our videos, PDFs, Discord, live classes and 1:1 sessions is for educational purposes only. It is not investment advice, and it is not a recommendation to buy or sell any financial product.' },
+      { k: 'High risk', v: 'Trading futures, forex, CFDs and crypto carries a high level of risk and may not be suitable for everyone. You can lose some or all of your money. Only trade with money you can afford to lose.' },
+      { k: 'No guarantee of results', v: 'Past performance, chart examples, case studies and student reviews do not guarantee future results. Results depend on each person\'s practice, discipline and risk management.' },
+      { k: 'No signals, no money management', v: 'NA TRADES does not provide buy or sell signals, does not manage money on anyone\'s behalf, and does not act as a licensed investment adviser. Every trading decision is your own responsibility.' },
+      { k: 'Market data', v: 'Prices shown on this website may be delayed and are for reference only. They should not be used for trading decisions.' },
+      { k: 'Prop firms and brokers', v: 'NA TRADES is not affiliated with or endorsed by any prop firm, broker or exchange. Guidance about prop firm challenges is educational and does not guarantee that you will pass.' },
+      { k: 'Your responsibility', v: 'Before trading, make sure you understand the risks and the rules of the products and platforms you use. If you are unsure, seek advice from a licensed professional.' },
+    ],
+  },
   modal: { close: 'Close' },
 }
 
@@ -714,6 +729,21 @@ const th: Copy = {
     sub: 'ข้อความจริงจากนักเรียนในกลุ่ม Discord ของ NA TRADES',
     source: 'นักเรียน · Discord',
     more: 'อ่านรีวิวทั้งหมด',
+  },
+  disclaimerPage: {
+    title: 'ข้อควรทราบและการเปิดเผยความเสี่ยง',
+    link: 'อ่านข้อควรทราบฉบับเต็ม',
+    updated: 'ปรับปรุงล่าสุด: พฤศจิกายน 2026',
+    intro: 'กรุณาอ่านข้อมูลนี้ก่อนนำเนื้อหาของ NA TRADES ไปใช้ หรือก่อนสมัครเรียน',
+    sections: [
+      { k: 'เพื่อการศึกษาเท่านั้น', v: 'เนื้อหาทั้งหมดบนเว็บไซต์ วิดีโอ PDF Discord คลาสเรียนสด และการเรียนแบบตัวต่อตัว จัดทำขึ้นเพื่อการศึกษาเท่านั้น ไม่ใช่คำแนะนำการลงทุน และไม่ใช่การชักชวนให้ซื้อหรือขายผลิตภัณฑ์ทางการเงินใด ๆ' },
+      { k: 'มีความเสี่ยงสูง', v: 'การเทรด Futures, Forex, CFD และ Crypto มีความเสี่ยงสูง และอาจไม่เหมาะกับทุกคน ผู้เทรดอาจสูญเสียเงินบางส่วนหรือทั้งหมด ควรใช้เฉพาะเงินที่ยอมรับการสูญเสียได้' },
+      { k: 'ไม่รับประกันผลลัพธ์', v: 'ผลการเทรดในอดีต ตัวอย่างกราฟ กรณีศึกษา และรีวิวจากนักเรียน ไม่ได้รับประกันผลในอนาคต ผลลัพธ์ขึ้นอยู่กับการฝึกฝน วินัย และการบริหารความเสี่ยงของแต่ละบุคคล' },
+      { k: 'ไม่มีสัญญาณ และไม่รับบริหารเงิน', v: 'NA TRADES ไม่ให้สัญญาณซื้อขาย ไม่รับบริหารเงินแทนผู้ใด และไม่ได้เป็นที่ปรึกษาการลงทุนที่ได้รับอนุญาต การตัดสินใจเทรดทุกครั้งเป็นความรับผิดชอบของผู้เทรดเอง' },
+      { k: 'ข้อมูลราคา', v: 'ราคาที่แสดงบนเว็บไซต์อาจล่าช้า และใช้เพื่ออ้างอิงเท่านั้น ไม่ควรใช้ในการตัดสินใจเทรด' },
+      { k: 'กองทุนและโบรกเกอร์', v: 'NA TRADES ไม่มีส่วนเกี่ยวข้องหรือได้รับการรับรองจากกองทุน (Prop Firm) โบรกเกอร์ หรือตลาดใด คำแนะนำเรื่องการสอบกองทุนเป็นไปเพื่อการศึกษา และไม่รับประกันว่าจะสอบผ่าน' },
+      { k: 'ความรับผิดชอบของผู้เทรด', v: 'ก่อนเทรด ควรศึกษาความเสี่ยงและกฎของผลิตภัณฑ์และแพลตฟอร์มที่ใช้ให้เข้าใจ หากไม่แน่ใจ ควรปรึกษาผู้เชี่ยวชาญที่ได้รับอนุญาต' },
+    ],
   },
   modal: { close: 'ปิด' },
 }

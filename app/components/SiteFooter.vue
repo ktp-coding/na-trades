@@ -79,6 +79,7 @@ const columns = computed(() => [
       <!-- Legal -->
       <div class="mt-12 flex flex-col items-center gap-3 text-center">
         <p class="max-w-2xl text-xs leading-relaxed text-mist/60">{{ t.footer.disclaimer }}</p>
+        <NuxtLink to="/disclaimer" class="text-xs text-mist/70 underline decoration-white/20 underline-offset-4 transition hover:text-gold-soft">{{ t.disclaimerPage.link }}</NuxtLink>
         <p class="text-xs text-mist/50">© {{ year }} NA TRADES. {{ t.footer.rights }}</p>
       </div>
     </div>
