@@ -34,7 +34,7 @@ const en = {
     eyebrow: 'ICT Concept & Quarterly Theory',
     title: 'NA TRADES',
     course: 'Understand The Logic of Time & Price',
-    sub: 'The full course is open. Learn to read price through time and structure, with indicators to mark the time windows.',
+    sub: 'Enrollment is open. Learn to read the chart through time and price, with an indicator that marks the key time windows.',
     cta: 'Join Course',
     secondary: 'Explore the Systems',
     stats: [
@@ -380,7 +380,7 @@ const th: Copy = {
     eyebrow: 'ICT Concept & Quarterly Theory',
     title: 'NA TRADES',
     course: 'Understand The Logic of Time & Price',
-    sub: 'เปิดรับนักเรียนแล้ว คอร์สนี้สอนอ่านราคาจากเวลากับโครงสร้าง และมีอินดิเคเตอร์ช่วยดูช่วงเวลาให้ด้วย',
+    sub: 'เปิดรับสมัครแล้ว เรียนรู้การอ่านกราฟจากมิติของเวลาและราคา พร้อมอินดิเคเตอร์ที่ช่วยระบุช่วงเวลาสำคัญ',
     cta: 'สมัครเรียน',
     secondary: 'ดูระบบเทรด',
     stats: [
