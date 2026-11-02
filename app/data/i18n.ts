@@ -315,6 +315,7 @@ const en = {
       private: [
         'Live online classes on Discord',
         'Ask and discuss with the instructor directly',
+        'Join the Discord group for Q&A and chart analysis from the instructor',
         'Homework and exercises for every topic, with instructor feedback',
         'Every class is recorded so you can rewatch it',
         'Full Video Course on Whop included, every module',
@@ -323,7 +324,7 @@ const en = {
       online: [
         'Video lessons on Whop covering all 3 modules: ICT · Quarterly Theory · Fractal Model',
         'Full written notes and PDF slides for every lesson, downloadable',
-        'Join the NA TRADES Discord community',
+        'Join the Discord group for Q&A and chart analysis from the instructor',
         'Learn on your own schedule',
         'Lifetime access, with new content updates free',
         'Add 1:1 Coaching any time',
@@ -687,6 +688,7 @@ const th: Copy = {
       private: [
         'เรียนสดออนไลน์ผ่าน Discord',
         'สอบถามและพูดคุยกับผู้สอนได้โดยตรง',
+        'เข้ากลุ่ม Discord ถามตอบ และดูวิเคราะห์กราฟจากผู้สอน',
         'มีการบ้านและแบบฝึกหัดทุกหัวข้อ พร้อมคอมเมนต์จากผู้สอน',
         'ทุกคลาสมีวิดีโอบันทึกไว้ดูย้อนหลัง',
         'ได้สิทธิ์ดูวิดีโอ Video Course บน Whop ครบทุก Module',
@@ -695,7 +697,7 @@ const th: Copy = {
       online: [
         'วิดีโอบน Whop ครบ 3 Module: ICT · Quarterly Theory · Fractal Model',
         'เนื้อหาฉบับเต็มและสไลด์ PDF ทุกบท ดาวน์โหลดได้',
-        'เข้า Discord Community ของ NA TRADES ได้',
+        'เข้ากลุ่ม Discord ถามตอบ และดูวิเคราะห์กราฟจากผู้สอน',
         'จัดเวลาเรียนเองได้ตามสะดวก',
         'ดูได้ตลอดชีพ และได้อัปเดตเนื้อหาใหม่ฟรี',
         'เพิ่มเรียนตัวต่อตัว 1:1 ได้ภายหลัง',
