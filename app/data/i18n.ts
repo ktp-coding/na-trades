@@ -338,6 +338,7 @@ const en = {
       privateApplied: 'Special price with Live Private Group',
       items: [
         '3 one-to-one sessions with the instructor (60 minutes each)',
+        'Every session is recorded and the file is sent to you to review',
         'Extra explanation on anything you still don\'t understand',
         'A look at your foundation and how you trade now',
         'Help shaping a trading style that fits you',
@@ -711,6 +712,7 @@ const th: Copy = {
       privateApplied: 'ราคาพิเศษสำหรับ Live Private Group',
       items: [
         'เรียนตัวต่อตัวกับผู้สอน 3 ครั้ง ครั้งละ 60 นาที',
+        'อัดคลิปทุกครั้ง ส่งไฟล์ให้เป็นรายบุคคลไว้ทบทวน',
         'อธิบายเพิ่มในเรื่องที่ยังไม่เข้าใจ',
         'ดูพื้นฐานกับแนวทางการเทรดที่ใช้อยู่ตอนนี้',
         'ช่วยปรับรูปแบบการเทรดให้เข้ากับตัวเอง',
